@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DIGITALES DESIGN SYSTEM — DARK THEME
+   Deep purple-to-black field · gold accents · purple CTAs.
+   Glowing hero · dark surface cards · pill buttons.
+   No colour enters the system that is not in the logo.
+   ============================================================ */
+
+:root {
+  --purple: #6b2d8b;
+  --purple-deep: #3d1450;
+  --purple-glow: #8b3db0;
+  --gold: #f0b428;
+  --night: #0a0610;
+  --surface: #15101e;
+  --muted: #a89fb5;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-night font-body text-muted antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-white;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--purple-deep);
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* ---- Layout ---- */
+  .container-d {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  /* ---- Eyebrow (gold on dark) ---- */
+  .eyebrow {
+    @apply font-body text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-gold;
+  }
+
+  /* ---- Active nav link: gold underline ---- */
+  .nav-active {
+    @apply text-white;
+    position: relative;
+  }
+  .nav-active::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-0.5 w-full bg-gold;
+  }
+
+  /* ---- Headings type scale ---- */
+  .h-display {
+    @apply font-display text-[2.6rem] font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-[4.5rem];
+  }
+  .h2 {
+    @apply font-display text-3xl font-bold leading-tight text-white sm:text-[2.6rem];
+  }
+  .h3 {
+    @apply font-display text-2xl font-semibold text-white;
+  }
+  .lede {
+    @apply font-body text-lg leading-relaxed text-muted sm:text-xl;
+  }
+
+  /* ---- Buttons (pills) ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-body text-sm font-semibold
+           transition-all duration-200 px-6 py-3 leading-none;
+  }
+  .btn-primary {
+    @apply btn bg-purple text-white hover:bg-purple-glow hover:shadow-glow;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-purple-deep hover:brightness-110 hover:shadow-glow;
+  }
+  .btn-ghost-gold {
+    @apply btn border border-gold/70 bg-transparent text-gold hover:bg-gold/10;
+  }
+  .btn-ghost-white {
+    @apply btn border border-white/40 bg-transparent text-white hover:bg-white/10;
+  }
+
+  /* ---- Cards (dark surface) ---- */
+  .card {
+    @apply rounded-card border border-white/[0.07] bg-night-surface transition-all duration-300;
+  }
+  .card-hover:hover {
+    @apply border-purple/60 bg-night-raised shadow-card-hover -translate-y-1;
+  }
+
+  /* ---- Gold divider ---- */
+  .rule-gold {
+    @apply h-px w-full bg-gold/40;
+  }
+
+  /* ---- Link with gold underline ---- */
+  .link-gold {
+    @apply inline-flex items-center gap-1.5 font-body text-sm font-semibold text-white
+           underline decoration-gold decoration-2 underline-offset-4
+           transition-colors hover:text-gold;
+  }
+
+  /* ---- Gradient-bordered card (audit widget) ---- */
+  .border-gradient {
+    position: relative;
+    background: var(--surface);
+  }
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(139, 61, 176, 0.9), rgba(240, 180, 40, 0.25), rgba(61, 20, 80, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 40px rgba(201, 168, 232, 0.45), 0 0 16px rgba(139, 61, 176, 0.35);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Purple radial glow used behind heroes */
+  .glow-purple {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(139, 61, 176, 0.5) 0%, rgba(61, 20, 80, 0.18) 35%, rgba(10, 6, 16, 0) 70%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
