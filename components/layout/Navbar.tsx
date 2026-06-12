@@ -43,10 +43,10 @@ export default function Navbar() {
       <nav className="container-d flex h-[72px] items-center justify-between">
         <Link href="/" aria-label="Digitales home" className="relative z-10 flex items-center">
           <Image
-            src="/logo.png"
+            src="/Digitales logo.png"
             alt="Digitales"
             width={150}
-            height={42}
+            height={45}
             priority
             className="h-8 w-auto sm:h-9"
           />

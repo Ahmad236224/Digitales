@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ShareNetwork, At } from "@phosphor-icons/react/dist/ssr";
 import { SITE } from "@/lib/site";
 
@@ -9,7 +10,15 @@ export default function Footer() {
       <div className="container-d relative border-t border-white/[0.06] py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:pr-6">
-            <p className="font-display text-2xl font-extrabold text-gold">Digitales</p>
+            <Link href="/" aria-label="Digitales home" className="inline-block">
+              <Image
+                src="/Digitales logo.png"
+                alt="Digitales"
+                width={150}
+                height={45}
+                className="h-8 w-auto sm:h-9"
+              />
+            </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed">
               High-end strategy and technical precision for the modern digital era.
             </p>
