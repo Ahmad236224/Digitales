@@ -95,26 +95,24 @@ export default function Hero() {
             e.preventDefault();
             go(auditUrl);
           }}
-          className="mx-auto flex max-w-4xl flex-col gap-5 rounded-card border-gradient p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+          className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-5 rounded-card border-gradient p-7 text-center sm:p-8"
         >
-          <div className="flex-1">
-            <p className="font-display text-base font-semibold text-white">
-              Get a Free Performance Audit
-            </p>
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <input
-                value={auditUrl}
-                onChange={(e) => setAuditUrl(e.target.value)}
-                type="text"
-                inputMode="url"
-                aria-label="Your website URL"
-                placeholder="Enter your website URL (e.g. yourbrand.com)"
-                className="w-full rounded-full border border-white/12 bg-night px-5 py-3 font-body text-sm text-white placeholder:text-muted/70 focus:border-gold/60 focus:outline-none sm:max-w-md"
-              />
-              <button type="submit" className="btn-primary whitespace-nowrap">
-                Analyse Now
-              </button>
-            </div>
+          <p className="font-display text-base font-semibold text-white">
+            Get a Free Performance Audit
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center w-full">
+            <input
+              value={auditUrl}
+              onChange={(e) => setAuditUrl(e.target.value)}
+              type="text"
+              inputMode="url"
+              aria-label="Your website URL"
+              placeholder="Enter your website URL (e.g. yourbrand.com)"
+              className="w-full rounded-full border border-white/12 bg-night px-5 py-3 font-body text-sm text-white placeholder:text-muted/70 focus:border-gold/60 focus:outline-none sm:max-w-md"
+            />
+            <button type="submit" className="btn-primary whitespace-nowrap">
+              Analyse Now
+            </button>
           </div>
         </form>
       </div>
