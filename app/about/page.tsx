@@ -139,7 +139,7 @@ export default function AboutPage() {
                   <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">{group.dept}</h3>
                   <div className="h-px flex-1 bg-white/10" />
                 </div>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-5 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {group.people.map((p) => (
                     <TeamMemberCard key={p.name} person={p} />
                   ))}

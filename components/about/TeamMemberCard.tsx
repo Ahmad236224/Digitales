@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 interface Person {
   name: string;
@@ -15,22 +15,16 @@ function initials(name: string) {
 
 export default function TeamMemberCard({ person }: { person: Person }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const bioId = useId();
   const hasBio = !!person.bio;
   const hasImage = !!person.image;
 
   return (
-    <div
-      onClick={() => hasBio && setIsExpanded(!isExpanded)}
-      className={`relative flex flex-col rounded-card border bg-night-surface p-4 transition-all duration-300 ${
-        hasBio ? "cursor-pointer hover:border-gold/50" : "border-white/[0.06]"
-      } ${
-        isExpanded ? "border-[#f0b428] bg-gradient-to-b from-night-surface to-[#3d1450]/20 shadow-lg" : "border-white/[0.06]"
-      }`}
-    >
+    <div className="flex flex-col rounded-card border border-white/[0.06] bg-night-surface p-4 transition-colors duration-300">
       <div className="flex items-center gap-3">
         {/* Photo or Initials */}
         {hasImage ? (
-          <div className="h-11 w-11 shrink-0 rounded-full border-2 border-[#f0b428] bg-purple/15 overflow-hidden relative">
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-[#f0b428] bg-purple/15">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={person.image}
@@ -48,32 +42,38 @@ export default function TeamMemberCard({ person }: { person: Person }) {
         <div className="flex-1 min-w-0">
           <p className="font-display text-sm font-semibold text-white truncate">{person.name}</p>
           <p className="font-body text-xs text-muted truncate">{person.title}</p>
-        </div>
-
-        {/* Expand Indicator Icon */}
-        {hasBio && (
-          <div className="text-[#f0b428] shrink-0">
-            <svg
-              className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {hasBio && (
+            <button
+              type="button"
+              onClick={() => setIsExpanded((current) => !current)}
+              className="mt-2 inline-flex items-center gap-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-muted transition hover:text-[#f0b428] focus:outline-none focus-visible:text-[#f0b428]"
+              aria-expanded={isExpanded ? "true" : "false"}
+              aria-controls={bioId}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        )}
+              Read Bio
+              <svg
+                className={`h-3 w-3 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* Expanded Bio Section */}
       {hasBio && (
         <div
-          className="grid transition-all duration-300 ease-in-out overflow-hidden"
+          id={bioId}
+          className="grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out"
           style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
         >
           <div className="min-h-0">
-            <div className="border-t border-white/10 mt-3 pt-3">
-              <p className="font-body text-xs leading-relaxed text-[#F8F9FA] whitespace-pre-line">
+            <div className="mt-3 border-t border-white/10 pt-3">
+              <p className="font-body text-xs leading-relaxed text-[#F8F9FA]">
                 {person.bio}
               </p>
             </div>

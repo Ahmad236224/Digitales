@@ -269,7 +269,12 @@ export const TEAM = [
   {
     dept: "Account Management",
     people: [
-      { name: "Ayesha", title: "Content Manager & Account Lead" },
+      {
+        name: "Ayesha Gull",
+        title: "Brand Storyteller / Content Manager",
+        image: "/about/ayesha-gull.jpg",
+        bio: "As a brand storyteller, I look past the screens, algorithms, and the data to find the human heart of every message. Thus, connecting digital spaces with global audiences through messaging that makes people truly stop, feel, and listen.",
+      },
       { name: "Fatima Khawaja", title: "Content Manager" },
       { name: "Maram", title: "Content Manager" },
     ],
@@ -284,7 +289,13 @@ export const TEAM = [
         bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
       },
       { name: "Fahad", title: "Senior Graphic Designer" },
-      { name: "Uzair Rehman", title: "Junior Designer" },
+      {
+        name: "Muhammad Uzair Rehman",
+        title: "Junior Graphic Designer",
+        image: "/about/uzair.jpg",
+        bio: "Bringing fresh creativity and a year of focused experience, Uzair drives visual execution across digital campaigns, ensuring every asset aligns with high-end brand standards.",
+
+      },
       { name: "Kaleem Ullah", title: "Video Content Specialist" },
     ],
   },
@@ -327,7 +338,11 @@ export const TEAM = [
 export const SERVICE_DETAIL: Record<string, {
   headline: string;
   answer: string;
+  pullQuote?: string;
+  whyTitle?: string;
+  whyItems?: string[];
   services: string[];
+  serviceTitle?: string;
   tools?: string[];
   ctaText: string;
   ctaLabel: string;
@@ -335,45 +350,71 @@ export const SERVICE_DETAIL: Record<string, {
   "seo": {
     headline: "Be Found. Be Chosen. Own the Search Results.",
     answer: "Digitales provides search engine optimisation services for businesses across Pakistan, the UK, and the USA. We build SEO programmes that earn organic visibility, attract high-intent traffic, and deliver compounding returns — through technical audits, content strategy, link building, and local SEO.",
-    services: ["Technical SEO Audits & Remediation", "On-Page Optimisation — Meta, Headers, Structured Content", "Content Strategy & Production", "Authority Link Building Campaigns", "Local SEO & Google Business Profile Optimisation", "Performance Tracking, Reporting & Strategy Reviews"],
-    tools: ["SEMrush", "Ahrefs", "Moz", "Screaming Frog", "Google Search Console", "Google Analytics 4"],
+    pullQuote: "Good SEO does not chase the algorithm. It builds the kind of digital authority that algorithms are designed to reward.",
+    whyTitle: "Why SEO",
+    whyItems: [
+      "Generates high-intent leads at significantly lower cost per acquisition than paid channels",
+      "Builds long-term brand authority and domain trust that cannot be replicated quickly",
+      "Delivers compounding returns — rankings earned today continue driving traffic for years",
+      "Positions your brand as the credible, expert answer to your customers' most important questions",
+    ],
+    serviceTitle: "Our SEO Services",
+    services: ["Technical SEO Audits & Remediation", "On-Page Optimisation", "Content Strategy & Production", "Authority Link Building", "Local SEO", "Performance Tracking"],
     ctaText: "Want to see where you rank today — and where you should be?",
-    ctaLabel: "Run a Free Audit",
+    ctaLabel: "Run a Free Audit →",
   },
   "digital-media-buying": {
-    headline: "The Google Ads & Meta Ads Agency Built to Perform.",
-    answer: "Digitales is a performance-driven google ads marketing agency, google ads agency, and meta ads agency managing campaigns across Pakistan, the UK, and the USA. We plan, execute, and optimise search, social, display, and programmatic campaigns with a rigorous, data-led approach.",
+    headline: "Maximum Return. Minimum Wasted Spend.",
+    answer: "Digitales plans, executes, and optimises high-performance paid media campaigns across search, social, display, and programmatic channels for growth-oriented organisations in Pakistan, the UK, and the USA. We manage Google Ads, Meta, TikTok, LinkedIn, and programmatic platforms with a rigorous, data-led approach designed to eliminate guesswork.",
+    pullQuote: "The right message, in front of the right person, at the right moment — that is the only standard we accept.",
+    serviceTitle: "Our Media Buying Services",
     services: ["Paid Social — Meta, Instagram, TikTok, LinkedIn, X", "Search Engine Marketing — Google Ads, Bing", "Programmatic & Display Advertising", "Video Advertising — YouTube, Connected TV", "Retargeting & Remarketing Campaigns", "Audience Segmentation & Lookalike Modelling"],
     ctaText: "Let us audit your current ad spend and show you where returns are being left on the table.",
-    ctaLabel: "Book a Media Audit",
+    ctaLabel: "Book a Media Audit →",
   },
   "social-media-marketing": {
-    headline: "The Social Media Marketing Company Building Communities That Convert.",
-    answer: "Digitales is a leading social media marketing company and paid social agency for brands across Pakistan, the UK, and the USA. We handle platform strategy, content creation, community management, paid social campaigns, and influencer partnerships — with measurable growth as the constant objective.",
-    services: ["Platform Strategy & Content Planning", "Original Content Creation & Production", "Community Management & Audience Engagement", "Paid Social Campaign Management", "Influencer Identification & Partnership Management", "Monthly Performance Reporting & Strategy Reviews"],
+    headline: "Build Communities That Convert.",
+    answer: "Digitales engineers social-first ecosystems for market-defining brands across Pakistan, the UK, and the USA. We orchestrate cross-platform strategy, culture-driven content creation, and active community cultivation with a single, unyielding metric of success: transforming passive attention into commercial momentum.",
+    serviceTitle: "Service Steps Structure",
+    services: [
+      "01 / Channel Architecture & Content Mapping: We perform granular social listening, audience behavior analysis, and competitive landscape teardowns to determine precisely where your community breathes.",
+      "02 / Creative Production & Narrative Development: Our creative studio designs and executes high-retention, native assets engineered specifically for modern attention spans.",
+      "03 / Cultivation & Real-Time Engagement: Our specialized community teams act as the frontline stewards of your brand's voice.",
+      "04 / Predictive Tracking & Strategy Iteration: Every month, we deliver deep-dive performance analyses that strip away fluff to reveal the metrics that actually matter.",
+    ],
     ctaText: "Ready to turn your social presence into a commercial asset?",
-    ctaLabel: "Start a Conversation",
+    ctaLabel: "Start a Conversation →",
   },
   "digital-pr-influencer": {
     headline: "Shape Perception. Build Authority. Own the Narrative.",
-    answer: "Digitales delivers digital PR and influencer marketing services for brands seeking credibility and media coverage. We secure press placements, manage reputation, build influencer campaigns, and position our clients as authorities in their fields — across Pakistan, UK, and USA markets.",
+    answer: "Digitales delivers high-impact digital PR and creator-led marketing strategies for ambitious brands seeking undeniable credibility, cultural relevance, and dominant media coverage. We secure top-tier press placements, orchestrate hyper-targeted influencer movements, protect corporate reputations, and position our clients as the definitive authorities in their fields across Pakistan, the UK, and the USA markets.",
+    serviceTitle: "Our Services",
     services: ["Press Release Strategy, Writing & Distribution", "Media Outreach & Journalist Relationship Management", "Thought Leadership Content Creation", "Influencer Campaign Strategy & Execution", "Crisis Communication Planning & Management", "Online Reputation Monitoring & Response"],
-    ctaText: "Your brand deserves to be talked about — for the right reasons.",
-    ctaLabel: "Start Building Authority",
+    ctaText: "Your Brand Deserves to Be Talked About — For the Right Reasons. Let us audit your current digital footprint...",
+    ctaLabel: "Start Building Authority →",
   },
   "web-app-development": {
     headline: "Your Digital Presence Is Your First Commercial Impression. Make It Count.",
-    answer: "Digitales builds custom websites, mobile applications, and web platforms for businesses across Pakistan, the UK, and the USA. We use React, Next.js, Laravel, Flutter, and WordPress to deliver fast, conversion-optimised digital products that serve commercial objectives.",
-    services: ["Custom Website Development — Responsive, performance-engineered", "eCommerce Development — Shopify, WooCommerce, Magento", "Mobile App Development — Native iOS, Android, React Native", "Web Application & SaaS Development", "UX/UI Design & Prototyping", "Maintenance, Hosting & Performance Optimisation"],
-    tools: ["React", "Next.js", "Laravel", "Flutter", "WordPress", "Shopify"],
+    answer: "Digitales builds custom websites, mobile applications, and high-performance web platforms for growth-focused businesses across Pakistan, the UK, and the USA. We leverage cutting-edge technologies like React, Next.js, Laravel, Flutter, and WordPress to deliver lightning-fast, conversion-optimised digital products that directly serve your commercial objectives.",
+    pullQuote: "A website is not a brochure. It is a business tool. Most businesses underestimate what their website is actually doing — or failing to do — every single day. Your website is the destination every marketing channel points to.",
+    serviceTitle: "Our Services",
+    services: ["Custom Website Development — Responsive, performance-engineered, bespoke", "eCommerce Development — Shopify, WooCommerce, Magento", "Mobile App Development — Native iOS, Android, React Native", "Web Application & SaaS Development", "UX/UI Design & Prototyping", "Maintenance, Hosting & Performance Optimisation"],
     ctaText: "Your website should be your best-performing salesperson.",
-    ctaLabel: "Let Us Build It",
+    ctaLabel: "Let us build it →",
   },
   "enterprise-software": {
     headline: "Software That Fits Your Business — Not the Other Way Around.",
-    answer: "Digitales designs and delivers custom enterprise software solutions for organisations in Pakistan, the UK, and the USA. We build document management systems, ERP and CRM platforms, workflow automation tools, and cloud-native applications — engineered around your operational reality.",
+    answer: "Most enterprise software forces you to change your workflows, adjust your habits, and work around its limitations. We think that’s backwards. Your operations are unique, and your technology should be too. We design, build, and integrate custom enterprise software tailored specifically to your operational realities—allowing you to scale seamlessly, eliminate friction, and unlock your team’s true potential.",
+    whyTitle: "Process Phases",
+    whyItems: [
+      "Phase 1: Discovery & Mapping",
+      "Phase 2: Architecture & UX Design",
+      "Phase 3: Iterative Agile Development",
+      "Phase 4: Seamless Integration & Deployment",
+    ],
+    serviceTitle: "Our Services",
     services: ["Custom CMS Development", "Document Management Systems (DMS)", "ERP & CRM Development", "Workflow Automation Platforms", "Cloud-Native Application Development", "System Integration & API Development"],
-    ctaText: "Build software that works the way your business works.",
-    ctaLabel: "Start a Technical Brief",
+    ctaText: "Ready to stop fighting your tools and start empowering your people? Let’s design a digital ecosystem built exclusively for your operational realities...",
+    ctaLabel: "Start a Technical Brief →",
   },
 };

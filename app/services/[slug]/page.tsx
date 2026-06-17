@@ -56,14 +56,32 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           <p className="mt-7 max-w-3xl rounded-card border-l-2 border-gold bg-night-surface/60 px-6 py-5 font-body text-lg leading-relaxed text-muted">
             {detail.answer}
           </p>
+          {detail.pullQuote && (
+            <p className="mt-5 max-w-3xl font-display text-2xl font-semibold leading-snug text-white">
+              {detail.pullQuote}
+            </p>
+          )}
         </div>
       </section>
 
       {/* Services list */}
       <section className="bg-night">
         <div className="container-d section">
+          {detail.whyItems && (
+            <div className="mb-14">
+              <p className="eyebrow">{detail.whyTitle}</p>
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                {detail.whyItems.map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-card border border-white/[0.07] bg-night-surface p-5">
+                    <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-gold" />
+                    <p className="font-body text-sm text-white">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           <p className="eyebrow">What We Deliver</p>
-          <h2 className="mt-3 h2">Our {service.name} Services</h2>
+          <h2 className="mt-3 h2">{detail.serviceTitle ?? `Our ${service.name} Services`}</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {detail.services.map((item) => (
               <div key={item} className="flex items-start gap-3 rounded-card border border-white/[0.07] bg-night-surface p-5">
@@ -103,7 +121,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           <div className="mt-14 rounded-card border border-white/[0.08] bg-night-surface p-10 text-center">
             <h3 className="mx-auto max-w-xl font-display text-2xl font-bold text-white">{detail.ctaText}</h3>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Link href="/free-audit" className="btn-gold">{detail.ctaLabel} <ArrowRight size={16} weight="bold" /></Link>
+              <Link href="/free-audit" className="btn-gold">
+                {detail.ctaLabel} {!detail.ctaLabel.includes("→") && <ArrowRight size={16} weight="bold" />}
+              </Link>
               <Link href="/contact" className="btn-ghost-white">Contact Us</Link>
             </div>
           </div>
