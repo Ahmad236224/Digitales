@@ -88,12 +88,12 @@ export default function ReliefOSPage() {
               <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
             </div>
             <div className="relative aspect-[16/8]">
-              <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(60% 60% at 50% 40%, rgba(15,181,181,0.18), rgba(20,16,30,1) 75%)" }} />
-              <div className="absolute inset-0 grid place-items-center">
-                <div className="grid h-28 w-28 place-items-center rounded-full border-4 border-relief/60 font-display text-2xl font-extrabold text-relief">
-                  98.7%
-                </div>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/Images/Relief Os/screen.png"
+                alt="Relief OS platform dashboard screen"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>

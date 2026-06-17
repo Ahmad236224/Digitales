@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EnvelopeSimple, Phone, MapPin, ArrowRight, Compass, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
-import PageHero from "@/components/ui/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
 import Accordion from "@/components/ui/Accordion";
 
@@ -98,12 +97,28 @@ const FAQ = [
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Connect With Us"
-        title="Let's Build Something That"
-        highlight="Performs."
-        subtitle="From Lahore to London and New York, our global team is ready to scale your operations. Tell us where your current digital effort is underperforming — we respond within one business day."
-      />
+      <section className="relative isolate overflow-hidden bg-night">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/Images/Contact/contact-page-background.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[#07040c]/50" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(61,20,80,0.38),rgba(7,4,12,0.78)_72%)]" />
+        <div className="container-d flex min-h-[68vh] flex-col items-center justify-center px-4 pb-20 pt-36 text-center">
+          <p className="rounded-full border border-gold/30 bg-gold/15 px-4 py-1.5 font-body text-[0.68rem] font-bold uppercase tracking-[0.18em] text-gold">
+            CONNECT WITH US
+          </p>
+          <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+            Let&apos;s build Something That <span className="text-gold">Performs</span>
+          </h1>
+          <p className="mt-6 max-w-2xl font-body text-sm font-medium leading-relaxed text-white sm:text-base">
+            From Lahore to London and New York, our global team is ready to scale your operations. Tell us where your current digital effort is underperforming — we respond within one business day.
+          </p>
+        </div>
+      </section>
 
       {/* Send a message */}
       <section className="bg-night">
