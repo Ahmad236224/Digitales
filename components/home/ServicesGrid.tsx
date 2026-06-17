@@ -33,7 +33,7 @@ export default function ServicesGrid() {
         <Reveal>
           <p className="eyebrow">Core Capability</p>
           <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <h2 className="max-w-2xl h2">End-to-End Digital Capability Under One Roof.</h2>
+            <h2 className="max-w-2xl h2">Full-Suite Digital Marketing Services Under One Roof.</h2>
             <p className="max-w-sm border-l-2 border-gold pl-5 font-body text-sm leading-relaxed text-muted">
               Most agencies do one thing. We do everything — in coordination —
               because that is where compounding growth happens.

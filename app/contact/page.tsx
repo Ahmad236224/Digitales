@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { EnvelopeSimple, Phone, MapPin, Clock, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { EnvelopeSimple, Phone, MapPin, ArrowRight, Compass, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import PageHero from "@/components/ui/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
 import Accordion from "@/components/ui/Accordion";
@@ -10,10 +11,80 @@ export const metadata: Metadata = {
     "Talk to the Digitales team across Pakistan, the UK, and the USA. We respond within one business day.",
 };
 
-const HUBS = [
-  { region: "Asia Pacific", city: "Lahore, PK", body: "Our HQ and core engineering team — where strategy, creative, and Relief OS are built.", address: "Lahore, Pakistan", hours: "09:00 – 18:00 PKT" },
-  { region: "Europe", city: "London, UK", body: "Our UK chapter — business development and European market expansion.", address: "London, United Kingdom", hours: "08:30 – 17:30 GMT" },
-  { region: "Americas", city: "New York, USA", body: "Our USA chapter — North American client relationships and campaigns.", address: "New York, USA", hours: "09:00 – 18:00 ET" },
+const OFFICES = [
+  {
+    flag: "🇵🇰",
+    name: "Pakistan HQ",
+    address: "Digitales House, 12-A Block H, Gulberg III, Lahore, Pakistan",
+    phone: "+92 (42) 111 222 333",
+    email: "pk@digitales.pk",
+    searchLabel: "Gulberg III, LHR",
+    mapPaths: (
+      <>
+        {/* River/Canal */}
+        <path d="M -20,170 Q 120,150 240,110 T 440,70" fill="none" stroke="#6b2d8b" strokeWidth="16" opacity="0.15" />
+        <path d="M -20,170 Q 120,150 240,110 T 440,70" fill="none" stroke="#3d1450" strokeWidth="8" opacity="0.3" />
+        {/* Main Grid Roads */}
+        <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="0" y1="125" x2="400" y2="125" stroke="rgba(201,168,232,0.2)" strokeWidth="6" />
+        <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="60" y1="0" x2="60" y2="250" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="200" y1="0" x2="200" y2="250" stroke="rgba(201,168,232,0.25)" strokeWidth="8" />
+        <line x1="320" y1="0" x2="320" y2="250" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        {/* Diagonal connection */}
+        <line x1="0" y1="20" x2="350" y2="230" stroke="rgba(201,168,232,0.1)" strokeWidth="3" />
+      </>
+    )
+  },
+  {
+    flag: "🇬🇧",
+    name: "UK Chapter",
+    address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom",
+    phone: "+44 (20) 7946 0192",
+    email: "uk@digitalesuk.com",
+    searchLabel: "Covent Garden, LDN",
+    mapPaths: (
+      <>
+        {/* River Thames */}
+        <path d="M -20,210 C 130,230 250,190 420,220" fill="none" stroke="#6b2d8b" strokeWidth="24" opacity="0.15" />
+        <path d="M -20,210 C 130,230 250,190 420,220" fill="none" stroke="#3d1450" strokeWidth="12" opacity="0.3" />
+        {/* London organic street curves */}
+        <path d="M 60,0 Q 90,90 100,250" fill="none" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <path d="M 200,0 Q 170,110 190,250" fill="none" stroke="rgba(201,168,232,0.25)" strokeWidth="7" />
+        <path d="M 310,0 Q 340,120 320,250" fill="none" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="0" y1="70" x2="400" y2="100" stroke="rgba(201,168,232,0.2)" strokeWidth="6" />
+        <line x1="0" y1="140" x2="400" y2="130" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <path d="M 0,30 C 140,80 260,70 400,150" fill="none" stroke="rgba(201,168,232,0.2)" strokeWidth="5" />
+      </>
+    )
+  },
+  {
+    flag: "🇺🇸",
+    name: "USA Chapter",
+    address: "135 Madison Ave, New York, NY 10016, United States",
+    phone: "+1 (212) 555 0148",
+    email: "usa@digitalesusa.org",
+    searchLabel: "Madison Ave, NYC",
+    mapPaths: (
+      <>
+        {/* Water outline */}
+        <rect x="350" y="0" width="50" height="250" fill="#3d1450" opacity="0.25" />
+        <line x1="350" y1="0" x2="350" y2="250" stroke="#6b2d8b" strokeWidth="2" opacity="0.3" />
+        {/* Manhattan Avenues Grid */}
+        <line x1="80" y1="0" x2="80" y2="250" stroke="rgba(201,168,232,0.2)" strokeWidth="6" />
+        <line x1="200" y1="0" x2="200" y2="250" stroke="rgba(201,168,232,0.25)" strokeWidth="8" />
+        <line x1="300" y1="0" x2="300" y2="250" stroke="rgba(201,168,232,0.2)" strokeWidth="6" />
+        {/* Streets */}
+        <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="0" y1="125" x2="400" y2="125" stroke="rgba(201,168,232,0.2)" strokeWidth="5" />
+        <line x1="0" y1="165" x2="400" y2="165" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        <line x1="0" y1="210" x2="400" y2="210" stroke="rgba(201,168,232,0.15)" strokeWidth="4" />
+        {/* Broadway (diagonal) */}
+        <line x1="0" y1="220" x2="330" y2="0" stroke="rgba(201,168,232,0.3)" strokeWidth="6" />
+      </>
+    )
+  }
 ];
 
 const FAQ = [
@@ -48,7 +119,7 @@ export default function ContactPage() {
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-purple/15 text-gold"><EnvelopeSimple size={20} weight="fill" /></span>
                 <div>
                   <p className="font-display text-sm font-semibold text-white">Email Us</p>
-                  <p className="font-body text-sm text-muted">hello@digitales.pk</p>
+                  <p className="font-body text-sm text-muted font-mono">hello@digitales.pk</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -65,29 +136,88 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Regional hubs */}
-      <section className="bg-night">
+      {/* Our Global Offices with Mockup Interactive Maps */}
+      <section className="bg-night relative">
         <div className="container-d section">
-          <h2 className="text-center h2">Our Regional Hubs</h2>
+          <h2 className="text-center h2">Our Global Offices</h2>
           <p className="mx-auto mt-3 max-w-lg text-center lede">
             Strategically located to support global brands around the clock.
           </p>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {HUBS.map((h) => (
-              <div key={h.city} className="rounded-card border border-white/[0.07] bg-night-surface p-7">
-                <div className="flex items-start justify-between">
-                  <MapPin size={26} weight="fill" className="text-purple-link" />
-                  <span className="font-body text-[0.7rem] font-semibold uppercase tracking-wider text-gold">{h.region}</span>
+          <div className="mt-12 grid gap-8 grid-cols-1 lg:grid-cols-3">
+            {OFFICES.map((office) => (
+              <div key={office.name} className="flex flex-col rounded-card border border-white/[0.07] bg-night-surface p-6 shadow-card transition-all duration-300 hover:border-purple/30 hover:shadow-card-hover group">
+                {/* Header: Flag + Name */}
+                <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+                  <span className="text-2xl select-none" role="img" aria-label={`${office.name} flag`}>{office.flag}</span>
+                  <h3 className="font-display text-lg font-bold text-white tracking-wide">{office.name}</h3>
                 </div>
-                <h3 className="mt-5 font-display text-xl font-semibold text-white">{h.city}</h3>
-                <p className="mt-3 font-body text-sm leading-relaxed text-muted">{h.body}</p>
-                <div className="mt-6 space-y-2 font-body text-sm text-muted">
-                  <p className="flex items-center gap-2"><MapPin size={15} className="text-gold" /> {h.address}</p>
-                  <p className="flex items-center gap-2"><Clock size={15} className="text-gold" /> {h.hours}</p>
+
+                {/* Details */}
+                <div className="mt-4 flex-grow space-y-3 font-body text-sm text-muted">
+                  <p className="flex items-start gap-2.5 leading-relaxed">
+                    <MapPin size={18} className="text-gold mt-0.5 shrink-0" />
+                    <span>{office.address}</span>
+                  </p>
+                  <p className="flex items-center gap-2.5 font-mono">
+                    <Phone size={16} className="text-gold shrink-0" />
+                    <span>{office.phone}</span>
+                  </p>
+                  <p className="flex items-center gap-2.5 font-mono">
+                    <EnvelopeSimple size={16} className="text-gold shrink-0" />
+                    <Link href={`mailto:${office.email}`} className="transition hover:text-gold hover:underline">{office.email}</Link>
+                  </p>
                 </div>
-                <button className="mt-6 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-gold">
-                  Get Directions <ArrowRight size={15} weight="bold" />
-                </button>
+
+                {/* Map Embed UI Mockup */}
+                <div className="w-full h-48 mt-6 relative overflow-hidden rounded-[8px] border border-white/[0.08] bg-[#0c0814] shadow-inner group/map">
+                  {/* Styled Dark-Theme Map Tint Canvas */}
+                  <svg className="absolute inset-0 w-full h-full select-none" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+                    {/* Background styling for custom map styling */}
+                    <rect width="100%" height="100%" fill="#0C0814" />
+                    {/* Background paths/grids */}
+                    {office.mapPaths}
+                  </svg>
+
+                  {/* Compass Overlay Top Right */}
+                  <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs text-white/70 select-none shadow-sm hover:text-white transition cursor-pointer">
+                    <Compass size={14} className="animate-spin-[duration:10s]" />
+                  </div>
+
+                  {/* Search Bar Mockup Top Left */}
+                  <div className="absolute top-3 left-3 bg-night/85 backdrop-blur-sm border border-white/10 rounded px-2.5 py-1 text-[10px] text-white/70 flex items-center gap-1.5 shadow-sm select-none">
+                    <MagnifyingGlass size={10} className="text-gold" />
+                    <span className="font-mono">{office.searchLabel}</span>
+                  </div>
+
+                  {/* Golden Location Pin at Center */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                    {/* Ripple/Pulse effect */}
+                    <div className="absolute w-8 h-8 rounded-full bg-gold/25 animate-ping" />
+                    {/* The Golden Location Pin Icon */}
+                    <MapPin size={28} weight="fill" className="text-gold relative z-10 drop-shadow-[0_0_8px_rgba(240,180,40,0.7)] transition-transform duration-300 group-hover/map:scale-110" />
+                  </div>
+
+                  {/* Zoom Controls Bottom Right */}
+                  <div className="absolute bottom-3 right-3 flex flex-col gap-1 shadow-sm select-none">
+                    <button type="button" className="w-6 h-6 rounded bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs font-bold text-white/70 hover:bg-white/10 hover:text-white transition">
+                      +
+                    </button>
+                    <button type="button" className="w-6 h-6 rounded bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs font-bold text-white/70 hover:bg-white/10 hover:text-white transition">
+                      −
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between">
+                  <Link
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-body text-xs font-semibold text-gold hover:underline"
+                  >
+                    Open in Google Maps <ArrowRight size={13} weight="bold" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

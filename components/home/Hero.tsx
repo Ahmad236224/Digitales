@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, MagnifyingGlass } from "@phosphor-icons/react";
 import CircuitBackground from "@/components/ui/CircuitBackground";
 
-const HEADLINE = ["The", "Agency", "That", "Builds", "Brands", "and", "Ships", "Products."];
+const HEADLINE = ["The", "Digital", "Marketing", "Agency", "That", "Builds", "Brands", "and", "Ships", "Products."];
 
 export default function Hero() {
   const [heroUrl, setHeroUrl] = useState("");
@@ -26,7 +26,7 @@ export default function Hero() {
 
       <div className="container-d relative flex min-h-[92vh] flex-col items-center justify-center pt-32 pb-20 text-center">
         <p className="eyebrow animate-fade-up">
-          Digital Agency · Pakistan · United Kingdom · USA
+          Performance Marketing Agency · Pakistan · United Kingdom · USA
         </p>
 
         <h1 className="mt-7 max-w-4xl font-display text-[2.7rem] font-extrabold leading-[1.06] text-white text-glow sm:text-6xl lg:text-[4.6rem]">

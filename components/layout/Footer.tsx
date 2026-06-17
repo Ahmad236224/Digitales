@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShareNetwork, At } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { SITE } from "@/lib/site";
 
 export default function Footer() {
@@ -16,19 +16,40 @@ export default function Footer() {
                 alt="Digitales"
                 width={150}
                 height={45}
-                className="h-8 w-auto sm:h-9"
+                className="h-10 w-auto sm:h-12"
               />
             </Link>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed">
               High-end strategy and technical precision for the modern digital era.
             </p>
             <div className="mt-6 flex gap-3">
-              <Link href="#" aria-label="Social" className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold hover:text-gold">
-                <ShareNetwork size={16} weight="bold" />
-              </Link>
-              <Link href="#" aria-label="Contact" className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold hover:text-gold">
-                <At size={16} weight="bold" />
-              </Link>
+              <a
+                href="https://www.facebook.com/share/1H4QkDYt9u/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold hover:text-gold"
+              >
+                <FacebookLogo size={18} weight="bold" />
+              </a>
+              <a
+                href="https://www.instagram.com/digitalespk?igsh=bWt5MXhjMnpqZWx2"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold hover:text-gold"
+              >
+                <InstagramLogo size={18} weight="bold" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/digitalespk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold hover:text-gold"
+              >
+                <LinkedinLogo size={18} weight="bold" />
+              </a>
             </div>
           </div>
 

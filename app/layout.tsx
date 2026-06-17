@@ -29,17 +29,17 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitales.pk"),
   title: {
-    default: "Digitales — The Agency That Builds Brands and Ships Products",
+    default: "Digitales — Digital Marketing Agency & Performance Marketing Agency",
     template: "%s · Digitales",
   },
   description:
-    "Full-service digital agency and software product company across Pakistan, the UK, and the USA. Performance marketing, SEO, media buying, and enterprise software — measurable growth across three continents.",
+    "Full-service digital marketing agency and performance marketing agency delivering data-driven digital marketing services, SEO, media buying, and custom software solutions across PK, UK, and USA.",
   openGraph: {
     type: "website",
     siteName: "Digitales",
-    title: "Digitales — Builds Brands and Ships Products",
+    title: "Digitales — Digital Marketing Agency & Performance Marketing Agency",
     description:
-      "Measurable digital growth across three continents. Marketing and technology, in coordination.",
+      "Full-service digital marketing agency and performance marketing agency delivering data-driven digital marketing services, SEO, media buying, and custom software solutions across PK, UK, and USA.",
   },
   twitter: { card: "summary_large_image" },
   alternates: {
@@ -49,6 +49,10 @@ export const metadata: Metadata = {
       "en-GB": "https://digitalesuk.com",
       "en-US": "https://digitalesusa.org",
     },
+  },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 

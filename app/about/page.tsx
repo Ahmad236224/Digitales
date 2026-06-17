@@ -4,6 +4,8 @@ import { ArrowRight, UsersThree, Sparkle, ChartLineUp, Globe } from "@phosphor-i
 import CircuitBackground from "@/components/ui/CircuitBackground";
 import FinalCta from "@/components/home/FinalCta";
 import { TIMELINE, LEADERSHIP, TEAM } from "@/lib/site";
+import TeamMemberCard from "@/components/about/TeamMemberCard";
+
 
 export const metadata: Metadata = {
   title: "About",
@@ -139,17 +141,11 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {group.people.map((p) => (
-                    <div key={p.name} className="flex items-center gap-3 rounded-card border border-white/[0.06] bg-night-surface p-4">
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-purple/15 font-display text-sm font-bold text-purple-link">
-                        {initials(p.name)}
-                      </div>
-                      <div>
-                        <p className="font-display text-sm font-semibold text-white">{p.name}</p>
-                        <p className="font-body text-xs text-muted">{p.title}</p>
-                      </div>
-                    </div>
+                    <TeamMemberCard key={p.name} person={p} />
                   ))}
                 </div>
+
+
               </div>
             ))}
           </div>

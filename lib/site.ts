@@ -277,7 +277,12 @@ export const TEAM = [
   {
     dept: "Creative",
     people: [
-      { name: "Ammarah", title: "Creative Lead" },
+      {
+        name: "Ammarah Zahid",
+        title: "Creative Lead",
+        image: "/about/ammarah-zahid.jpg",
+        bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
+      },
       { name: "Fahad", title: "Senior Graphic Designer" },
       { name: "Uzair Rehman", title: "Junior Designer" },
       { name: "Kaleem Ullah", title: "Video Content Specialist" },
@@ -286,7 +291,12 @@ export const TEAM = [
   {
     dept: "Performance & Growth",
     people: [
-      { name: "Waqas Nayyar", title: "SEO Specialist" },
+      {
+        name: "Waqas Nayyar",
+        title: "SEO Specialist",
+        image: "/about/waqas-nayyar.jpg",
+        bio: "As an SEO Manager at Digitales, I bring 5+ years of experience in SEO, helping businesses improve their search visibility, organic traffic, and online performance through data-driven strategies.",
+      },
       { name: "Wania Maryam", title: "SEO Writer" },
     ],
   },
@@ -301,10 +311,16 @@ export const TEAM = [
   {
     dept: "Operations Support",
     people: [
-      { name: "Usama Ajmal", title: "Page Manager" },
+      {
+        name: "Usama Ajmal",
+        title: "Page Manager",
+        image: "/about/usama-ajmal.png",
+        bio: "Digital marketing professional with experience in social media management, media buying, content strategy, and lead generation. Skilled in creating high-performing campaigns that help brands grow their online presence and achieve measurable results.",
+      },
       { name: "Mohammad Noman", title: "Page Manager" },
     ],
   },
+
 ] as const;
 
 // ---- Per-service detail content (from Website Copy v2) ----
@@ -325,15 +341,15 @@ export const SERVICE_DETAIL: Record<string, {
     ctaLabel: "Run a Free Audit",
   },
   "digital-media-buying": {
-    headline: "Maximum Return. Minimum Wasted Spend.",
-    answer: "Digitales plans, executes, and optimises paid media campaigns across search, social, display, and programmatic channels for organisations in Pakistan, the UK, and the USA. We manage Google Ads, Meta, TikTok, LinkedIn, and programmatic platforms with a rigorous, data-led approach.",
+    headline: "The Google Ads & Meta Ads Agency Built to Perform.",
+    answer: "Digitales is a performance-driven google ads marketing agency, google ads agency, and meta ads agency managing campaigns across Pakistan, the UK, and the USA. We plan, execute, and optimise search, social, display, and programmatic campaigns with a rigorous, data-led approach.",
     services: ["Paid Social — Meta, Instagram, TikTok, LinkedIn, X", "Search Engine Marketing — Google Ads, Bing", "Programmatic & Display Advertising", "Video Advertising — YouTube, Connected TV", "Retargeting & Remarketing Campaigns", "Audience Segmentation & Lookalike Modelling"],
     ctaText: "Let us audit your current ad spend and show you where returns are being left on the table.",
     ctaLabel: "Book a Media Audit",
   },
   "social-media-marketing": {
-    headline: "Build Communities That Convert.",
-    answer: "Digitales manages social media marketing for brands across Pakistan, the UK, and the USA. We handle platform strategy, content creation, community management, paid social campaigns, and influencer partnerships — with measurable growth as the constant objective.",
+    headline: "The Social Media Marketing Company Building Communities That Convert.",
+    answer: "Digitales is a leading social media marketing company and paid social agency for brands across Pakistan, the UK, and the USA. We handle platform strategy, content creation, community management, paid social campaigns, and influencer partnerships — with measurable growth as the constant objective.",
     services: ["Platform Strategy & Content Planning", "Original Content Creation & Production", "Community Management & Audience Engagement", "Paid Social Campaign Management", "Influencer Identification & Partnership Management", "Monthly Performance Reporting & Strategy Reviews"],
     ctaText: "Ready to turn your social presence into a commercial asset?",
     ctaLabel: "Start a Conversation",
