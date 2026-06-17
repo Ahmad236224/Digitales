@@ -90,7 +90,7 @@ export default function ReliefOSPage() {
             <div className="relative aspect-[16/8]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/Images/Relief Os/screen.png"
+                src="/images/relief-os/screen.png"
                 alt="Relief OS platform dashboard screen"
                 className="h-full w-full object-cover"
               />
