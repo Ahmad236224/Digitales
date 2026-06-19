@@ -167,12 +167,12 @@ export default function AuditFunnel() {
   if (phase === "results" && auditResult) return <Results data={data} result={auditResult} />;
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto w-full max-w-3xl">
       {/* Header */}
       <p className="eyebrow text-center">Free Audit Funnel</p>
-      <div className="mt-2 flex items-end justify-between">
-        <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">Digital Performance Audit</h1>
-        <span className="font-body text-sm text-muted">Step {step} of {TOTAL}</span>
+      <div className="mt-2 flex min-w-0 flex-col gap-2 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
+        <h1 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl">Digital Performance Audit</h1>
+        <span className="shrink-0 font-body text-sm text-muted">Step {step} of {TOTAL}</span>
       </div>
       {/* Progress */}
       <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
@@ -186,7 +186,7 @@ export default function AuditFunnel() {
       )}
 
       {/* Card */}
-      <div className="mt-6 rounded-card border border-white/[0.08] bg-night-surface p-7 sm:p-9">
+      <div className="mt-6 rounded-card border border-white/[0.08] bg-night-surface p-5 sm:p-9">
         {step === 1 && (
           <Step title="Start with your website." sub="Enter your website URL below to begin your free digital analysis.">
             <input
@@ -205,7 +205,7 @@ export default function AuditFunnel() {
               {INDUSTRIES.map(({ id, label, Icon }) => (
                 <Tile key={id} selected={data.industry === id} onClick={() => set("industry", id)}>
                   <Icon size={26} weight="light" className="text-white" />
-                  <span className="mt-3 text-center font-body text-xs font-semibold uppercase tracking-wide">{label}</span>
+                  <span className="mt-3 text-center font-body text-[0.68rem] font-semibold uppercase tracking-wide sm:text-xs">{label}</span>
                 </Tile>
               ))}
             </div>
@@ -254,16 +254,16 @@ export default function AuditFunnel() {
         )}
 
         {/* Nav */}
-        <div className="mt-8 flex items-center justify-between">
+        <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
           {step > 1 ? (
-            <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-1.5 font-body text-sm font-medium text-muted hover:text-white">
+            <button onClick={() => setStep((s) => s - 1)} className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/10 px-5 py-3 font-body text-sm font-medium text-muted hover:text-white sm:w-auto sm:border-0 sm:px-0 sm:py-0">
               <ArrowLeft size={15} weight="bold" /> Back
             </button>
           ) : <span />}
           <button
             onClick={next}
             disabled={!canContinue}
-            className={`inline-flex items-center gap-2 rounded-full px-6 py-3 font-body text-sm font-semibold transition ${
+            className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-body text-sm font-semibold transition sm:w-auto ${
               canContinue ? "bg-gold text-purple-deep hover:brightness-110" : "cursor-not-allowed bg-white/10 text-muted"
             }`}
           >
@@ -280,7 +280,7 @@ export default function AuditFunnel() {
 function Step({ title, sub, children }: { title: string; sub: string; children: React.ReactNode }) {
   return (
     <div>
-      <h2 className="font-display text-xl font-semibold text-white">{title}</h2>
+      <h2 className="font-display text-xl font-semibold leading-tight text-white">{title}</h2>
       <p className="mt-1.5 font-body text-sm text-muted">{sub}</p>
       <div className="mt-6">{children}</div>
     </div>
@@ -291,7 +291,7 @@ function Tile({ selected, onClick, children }: { selected: boolean; onClick: () 
   return (
     <button
       onClick={onClick}
-      className={`flex aspect-square flex-col items-center justify-center rounded-xl border p-3 transition ${
+      className={`flex min-h-[112px] flex-col items-center justify-center rounded-xl border p-3 transition sm:aspect-square sm:min-h-0 ${
         selected ? "border-gold bg-gold/10 text-gold" : "border-white/10 bg-night text-muted hover:border-white/30"
       }`}
     >
@@ -349,9 +349,9 @@ function Loading({ url }: { url: string }) {
   }, [messages.length]);
 
   return (
-    <div className="mx-auto max-w-xl py-16 text-center">
+    <div className="mx-auto w-full max-w-xl py-16 text-center">
       <div className="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-white/10 border-t-gold" />
-      <h2 className="mt-8 font-display text-2xl font-bold text-white">Analyzing {url}...</h2>
+      <h2 className="mt-8 break-words font-display text-2xl font-bold leading-tight text-white">Analyzing {url}...</h2>
       <p className="mt-4 font-body text-base text-gold animate-pulse h-8">{messages[msgIndex]}</p>
       <p className="mt-4 font-body text-xs text-muted">Please hold tight. Live performance audits fetch real Lighthouse data and can take up to 40 seconds.</p>
     </div>
@@ -360,7 +360,7 @@ function Loading({ url }: { url: string }) {
 
 function ErrorBoundary({ error, onRetry }: { error: string; onRetry: () => void }) {
   return (
-    <div className="mx-auto max-w-2xl rounded-card border border-red-500/20 bg-night-surface p-8 text-center sm:p-10">
+    <div className="mx-auto w-full max-w-2xl rounded-card border border-red-500/20 bg-night-surface p-5 text-center sm:p-10">
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-red-500/10 text-red-500">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -370,7 +370,7 @@ function ErrorBoundary({ error, onRetry }: { error: string; onRetry: () => void 
       <p className="mt-4 font-body text-base text-muted leading-relaxed">
         We couldn&apos;t complete the live analysis right now.
       </p>
-      <p className="mt-1 font-body text-xs text-red-400">
+      <p className="mt-1 break-words font-body text-xs text-red-400">
         Reason: {error}
       </p>
       <p className="mt-4 font-body text-sm text-gold/90">
@@ -436,7 +436,7 @@ function getShortDimensionLabel(label: string) {
 
 function Results({ result }: { data: State; result: AuditResult }) {
   return (
-    <div className="mx-auto max-w-6xl rounded-[28px] bg-[#0a0a0c] px-4 py-6 text-white shadow-2xl sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-6xl rounded-[20px] bg-[#0a0a0c] px-3 py-4 text-white shadow-2xl sm:rounded-[28px] sm:px-6 sm:py-6 lg:px-8">
       <section className="relative overflow-hidden rounded-[24px] border border-[#F0B428]/35 bg-[#121214] p-6 shadow-[0_0_50px_rgba(240,180,40,0.08)] sm:p-8 lg:p-10">
         <div aria-hidden className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#F0B428] to-transparent" />
         <div aria-hidden className="absolute -left-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#6B2D8B]/20 blur-3xl" />
@@ -464,7 +464,7 @@ function Results({ result }: { data: State; result: AuditResult }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <section className="rounded-[22px] border border-white/10 bg-[#121214] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-7">
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <h2 className="font-display text-xl font-bold text-white">Core Web Vitals</h2>
               <p className="mt-1 font-body text-sm text-gray-400">Live performance metrics from Google Lighthouse</p>
@@ -625,7 +625,7 @@ function ScoreChart({ dimensions }: { dimensions: AuditDimension[] }) {
           </div>
         </div>
 
-        <div className="ml-11 mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:ml-11 lg:grid-cols-4">
           {points.map((point) => {
             const tone = getScoreTone(point.score);
             return (
