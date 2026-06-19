@@ -34,9 +34,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-[120] transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-white/10 bg-night/85 backdrop-blur-md shadow-nav"
+          ? "bg-[#0a0610]"
           : "bg-transparent"
       }`}
     >
@@ -116,7 +116,7 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="relative z-10 grid h-10 w-10 place-items-center rounded text-white lg:hidden"
+            className="relative z-[130] grid h-10 w-10 place-items-center rounded text-white lg:hidden"
           >
             {open ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
           </button>
@@ -125,16 +125,16 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 top-[72px] z-40 bg-night transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[100] overflow-y-auto bg-[#0a0610] transition-transform duration-300 lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="container-d flex flex-col gap-1 py-6">
+        <ul className="container-d flex min-h-screen flex-col gap-1 pt-24 pb-10">
           {NAV_LINKS.map((link) => (
             <li key={link.href} className="border-b border-white/10">
               <Link
                 href={link.href}
-                className="block py-4 font-display text-lg font-semibold text-white"
+                className="block bg-[#0a0610] py-4 font-display text-lg font-semibold text-white"
               >
                 {link.label}
               </Link>

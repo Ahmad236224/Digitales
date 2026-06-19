@@ -288,7 +288,12 @@ export const TEAM = [
         image: "/about/ammarah-zahid.jpg",
         bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
       },
-      { name: "Fahad", title: "Senior Graphic Designer" },
+      {
+        name: "Fahad Ahmad",
+        title: "Graphic Designer",
+        image: "/Images/About/Creative/Fahad.jpg",
+        bio: "Graphic Designer focused on creating clean, creative, and visually engaging designs for digital and print media.",
+      },
       {
         name: "Muhammad Uzair Rehman",
         title: "Junior Graphic Designer",
@@ -315,7 +320,12 @@ export const TEAM = [
     dept: "Technology & Data",
     people: [
       { name: "Khuzema Khan", title: "Full Stack Developer" },
-      { name: "Muhammad Talha", title: "WordPress Developer" },
+      {
+        name: "Muhammad Talha Qureshi",
+        title: "WordPress Developer & Graphic Designer",
+        image: "/Images/About/Technology & Data/Talha.jpg",
+        bio: "Muhammad Talha Qureshi is a WordPress Developer and Graphic Designer at Digitales, specializing in responsive website development, branding, and user-focused digital experiences.",
+      },
       { name: "Hamza Irshad", title: "Junior Full Stack Developer" },
     ],
   },

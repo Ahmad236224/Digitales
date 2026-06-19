@@ -118,9 +118,9 @@ export default function AboutPage() {
           </div>
 
           {/* Leadership avatars */}
-          <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {LEADERSHIP.map((m) => (
-              <div key={m.name} className="text-center">
+              <div key={m.name} className="relative overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-5 text-center">
                 <div className="mx-auto grid h-28 w-28 place-items-center rounded-full bg-purple/15 font-display text-2xl font-bold text-purple-link ring-4 ring-gold ring-offset-4 ring-offset-night">
                   {initials(m.name)}
                 </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
                   <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">{group.dept}</h3>
                   <div className="h-px flex-1 bg-white/10" />
                 </div>
-                <div className="mt-5 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="relative z-10 mt-5 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {group.people.map((p) => (
                     <TeamMemberCard key={p.name} person={p} />
                   ))}
