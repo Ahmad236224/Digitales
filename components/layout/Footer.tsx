@@ -70,6 +70,7 @@ export default function Footer() {
               <li><Link href="/dartx" className="font-body text-sm transition hover:text-gold">DartX</Link></li>
               <li><Link href="/contact" className="font-body text-sm transition hover:text-gold">Contact</Link></li>
               <li><Link href="/privacy-policy" className="font-body text-sm transition hover:text-gold">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-service" className="font-body text-sm transition hover:text-gold">Terms of Service</Link></li>
             </ul>
           </div>
 

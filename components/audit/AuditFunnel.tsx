@@ -7,7 +7,7 @@ import {
   ArrowRight, ArrowLeft, ShoppingCart, GraduationCap, FirstAid, HeartHalf,
   Briefcase, House, ForkKnife, DotsThreeOutline, CheckCircle, Check,
 } from "@phosphor-icons/react";
-import type { AuditResult } from "@/lib/pagespeed";
+import type { AuditDimension, AuditResult } from "@/lib/pagespeed";
 
 const STORAGE_KEY = "digitales_audit_v1";
 
@@ -394,66 +394,34 @@ function ErrorBoundary({ error, onRetry }: { error: string; onRetry: () => void 
   );
 }
 
-/* ---------- results: logic-based score + animated gauge ---------- */
+/* ---------- results: live PageSpeed dashboard ---------- */
 
-function getDynamicNote(key: string, score: number): string {
-  if (key === "performance") {
-    if (score >= 90) return "Outstanding loading speed and responsiveness. Your site minimizes bounce risk.";
-    if (score >= 70) return "Good speed, but minor bottlenecks exist in resource delivery or script execution.";
-    if (score >= 50) return "Noticeable delays. Optimizing images, caching, or code splitting will lift conversions.";
-    return "Severely slow page speed. High risk of abandonment. Immediate performance tuning required.";
-  }
-  if (key === "seo") {
-    if (score >= 90) return "Excellent search engine optimization. Crawlers can easily read and index your pages.";
-    if (score >= 70) return "Solid SEO foundation, though minor adjustments to metadata or headers would improve ranking.";
-    if (score >= 50) return "Missing critical SEO signals. Structured data, alt text, or link integrity needs focus.";
-    return "Critical SEO issues. Search engines may struggle to crawl and index your site effectively.";
-  }
-  if (key === "accessibility") {
-    if (score >= 90) return "Highly accessible. Code structure and contrast ratios accommodate all users.";
-    if (score >= 70) return "Mostly accessible, but element hierarchy or color contrast could be improved.";
-    if (score >= 50) return "Accessibility gaps present. Keyboard navigation or screen-reader tags need fixing.";
-    return "Poor accessibility compliance. Risk of excluding users and violating standard guidelines.";
-  }
-  if (key === "best-practices") {
-    if (score >= 90) return "Strong adherence to web standards, security policies, and modern APIs.";
-    if (score >= 70) return "Generally secure and standard, but check console logs, HTTPS usage, or legacy libraries.";
-    if (score >= 50) return "Substandard configurations detected. Security risks or depreciated APIs present.";
-    return "Significant violations of modern web standards and security best practices.";
-  }
-  return "";
-}
-
-function getScoreBand(score: number) {
+function getScoreTone(score: number) {
   if (score >= 90) {
     return {
-      label: "Excellent",
-      color: "text-emerald-400",
-      border: "border-emerald-500/20",
-      bg: "bg-emerald-500/5",
+      text: "text-emerald-300",
+      bar: "bg-emerald-400",
+      glow: "shadow-[0_0_18px_rgba(52,211,153,0.35)]",
     };
   }
   if (score >= 70) {
     return {
-      label: "Solid",
-      color: "text-gold",
-      border: "border-gold/30",
-      bg: "bg-gold/5",
+      text: "text-[#F0B428]",
+      bar: "bg-[#F0B428]",
+      glow: "shadow-[0_0_18px_rgba(240,180,40,0.35)]",
     };
   }
-  if (score >= 50) {
+  if (score < 50) {
     return {
-      label: "Underperforming",
-      color: "text-amber-500",
-      border: "border-amber-500/20",
-      bg: "bg-amber-500/5",
+      text: "text-red-400",
+      bar: "bg-red-500",
+      glow: "shadow-[0_0_18px_rgba(239,68,68,0.3)]",
     };
   }
   return {
-    label: "Critical",
-    color: "text-red-500",
-    border: "border-red-500/20",
-    bg: "bg-red-500/5",
+    text: "text-[#c084fc]",
+    bar: "bg-[#6B2D8B]",
+    glow: "shadow-[0_0_18px_rgba(107,45,139,0.35)]",
   };
 }
 
@@ -462,82 +430,211 @@ function getAcronym(label: string) {
   return match ? match[1] : label;
 }
 
-function Results({ data, result }: { data: State; result: AuditResult }) {
+function getShortDimensionLabel(label: string) {
+  return label.replace("Best Practices", "Best");
+}
+
+function Results({ result }: { data: State; result: AuditResult }) {
   return (
-    <div className="mx-auto max-w-3xl">
-      <p className="eyebrow text-center">Your Results</p>
-      <h1 className="mt-2 text-center font-display text-3xl font-bold text-white sm:text-4xl">Your Digital Health Score</h1>
+    <div className="mx-auto max-w-6xl rounded-[28px] bg-[#0a0a0c] px-4 py-6 text-white shadow-2xl sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden rounded-[24px] border border-[#F0B428]/35 bg-[#121214] p-6 shadow-[0_0_50px_rgba(240,180,40,0.08)] sm:p-8 lg:p-10">
+        <div aria-hidden className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#F0B428] to-transparent" />
+        <div aria-hidden className="absolute -left-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#6B2D8B]/20 blur-3xl" />
 
-      <div className="mt-10 flex flex-col items-center justify-center">
-        <Gauge value={result.overall} />
-        <p className="mt-4 text-center font-body text-xs text-muted/80 italic">
-          Live analysis &middot; powered by Google Lighthouse
-        </p>
-      </div>
+        <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <div>
+            <p className="font-body text-xs font-bold uppercase tracking-[0.32em] text-[#F0B428]">Live Analysis Complete</p>
+            <h1 className="mt-4 font-display text-3xl font-bold tracking-normal text-white sm:text-5xl">
+              Digital Health Score
+            </h1>
+            <p className="mt-3 max-w-2xl break-words font-body text-sm leading-6 text-gray-400 sm:text-base">
+              Real-time Google PageSpeed Insights scan completed for <span className="text-gray-200">{result.url}</span>.
+            </p>
+          </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
-        {result.dimensions.map((d) => {
-          const band = getScoreBand(d.score);
-          const note = getDynamicNote(d.key, d.score);
-          return (
-            <div key={d.key} className={`rounded-card border ${band.border} ${band.bg} p-6 transition-all duration-300 hover:border-white/10`}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-display text-base font-semibold text-white">{d.label}</p>
-                  <span className={`inline-block mt-1 font-body text-xs font-semibold px-2.5 py-0.5 rounded-full ${band.color} bg-white/5`}>
-                    {band.label}
-                  </span>
+          <div className="flex flex-col items-center justify-center">
+            <Gauge value={result.overall} />
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1.5 font-body text-xs font-semibold text-gray-300">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#F0B428] shadow-[0_0_14px_rgba(240,180,40,0.75)]" />
+              Live Audit Active
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+        <section className="rounded-[22px] border border-white/10 bg-[#121214] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-7">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h2 className="font-display text-xl font-bold text-white">Core Web Vitals</h2>
+              <p className="mt-1 font-body text-sm text-gray-400">Live performance metrics from Google Lighthouse</p>
+            </div>
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-gray-400">
+              {result.strategy}
+            </span>
+          </div>
+
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {result.vitals.map((vital) => {
+              const acronym = getAcronym(vital.label);
+              const fullName = vital.label.split(" (")[0];
+              return (
+                <div
+                  key={vital.label}
+                  title={fullName}
+                  className="min-h-[116px] rounded-2xl border border-white/10 bg-black/20 p-4 transition hover:border-[#F0B428]/35 hover:bg-[#F0B428]/[0.04]"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-[#F0B428]">{acronym}</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#6B2D8B]" />
+                  </div>
+                  <p className="mt-5 break-words font-display text-2xl font-bold text-white">{vital.value}</p>
+                  <p className="mt-2 line-clamp-2 font-body text-xs leading-5 text-gray-500">{fullName}</p>
                 </div>
-                <p className={`font-display text-2xl font-extrabold ${band.color}`}>
-                  {d.score}
-                  <span className="text-sm text-muted font-normal">/100</span>
-                </p>
-              </div>
-              <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full rounded-full bg-gold" style={{ width: `${d.score}%` }} />
-              </div>
-              <p className="mt-4 font-body text-sm leading-relaxed text-muted">{note}</p>
+              );
+            })}
+          </div>
+        </section>
 
-              {d.key === "performance" && result.vitals && result.vitals.length > 0 && (
-                <div className="mt-5 border-t border-white/10 pt-4">
-                  <p className="font-display text-xs font-semibold text-white/90 mb-3">Core Web Vitals</p>
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                    {result.vitals.map((vital) => {
-                      const acronym = getAcronym(vital.label);
-                      const fullName = vital.label.split(" (")[0];
-                      return (
-                        <div key={vital.label} className="rounded-lg bg-gold/5 border border-gold/15 p-2 text-center" title={fullName}>
-                          <span className="block font-display text-[10px] font-black text-gold uppercase tracking-wider">{acronym}</span>
-                          <span className="block mt-0.5 font-body text-xs font-semibold text-white">{vital.value}</span>
-                        </div>
-                      );
-                    })}
+        <section className="rounded-[22px] border border-white/10 bg-[#121214] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-7">
+          <h2 className="font-display text-xl font-bold text-white">Dimension Breakdown</h2>
+          <p className="mt-1 font-body text-sm text-gray-400">Category scores mapped from PageSpeed Insights</p>
+
+          <div className="mt-7 space-y-6">
+            {result.dimensions.map((dimension) => {
+              const tone = getScoreTone(dimension.score);
+              return (
+                <div key={dimension.key}>
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="font-body text-sm font-semibold text-gray-300">{dimension.label}</p>
+                    <p className={`font-display text-lg font-extrabold ${tone.text}`}>
+                      {dimension.score}
+                      <span className="text-xs font-medium text-gray-500">/100</span>
+                    </p>
+                  </div>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className={`h-full rounded-full ${tone.bar} ${tone.glow}`}
+                      style={{ width: `${dimension.score}%` }}
+                    />
                   </div>
                 </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </section>
       </div>
 
+      <section className="mt-6 rounded-[22px] border border-white/10 bg-[#121214] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-7">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="font-display text-xl font-bold text-white">Analytics Graph</h2>
+            <p className="mt-1 font-body text-sm text-gray-400">Live category score distribution from PageSpeed Insights</p>
+          </div>
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-[#F0B428]">
+            Overall {result.overall}/100
+          </p>
+        </div>
+
+        <ScoreChart dimensions={result.dimensions} />
+      </section>
+
       {/* Booking CTA card */}
-      <div className="mt-10 rounded-card border border-gold/30 bg-purple-deep/10 bg-gradient-to-r from-purple-deep/20 via-night-surface to-gold/5 p-8 text-center shadow-lg relative overflow-hidden">
-        <div aria-hidden className="absolute -top-12 -left-12 w-24 h-24 rounded-full bg-gold/10 blur-xl pointer-events-none" />
-        <div aria-hidden className="absolute -bottom-12 -right-12 w-24 h-24 rounded-full bg-purple-deep/25 blur-xl pointer-events-none" />
-        
-        <CheckCircle size={36} weight="fill" className="mx-auto text-gold" />
-        <p className="mt-4 font-body text-xs text-gold font-bold uppercase tracking-wider">Automated Technical Scan Complete</p>
-        <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">Want a Complete Marketing Audit?</h2>
-        <p className="mt-4 mx-auto max-w-xl font-body text-sm leading-relaxed text-muted">
-          Our automated scanner reviews code performance and SEO tags. However, evaluating manual channels—such as paid ad campaigns, copywriting hooks, social media positioning, and content funnels—requires a dedicated human strategist.
-        </p>
-        <p className="mt-3 font-body text-sm text-white/95 font-semibold">
-          Let&apos;s build a comprehensive, custom digital roadmap together.
-        </p>
-        <div className="mt-6 flex justify-center">
-          <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gold text-purple-deep hover:bg-gold/90 transition-all font-body text-sm font-semibold px-8 py-3.5 shadow-md hover:scale-[1.02]">
-            Book a Free 30-Min Strategy Call <ArrowRight size={16} weight="bold" />
-          </Link>
+      <section className="relative mt-6 overflow-hidden rounded-[22px] border border-[#F0B428]/25 bg-[#121214] p-6 text-center shadow-[0_0_60px_rgba(107,45,139,0.16)] sm:p-8">
+        <div aria-hidden className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-[#c084fc] to-transparent" />
+        <div aria-hidden className="absolute -bottom-20 left-1/2 h-44 w-80 -translate-x-1/2 rounded-full bg-[#6B2D8B]/25 blur-3xl" />
+
+        <div className="relative">
+          <CheckCircle size={34} weight="fill" className="mx-auto text-[#F0B428]" />
+          <h2 className="mt-4 font-display text-2xl font-bold text-white sm:text-3xl">Want to improve these metrics?</h2>
+          <p className="mx-auto mt-4 max-w-2xl font-body text-sm leading-6 text-gray-400">
+            Paid media, social, and content conversion require human review...
+          </p>
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-[#F0B428] px-7 py-3.5 font-body text-sm font-bold text-[#17091f] shadow-[0_0_28px_rgba(240,180,40,0.25)] transition hover:brightness-110"
+            >
+              Book a Free 30-Min Call {"\u2192"}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
+function ScoreChart({ dimensions }: { dimensions: AuditDimension[] }) {
+  const points = dimensions.map((dimension, index) => {
+    const x = dimensions.length <= 1 ? 50 : (index / (dimensions.length - 1)) * 100;
+    const y = 100 - dimension.score;
+    return { ...dimension, x, y };
+  });
+  const path = points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
+  const areaPath = points.length > 0
+    ? `${path} L ${points[points.length - 1].x} 100 L ${points[0].x} 100 Z`
+    : "";
+
+  return (
+    <div className="mt-7">
+      <div className="rounded-2xl border border-white/10 bg-black/20 p-4 sm:p-5">
+        <div className="relative h-56">
+          <div className="absolute inset-0 flex flex-col justify-between">
+            {[100, 75, 50, 25, 0].map((tick) => (
+              <div key={tick} className="flex items-center gap-3">
+                <span className="w-8 shrink-0 text-right font-body text-[10px] font-semibold text-gray-600">{tick}</span>
+                <span className="h-px flex-1 bg-white/[0.06]" />
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute inset-y-0 left-11 right-0">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-full w-full overflow-visible">
+              <defs>
+                <linearGradient id="scoreAreaGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="#F0B428" stopOpacity="0.28" />
+                  <stop offset="100%" stopColor="#6B2D8B" stopOpacity="0.03" />
+                </linearGradient>
+              </defs>
+              {areaPath && <path d={areaPath} fill="url(#scoreAreaGradient)" />}
+              {path && (
+                <path
+                  d={path}
+                  fill="none"
+                  stroke="#F0B428"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.4"
+                  vectorEffect="non-scaling-stroke"
+                />
+              )}
+              {points.map((point) => (
+                <circle
+                  key={point.key}
+                  cx={point.x}
+                  cy={point.y}
+                  r="2.2"
+                  fill="#0a0a0c"
+                  stroke="#F0B428"
+                  strokeWidth="1.8"
+                  vectorEffect="non-scaling-stroke"
+                />
+              ))}
+            </svg>
+          </div>
+        </div>
+
+        <div className="ml-11 mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {points.map((point) => {
+            const tone = getScoreTone(point.score);
+            return (
+              <div key={point.key} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2">
+                <p className="truncate font-body text-[11px] font-semibold text-gray-400">{getShortDimensionLabel(point.label)}</p>
+                <p className={`mt-1 font-display text-lg font-extrabold ${tone.text}`}>{point.score}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -558,21 +655,21 @@ function Gauge({ value }: { value: number }) {
     requestAnimationFrame(tick);
   }, [value]);
 
-  const r = 84;
+  const r = 78;
   const c = 2 * Math.PI * r;
   return (
-    <div className="relative h-52 w-52">
+    <div className="relative h-40 w-40 sm:h-44 sm:w-44">
       <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
-        <circle cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="14" />
+        <circle cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
         <circle
-          cx="100" cy="100" r={r} fill="none" stroke="#F0B428" strokeWidth="14" strokeLinecap="round"
+          cx="100" cy="100" r={r} fill="none" stroke="#F0B428" strokeWidth="10" strokeLinecap="round"
           strokeDasharray={c} strokeDashoffset={c - (shown / 100) * c}
-          style={{ transition: "stroke-dashoffset 0.05s linear" }}
+          style={{ transition: "stroke-dashoffset 0.05s linear", filter: "drop-shadow(0 0 12px rgba(240,180,40,0.45))" }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <p className="font-display text-5xl font-extrabold text-white">{shown}</p>
-        <p className="font-body text-xs uppercase tracking-wider text-muted mt-1">out of 100</p>
+        <p className="font-display text-4xl font-extrabold text-white sm:text-5xl">{shown}</p>
+        <p className="mt-1 font-body text-[10px] font-bold uppercase tracking-[0.24em] text-gray-500">Score</p>
       </div>
     </div>
   );

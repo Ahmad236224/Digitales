@@ -3,13 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, MagnifyingGlass } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import CircuitBackground from "@/components/ui/CircuitBackground";
 
 const HEADLINE = ["The", "Digital", "Marketing", "Agency", "That", "Builds", "Brands", "and", "Ships", "Products."];
 
 export default function Hero() {
-  const [heroUrl, setHeroUrl] = useState("");
   const [auditUrl, setAuditUrl] = useState("");
   const router = useRouter();
 
@@ -26,7 +25,7 @@ export default function Hero() {
 
       <div className="container-d relative flex min-h-[92vh] flex-col items-center justify-center pt-32 pb-20 text-center">
         <p className="eyebrow animate-fade-up">
-          Performance Marketing Agency · Pakistan · United Kingdom · USA
+          Performance Marketing Agency &middot; Pakistan &middot; United Kingdom &middot; USA
         </p>
 
         <h1 className="mt-7 max-w-4xl font-display text-[2.7rem] font-extrabold leading-[1.06] text-white text-glow sm:text-6xl lg:text-[4.6rem]">
@@ -41,35 +40,35 @@ export default function Hero() {
           ))}
         </h1>
 
-        {/* Hero audit search bar */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            go(heroUrl);
+            go(auditUrl);
           }}
-          className="mt-11 flex w-full max-w-xl items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] p-2 pl-5 backdrop-blur-sm animate-fade-up [animation-fill-mode:both] focus-within:border-gold/60"
+          className="mt-11 w-full max-w-4xl rounded-card border-gradient bg-night-surface/80 p-5 text-center shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-sm animate-fade-up [animation-fill-mode:both] sm:p-7"
           style={{ animationDelay: "0.85s" }}
         >
-          <input
-            value={heroUrl}
-            onChange={(e) => setHeroUrl(e.target.value)}
-            type="text"
-            inputMode="url"
-            aria-label="Your website URL for a free audit"
-            placeholder="Enter your website URL for a free audit…"
-            className="min-w-0 flex-1 bg-transparent py-2.5 font-body text-sm text-white placeholder:text-muted/70 focus:outline-none"
-          />
-          <button
-            type="submit"
-            aria-label="Analyse my site"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gold text-purple-deep transition hover:brightness-110"
-          >
-            <MagnifyingGlass size={18} weight="bold" />
-          </button>
+          <p className="font-display text-base font-semibold text-white sm:text-lg">
+            Get a Free Performance Audit
+          </p>
+          <div className="mt-5 flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <input
+              value={auditUrl}
+              onChange={(e) => setAuditUrl(e.target.value)}
+              type="text"
+              inputMode="url"
+              aria-label="Your website URL"
+              placeholder="Enter your website URL (e.g. yourbrand.com)"
+              className="w-full rounded-full border border-white/12 bg-night px-5 py-3.5 font-body text-sm text-white placeholder:text-muted/70 focus:border-gold/60 focus:outline-none sm:max-w-xl"
+            />
+            <button type="submit" className="btn-primary whitespace-nowrap">
+              Analyse Now
+            </button>
+          </div>
         </form>
 
         <p
-          className="mt-6 font-body text-xs uppercase tracking-[0.14em] text-muted/70 animate-fade-up [animation-fill-mode:both]"
+          className="mt-7 font-body text-xs uppercase tracking-[0.14em] text-muted/70 animate-fade-up [animation-fill-mode:both]"
           style={{ animationDelay: "1s" }}
         >
           Trusted by organisations across three continents
@@ -82,39 +81,7 @@ export default function Hero() {
           <Link href="/contact" className="btn-primary">
             Start Your Project <ArrowRight size={18} weight="bold" />
           </Link>
-          <Link href="/free-audit" className="btn-ghost-gold">
-            Run a Free Audit
-          </Link>
         </div>
-      </div>
-
-      {/* Secondary performance-audit card band */}
-      <div className="container-d relative pb-24">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            go(auditUrl);
-          }}
-          className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-5 rounded-card border-gradient p-7 text-center sm:p-8"
-        >
-          <p className="font-display text-base font-semibold text-white">
-            Get a Free Performance Audit
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center w-full">
-            <input
-              value={auditUrl}
-              onChange={(e) => setAuditUrl(e.target.value)}
-              type="text"
-              inputMode="url"
-              aria-label="Your website URL"
-              placeholder="Enter your website URL (e.g. yourbrand.com)"
-              className="w-full rounded-full border border-white/12 bg-night px-5 py-3 font-body text-sm text-white placeholder:text-muted/70 focus:border-gold/60 focus:outline-none sm:max-w-md"
-            />
-            <button type="submit" className="btn-primary whitespace-nowrap">
-              Analyse Now
-            </button>
-          </div>
-        </form>
       </div>
     </section>
   );
