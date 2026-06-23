@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -58,6 +58,7 @@ const TOTAL = 6; // input steps
 
 export default function AuditFunnel() {
   const params = useSearchParams();
+  const funnelRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(1);
   const [data, setData] = useState<State>(EMPTY);
   const [phase, setPhase] = useState<"form" | "loading" | "results" | "error">("form");
@@ -107,6 +108,12 @@ export default function AuditFunnel() {
       challenges: d.challenges.includes(c) ? d.challenges.filter((x) => x !== c) : [...d.challenges, c],
     }));
 
+  const scrollToFunnelTop = () => {
+    requestAnimationFrame(() => {
+      funnelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   const canContinue = useMemo(() => {
     switch (step) {
       case 1: return data.url.trim().length > 2;
@@ -152,7 +159,9 @@ export default function AuditFunnel() {
   const next = () => {
     if (step < TOTAL) {
       setStep((s) => s + 1);
+      scrollToFunnelTop();
     } else {
+      scrollToFunnelTop();
       startAudit(data.url);
     }
   };
@@ -160,6 +169,7 @@ export default function AuditFunnel() {
   const resetToForm = () => {
     setPhase("form");
     setStep(6); // return to the final step so they can try again or edit
+    scrollToFunnelTop();
   };
 
   if (phase === "loading") return <Loading url={data.url} />;
@@ -167,7 +177,7 @@ export default function AuditFunnel() {
   if (phase === "results" && auditResult) return <Results data={data} result={auditResult} />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <div ref={funnelRef} className="mx-auto w-full max-w-3xl scroll-mt-24 sm:scroll-mt-32">
       {/* Header */}
       <p className="eyebrow text-center">Free Audit Funnel</p>
       <div className="mt-2 flex min-w-0 flex-col gap-2 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
@@ -256,7 +266,13 @@ export default function AuditFunnel() {
         {/* Nav */}
         <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
           {step > 1 ? (
-            <button onClick={() => setStep((s) => s - 1)} className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/10 px-5 py-3 font-body text-sm font-medium text-muted hover:text-white sm:w-auto sm:border-0 sm:px-0 sm:py-0">
+            <button
+              onClick={() => {
+                setStep((s) => s - 1);
+                scrollToFunnelTop();
+              }}
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/10 px-5 py-3 font-body text-sm font-medium text-muted hover:text-white sm:w-auto sm:border-0 sm:px-0 sm:py-0"
+            >
               <ArrowLeft size={15} weight="bold" /> Back
             </button>
           ) : <span />}

@@ -22,13 +22,38 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
   }
   body {
     @apply bg-night font-body text-muted antialiased;
+    min-width: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  main {
+    min-width: 0;
+    overflow-x: clip;
+  }
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
   }
   h1, h2, h3, h4 {
     @apply font-display text-white;
     text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  p,
+  li,
+  a,
+  span,
+  input,
+  textarea,
+  button {
+    overflow-wrap: anywhere;
   }
   ::selection {
     background: var(--gold);
@@ -44,10 +69,10 @@
 @layer components {
   /* ---- Layout ---- */
   .container-d {
-    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+    @apply mx-auto w-full max-w-container min-w-0 px-5 sm:px-8;
   }
   .section {
-    @apply py-20 md:py-28;
+    @apply py-16 md:py-28;
   }
 
   /* ---- Eyebrow (gold on dark) ---- */
@@ -83,6 +108,8 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-body text-sm font-semibold
            transition-all duration-200 px-6 py-3 leading-none;
+    max-width: 100%;
+    text-align: center;
   }
   .btn-primary {
     @apply btn bg-purple text-white hover:bg-purple-glow hover:shadow-glow;

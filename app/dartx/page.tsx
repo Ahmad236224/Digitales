@@ -105,23 +105,25 @@ export default function DartXPage() {
           <h2 className="max-w-2xl font-display text-3xl font-bold text-white sm:text-4xl">
             Why DartX? The Competitive Edge.
           </h2>
-          <div className="mt-10 overflow-hidden rounded-card border border-white/[0.08]">
-            <div className="grid grid-cols-3 bg-night-raised">
-              <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-muted">Benchmark</div>
-              <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-muted">Going Alone</div>
-              <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-gold">With DartX</div>
-            </div>
-            {COMPARE.map((row, i) => (
-              <div key={row.benchmark} className={`grid grid-cols-3 items-center ${i % 2 ? "bg-night-surface" : "bg-night"}`}>
-                <div className="px-5 py-4 font-body text-sm font-medium text-white">{row.benchmark}</div>
-                <div className="px-5 py-4 font-body text-sm text-muted">
-                  {typeof row.alone === "boolean" ? <X size={18} weight="bold" className="text-red-400/70" /> : row.alone}
-                </div>
-                <div className="px-5 py-4 font-body text-sm text-white">
-                  {typeof row.dartx === "boolean" ? <Check size={18} weight="bold" className="text-gold" /> : row.dartx}
-                </div>
+          <div className="mt-10 overflow-x-auto rounded-card border border-white/[0.08]">
+            <div className="min-w-[620px]">
+              <div className="grid grid-cols-3 bg-night-raised">
+                <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-muted">Benchmark</div>
+                <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-muted">Going Alone</div>
+                <div className="px-5 py-4 font-body text-xs font-semibold uppercase tracking-wider text-gold">With DartX</div>
               </div>
-            ))}
+              {COMPARE.map((row, i) => (
+                <div key={row.benchmark} className={`grid grid-cols-3 items-center ${i % 2 ? "bg-night-surface" : "bg-night"}`}>
+                  <div className="px-5 py-4 font-body text-sm font-medium text-white">{row.benchmark}</div>
+                  <div className="px-5 py-4 font-body text-sm text-muted">
+                    {typeof row.alone === "boolean" ? <X size={18} weight="bold" className="text-red-400/70" /> : row.alone}
+                  </div>
+                  <div className="px-5 py-4 font-body text-sm text-white">
+                    {typeof row.dartx === "boolean" ? <Check size={18} weight="bold" className="text-gold" /> : row.dartx}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

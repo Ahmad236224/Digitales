@@ -313,7 +313,12 @@ export const TEAM = [
         image: "/about/waqas-nayyar.jpg",
         bio: "As an SEO Manager at Digitales, I bring 5+ years of experience in SEO, helping businesses improve their search visibility, organic traffic, and online performance through data-driven strategies.",
       },
-      { name: "Wania Maryam", title: "SEO Writer" },
+      {
+        name: "Wania Maryam",
+        title: "SEO Writer",
+        image: "/Images/About/Performance & Growth/Wania.png",
+        bio: "Content Writer dedicated to creating clear, engaging, and meaningful content that helps brands connect with their audience and strengthen their online presence.",
+      },
     ],
   },
   {
