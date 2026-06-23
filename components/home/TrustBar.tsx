@@ -57,16 +57,16 @@ export default function TrustBar() {
         Trusted by organisations across three continents
       </p>
       <div className="group relative mt-7 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <div className="flex w-max animate-marquee items-center gap-12 group-hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee items-center gap-10 group-hover:[animation-play-state:paused]">
           {row.map((item, i) => (
             <div
               key={i}
-              className="flex min-w-36 items-center justify-center px-10"
+              className="flex h-28 w-56 shrink-0 items-center justify-center px-3 transition duration-300 hover:-translate-y-1"
             >
               <img
                 src={item.logo}
                 alt={`${item.name} logo`}
-                className="h-10 w-auto object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                className="h-20 w-full object-contain opacity-100 drop-shadow-[0_10px_22px_rgba(0,0,0,0.28)]"
                 loading="lazy"
               />
             </div>
