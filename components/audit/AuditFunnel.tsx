@@ -134,7 +134,7 @@ export default function AuditFunnel() {
       const response = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: urlToAudit, strategy: "mobile" }),
+        body: JSON.stringify({ ...data, url: urlToAudit, strategy: "mobile" }),
       });
 
       const resultData = await response.json();
