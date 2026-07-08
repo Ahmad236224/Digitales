@@ -203,7 +203,7 @@ export default function AuditFunnel() {
               autoFocus
               value={data.url}
               onChange={(e) => set("url", e.target.value)}
-              placeholder="yourwebsite.com"
+              placeholder="https://yourwebsite.com"
               className="w-full rounded-lg border border-white/12 bg-night px-5 py-4 font-body text-base text-white placeholder:text-muted/60 focus:border-gold/60 focus:outline-none"
             />
           </Step>

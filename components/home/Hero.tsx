@@ -58,7 +58,7 @@ export default function Hero() {
               type="text"
               inputMode="url"
               aria-label="Your website URL"
-              placeholder="Enter your website URL (e.g. yourbrand.com)"
+              placeholder="Enter your website URL (e.g. https://yourbrand.com)"
               className="w-full rounded-full border border-white/12 bg-night px-5 py-3.5 font-body text-sm text-white placeholder:text-muted/70 focus:border-gold/60 focus:outline-none sm:max-w-xl"
             />
             <button type="submit" className="btn-primary whitespace-nowrap">

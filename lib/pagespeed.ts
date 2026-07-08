@@ -23,10 +23,13 @@ export interface AuditError {
   error: string;
 }
 
+export const URL_REACHABILITY_ERROR =
+  "We couldn't reach this website. Please check the URL and try again.";
+
 export function normalizeUrl(input: string): string {
   let cleaned = input.trim();
   if (!cleaned) {
-    throw new Error("URL is empty");
+    throw new Error(URL_REACHABILITY_ERROR);
   }
 
   // Prepend scheme if missing
@@ -42,8 +45,69 @@ export function normalizeUrl(input: string): string {
     }
     return parsed.href;
   } catch (err) {
-    throw new Error(`Invalid URL: ${input}`);
+    throw new Error(URL_REACHABILITY_ERROR);
   }
+}
+
+function getWwwFallbackUrl(url: string) {
+  const parsed = new URL(url);
+
+  if (
+    parsed.hostname === "localhost" ||
+    parsed.hostname.startsWith("www.") ||
+    parsed.hostname.split(".").length !== 2
+  ) {
+    return null;
+  }
+
+  parsed.hostname = `www.${parsed.hostname}`;
+  return parsed.href;
+}
+
+async function checkReachable(url: string, method: "HEAD" | "GET") {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const response = await fetch(url, {
+      method,
+      redirect: "follow",
+      signal: controller.signal,
+      cache: "no-store",
+    });
+
+    if (response.status === 404) {
+      throw new Error(URL_REACHABILITY_ERROR);
+    }
+
+    return true;
+  } catch (error) {
+    return false;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function isReachable(url: string) {
+  if (await checkReachable(url, "HEAD")) {
+    return true;
+  }
+
+  return checkReachable(url, "GET");
+}
+
+export async function verifyUrlReachable(url: string) {
+  if (await isReachable(url)) {
+    return url;
+  }
+
+  const wwwFallbackUrl = getWwwFallbackUrl(url);
+
+  if (wwwFallbackUrl && await isReachable(wwwFallbackUrl)) {
+    return wwwFallbackUrl;
+  }
+
+  throw new Error(URL_REACHABILITY_ERROR);
 }
 
 export function buildPsiUrl(url: string, strategy: "mobile" | "desktop", apiKey?: string): string {

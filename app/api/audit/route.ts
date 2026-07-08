@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { FieldValue } from "firebase-admin/firestore";
-import { normalizeUrl, buildPsiUrl, parsePsi } from "@/lib/pagespeed";
+import { normalizeUrl, buildPsiUrl, parsePsi, verifyUrlReachable } from "@/lib/pagespeed";
 import { adminDb } from "@/lib/firebaseAdmin";
 import AuditResultsEmail from "@/emails/AuditResultsEmail";
 
@@ -285,9 +285,10 @@ export async function POST(req: NextRequest) {
     let normalized: string;
     try {
       normalized = normalizeUrl(url);
+      normalized = await verifyUrlReachable(normalized);
     } catch (err: any) {
       return NextResponse.json(
-        { ok: false, error: err.message || "Invalid URL format" },
+        { ok: false, error: err.message || "We couldn't reach this website. Please check the URL and try again." },
         { status: 400 }
       );
     }
