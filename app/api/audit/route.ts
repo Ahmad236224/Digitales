@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { FieldValue } from "firebase-admin/firestore";
 import { normalizeUrl, buildPsiUrl, parsePsi, verifyUrlReachable } from "@/lib/pagespeed";
-import { adminDb } from "@/lib/firebaseAdmin";
+import { getAdminDb } from "@/lib/firebaseAdmin";
 import AuditResultsEmail from "@/emails/AuditResultsEmail";
 
+export const runtime = "nodejs";
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
@@ -311,7 +312,7 @@ export async function POST(req: NextRequest) {
       console.log("DEBUG: Reached step 3 - right before Firestore lead create");
       console.log("DEBUG LEAD_CREATE_DATA:", leadData);
 
-      const createdLead = await adminDb.collection("audit_leads").add({
+      const createdLead = await getAdminDb().collection("audit_leads").add({
         ...leadData,
         createdAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
@@ -322,11 +323,6 @@ export async function POST(req: NextRequest) {
       console.log("DEBUG CREATED_LEAD_ID:", createdLead.id);
     } catch (error) {
       console.error("FIRESTORE_LEAD_CREATE_ERROR:", error);
-
-      return NextResponse.json(
-        { ok: false, error: "Lead could not be saved." },
-        { status: 500 }
-      );
     }
 
     const apiKey = process.env.PAGESPEED_API_KEY;
@@ -372,7 +368,7 @@ export async function POST(req: NextRequest) {
 
         try {
           console.log("DEBUG: Reached step 6 - right before Firestore lead score update");
-          await adminDb.collection("audit_leads").doc(leadId).update({
+          await getAdminDb().collection("audit_leads").doc(leadId).update({
             score,
             updatedAt: FieldValue.serverTimestamp(),
           });

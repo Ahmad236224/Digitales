@@ -19,15 +19,20 @@ function getPrivateKey() {
   return privateKey.replace(/\\n/g, "\n");
 }
 
-const app =
-  getApps().length > 0
-    ? getApps()[0]
-    : initializeApp({
-        credential: cert({
-          projectId: cleanEnvValue(process.env.FIREBASE_PROJECT_ID),
-          clientEmail: cleanEnvValue(process.env.FIREBASE_CLIENT_EMAIL),
-          privateKey: getPrivateKey(),
-        }),
-      });
+function getAdminApp() {
+  if (getApps().length > 0) {
+    return getApps()[0];
+  }
 
-export const adminDb = getFirestore(app);
+  return initializeApp({
+    credential: cert({
+      projectId: cleanEnvValue(process.env.FIREBASE_PROJECT_ID),
+      clientEmail: cleanEnvValue(process.env.FIREBASE_CLIENT_EMAIL),
+      privateKey: getPrivateKey(),
+    }),
+  });
+}
+
+export function getAdminDb() {
+  return getFirestore(getAdminApp());
+}

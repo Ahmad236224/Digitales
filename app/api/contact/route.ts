@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { FieldValue } from "firebase-admin/firestore";
-import { adminDb } from "@/lib/firebaseAdmin";
+import { getAdminDb } from "@/lib/firebaseAdmin";
 import ContactFormEmail from "@/emails/ContactFormEmail";
 
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 type ContactPayload = {
@@ -160,7 +161,7 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await adminDb.collection("contacts").add({
+      await getAdminDb().collection("contacts").add({
         name: validated.data.name,
         email: validated.data.email,
         service: validated.data.service,
