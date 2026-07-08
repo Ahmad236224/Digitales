@@ -22,7 +22,7 @@ export default function TeamMemberCard({ person }: { person: Person }) {
     "mt-2 inline-flex items-center gap-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-muted transition hover:text-[#f0b428] focus:outline-none focus-visible:text-[#f0b428]";
 
   return (
-    <div className="relative isolate flex w-full min-w-0 flex-col overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-4 transition-colors duration-300">
+    <div className="group relative isolate flex w-full min-w-0 flex-col overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-4 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-transparent hover:backdrop-blur-sm hover:border-white/20 hover:shadow-card-hover">
       <div className="flex items-center gap-3">
         {/* Photo or Initials */}
         {hasImage ? (
@@ -31,19 +31,19 @@ export default function TeamMemberCard({ person }: { person: Person }) {
             <img
               src={person.image}
               alt={person.name}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
             />
           </div>
         ) : (
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-purple/15 font-display text-sm font-bold text-purple-link">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-purple/15 font-display text-sm font-bold text-purple-link transition-transform duration-300 ease-in-out group-hover:scale-110">
             {initials(person.name)}
           </div>
         )}
 
         {/* Name and Title */}
         <div className="flex-1 min-w-0">
-          <p className="font-display text-sm font-semibold text-white truncate">{person.name}</p>
-          <p className="font-body text-xs text-muted truncate">{person.title}</p>
+          <p className="font-display text-sm font-semibold text-white break-words">{person.name}</p>
+          <p className="font-body text-xs text-muted break-words">{person.title}</p>
           {hasBio && isExpanded && (
             <button
               type="button"
@@ -96,7 +96,7 @@ export default function TeamMemberCard({ person }: { person: Person }) {
         >
           <div className="min-h-0">
             <div className="mt-3 border-t border-white/10 pt-3">
-              <p className="font-body text-xs leading-relaxed text-[#F8F9FA]">
+              <p className="text-left font-body text-xs font-bold italic leading-[1.75] tracking-[0.01em] text-slate-200 break-words">
                 {person.bio}
               </p>
             </div>

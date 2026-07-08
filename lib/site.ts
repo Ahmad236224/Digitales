@@ -249,7 +249,6 @@ export const PROCESS_STEPS = [
 // ---- About timeline ----
 export const TIMELINE = [
   { year: "1994", title: "The Foundation", body: "Future Vision Advertising founded in Pakistan." },
-  { year: "2005", title: "Broadcast Era", body: "Television channel established — broadcast and production capability." },
   { year: "2015", title: "Digital Pivot", body: "Digital services division launched." },
   { year: "2020", title: "Digitales Born", body: "Digitales established as a dedicated digital agency." },
   { year: "2022", title: "Global Reach", body: "UK and USA chapters launched." },
@@ -258,8 +257,20 @@ export const TIMELINE = [
 
 // ---- Leadership (prominent avatars on About) ----
 export const LEADERSHIP = [
-  { name: "Shaheer Ul Azeem", title: "CEO, CTO & Founder", region: "Global" },
-  { name: "Aziz Khawaja", title: "Director — Operations", region: "Global" },
+  {
+    name: "Shaheer Ul Azeem",
+    title: "CEO, CTO & Founder",
+    region: "Global",
+    image: "/about/Shaheer.jpg",
+    bio: "Shaheer Ul Azeem is the Founder and CEO of Digitales, and Director at Future Vision Advertising, a 30-year legacy family business in the advertising industry. A Computer Science graduate with over 10 years of experience, he leads the technology and product vision at Digitales while overseeing client and vendor relations across the group's global operations.",
+  },
+  {
+    name: "Aziz Khawaja",
+    title: "Director — Operations",
+    region: "Global",
+    image: "/about/Aziz Khawaja.jpeg",
+    bio: "Aziz Khawaja is a Full-Stack Digital Marketing and PR professional with over 10 years of experience helping brands build meaningful digital presence through strategic communication and performance-driven campaigns. His expertise spans digital media buying and planning, PR, social media strategy, SEO, and web and conversion optimization.",
+  },
   { name: "Haseeb Ul Azeem", title: "Digital Media Manager", region: "USA Chapter" },
   { name: "Abdullah Durrani", title: "Director, Business Dev.", region: "UK Chapter" },
 ] as const;
@@ -275,8 +286,16 @@ export const TEAM = [
         image: "/about/ayesha-gull.jpg",
         bio: "As a brand storyteller, I look past the screens, algorithms, and the data to find the human heart of every message. Thus, connecting digital spaces with global audiences through messaging that makes people truly stop, feel, and listen.",
       },
-      { name: "Fatima Khawaja", title: "Content Manager" },
-      { name: "Maram", title: "Content Manager" },
+      { name: "Fatima Khawaja", title: "Content Manager",
+        image: "/about/Fatima.jpeg",
+        bio: "Fatima Khawaja is a Marketing and Brand Communications professional with over 8 years of experience helping brands build meaningful connections through strategic communication and storytelling. Her expertise spans brand communication strategy, public relations, social media marketing, content development and influencer marketing across the FMCG, nonprofit, education, and international service sectors.As a brand storyteller, I look past the screens, algorithms, and the data to find the human heart of every message. Thus, connecting digital spaces with global audiences through messaging that makes people truly stop, feel, and listen.",
+      },
+      {
+        name: "Maryam Zahid",
+        title: "Content Manager",
+        image: "/about/Maryam Zahid.jpeg",
+        bio: "At Digitales, I help brands communicate with confidence. As Content Manager, I oversee content planning, client communication, and campaign execution to ensure every project aligns with the client's vision and business goals. I'm passionate about creating content that is not only creative but also meaningful and results-driven.",
+      },
     ],
   },
   {
@@ -301,7 +320,12 @@ export const TEAM = [
         bio: "Bringing fresh creativity and a year of focused experience, Uzair drives visual execution across digital campaigns, ensuring every asset aligns with high-end brand standards.",
 
       },
-      { name: "Kaleem Ullah", title: "Video Content Specialist" },
+      {
+        name: "Kaleem Ullah",
+        title: "Video Content Specialist",
+        image: "/about/Kaleem ullah.jpeg",
+        bio: "Enthusiastic Video Editor and Motion Designer with a keen eye for emotional details, perspective, and AI implementation.",
+      },
     ],
   },
   {
@@ -343,7 +367,12 @@ export const TEAM = [
         image: "/about/usama-ajmal.png",
         bio: "Digital marketing professional with experience in social media management, media buying, content strategy, and lead generation. Skilled in creating high-performing campaigns that help brands grow their online presence and achieve measurable results.",
       },
-      { name: "Mohammad Noman", title: "Page Manager" },
+      {
+        name: "Mohammad Noman",
+        title: "Page Manager",
+        image: "/about/Mohammad Noman.jpeg",
+        bio: "Social media management, media buying, and creating impactful digital campaigns for brand growth.",
+      },
     ],
   },
 
