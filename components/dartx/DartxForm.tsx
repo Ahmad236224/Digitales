@@ -5,12 +5,46 @@ import { ArrowRight, CheckCircle } from "@phosphor-icons/react";
 
 export default function DartxForm() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     if ((form.elements.namedItem("website") as HTMLInputElement)?.value) return; // honeypot
-    setSent(true);
+
+    setSubmitting(true);
+    setError("");
+
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      role: String(formData.get("role") || ""),
+      services: String(formData.get("services") || ""),
+      budget: String(formData.get("budget") || ""),
+    };
+
+    try {
+      const response = await fetch("/api/dartx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Application could not be submitted. Please try again.");
+      }
+
+      setSent(true);
+      form.reset();
+    } catch (err: any) {
+      setError(err.message || "Application could not be submitted. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (sent) {
@@ -57,8 +91,13 @@ export default function DartxForm() {
         </div>
       </div>
       <button type="submit" className="btn-gold mt-7 w-full">
-        Apply to Partner with DartX <ArrowRight size={16} weight="bold" />
+        {submitting ? "Submitting..." : "Apply to Partner with DartX"} <ArrowRight size={16} weight="bold" />
       </button>
+      {error && (
+        <p className="mt-4 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-center font-body text-sm text-red-300">
+          {error}
+        </p>
+      )}
     </form>
   );
 }
