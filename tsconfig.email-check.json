@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".codex/email-check",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "emails/emailBrand.ts",
+    "emails/ClientEmailShell.tsx",
+    "emails/InternalEmailShell.tsx",
+    "emails/ContactFormEmail.tsx",
+    "emails/InternalContactLeadEmail.tsx"
+  ]
+}

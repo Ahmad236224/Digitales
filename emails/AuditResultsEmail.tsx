@@ -1,18 +1,9 @@
 import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Img,
   Link,
-  Preview,
   Section,
-  Tailwind,
   Text,
 } from "@react-email/components";
+import ClientEmailShell, { clientStyles } from "@/emails/ClientEmailShell";
 
 type AuditDimension = {
   label: string;
@@ -35,29 +26,7 @@ export type AuditResultsEmailProps = {
   consultationUrl?: string;
 };
 
-const primaryColor = "#6B2D8B";
-const secondaryColor = "#F0B428";
-const nightColor = "#0A0610";
-const surfaceColor = "#15101E";
-const raisedColor = "#1E1629";
-const mutedColor = "#A89FB5";
-const siteUrl = "https://digitales-theta.vercel.app";
-const linkedinUrl = "https://www.linkedin.com/company/digitalespk/";
-const instagramUrl = "https://www.instagram.com/digitalespk?igsh=bWt5MXhjMnpqZWx2";
-const logoUrl = `${siteUrl}/Digitales%20logo.png`;
-const companyAddress = "Digitales, Lahore, Pakistan";
-
-function getScoreTone(score: number) {
-  if (score >= 80) {
-    return "bg-[#dcfce7] text-[#166534]";
-  }
-
-  if (score >= 60) {
-    return "bg-[#fef3c7] text-[#92400e]";
-  }
-
-  return "bg-[#fee2e2] text-[#991b1b]";
-}
+const siteUrl = "https://digitales.pk";
 
 export default function AuditResultsEmail({
   name = "there",
@@ -81,133 +50,114 @@ export default function AuditResultsEmail({
   const previewText = `Your Digitales PageSpeed score is ${score}`;
 
   return (
-    <Html>
-      <Head />
-      <Preview>{previewText}</Preview>
-      <Tailwind
-        config={{
-          theme: {
-            extend: {
-              colors: {
-                digitalesPrimary: primaryColor,
-                digitalesSecondary: secondaryColor,
-                digitalesNight: nightColor,
-                digitalesSurface: surfaceColor,
-                digitalesRaised: raisedColor,
-                digitalesMuted: mutedColor,
-              },
-            },
-          },
+    <ClientEmailShell
+      preview={previewText}
+      eyebrow="Digital health score"
+      title="Your audit results are ready"
+      cta={{ label: "Book a Consultation", href: consultationUrl }}
+    >
+      <Text style={clientStyles.bodyText}>
+        Hi {name}, thank you for running a Digitales audit for{" "}
+        <Link href={url} style={clientStyles.linkValue}>
+          {company || url}
+        </Link>
+        . Here is the initial PageSpeed snapshot for the {strategy} experience.
+      </Text>
+
+      <Section
+        style={{
+          ...clientStyles.block,
+          marginTop: "24px",
+          backgroundColor: clientStyles.colors.night,
+          textAlign: "center",
         }}
       >
-        <Body className="m-0 bg-digitalesNight px-3 py-8 font-sans text-white">
-          <Container className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[16px] border border-solid border-[#2b1c38] bg-digitalesSurface">
-            <Section className="bg-digitalesNight px-6 py-6">
-              <Img
-                src={logoUrl}
-                width="170"
-                height="50"
-                alt="Digitales"
-                className="mb-8 block"
-              />
-              <Text className="m-0 text-[12px] font-bold uppercase tracking-[0.18em] text-digitalesSecondary">
-                Digital health score
-              </Text>
-              <Heading className="mb-0 mt-3 text-[28px] font-bold leading-[1.25] text-white">
-                Your audit results are ready
-              </Heading>
-            </Section>
+        <Text style={clientStyles.label}>PageSpeed Score</Text>
+        <Text
+          style={{
+            margin: "12px 0 0",
+            color: "#FFFFFF",
+            fontSize: "64px",
+            fontWeight: "900",
+            lineHeight: "1",
+          }}
+        >
+          {score}
+        </Text>
+        <Text style={{ ...clientStyles.mutedText, marginTop: "12px" }}>
+          Scored out of 100 based on Google PageSpeed Insights.
+        </Text>
+      </Section>
 
-            <Section className="px-6 py-7">
-              <Text className="m-0 text-[16px] leading-[1.7] text-[#EDE7F4]">
-                Hi {name}, thank you for running a Digitales audit for{" "}
-                <Link href={url} className="font-semibold text-[#C9A8E8] no-underline">
-                  {company || url}
-                </Link>
-                . Here is the initial PageSpeed snapshot for the {strategy} experience.
-              </Text>
+      <Section style={{ ...clientStyles.block, marginTop: "18px" }}>
+        {dimensions.map((dimension, index) => (
+          <Section
+            key={dimension.label}
+            style={index === dimensions.length - 1 ? clientStyles.rowLast : clientStyles.row}
+          >
+            <Text
+              style={{
+                margin: "0",
+                display: "inline-block",
+                width: "72%",
+                color: "#FFFFFF",
+                fontSize: "14px",
+                fontWeight: "700",
+                lineHeight: "1.65",
+              }}
+            >
+              {dimension.label}
+            </Text>
+            <Text
+              style={{
+                margin: "0",
+                display: "inline-block",
+                width: "28%",
+                textAlign: "right",
+                color: scoreTone(dimension.score),
+                fontSize: "14px",
+                fontWeight: "800",
+                lineHeight: "1.65",
+              }}
+            >
+              {dimension.score}
+            </Text>
+          </Section>
+        ))}
+      </Section>
 
-              <Section className="my-7 rounded-[16px] border border-solid border-[#6B2D8B] bg-digitalesNight px-6 py-7 text-center">
-                <Text className="m-0 text-[12px] font-bold uppercase tracking-[0.16em] text-digitalesSecondary">
-                  PageSpeed Score
-                </Text>
-                <Text className="m-0 mt-3 text-[64px] font-black leading-none text-white">
-                  {score}
-                </Text>
-                <Text className="m-0 mt-3 text-[14px] leading-[1.6] text-digitalesMuted">
-                  Scored out of 100 based on Google PageSpeed Insights.
-                </Text>
-              </Section>
+      <Section style={clientStyles.note}>
+        <Text style={{ ...clientStyles.label, marginBottom: "12px" }}>Core Web Vitals</Text>
+        {vitals.map((vital, index) => (
+          <Text
+            key={vital.label}
+            style={{
+              margin: index === 0 ? "0" : "10px 0 0",
+              color: clientStyles.colors.text,
+              fontSize: "14px",
+              lineHeight: "1.7",
+            }}
+          >
+            <strong>{vital.label}:</strong> {vital.value}
+          </Text>
+        ))}
+      </Section>
 
-              <Section className="rounded-[14px] border border-solid border-[#322342] bg-digitalesRaised">
-                {dimensions.map((dimension) => (
-                  <Section
-                    key={dimension.label}
-                    className="border-0 border-b border-solid border-[#322342] px-5 py-4"
-                  >
-                    <Text className="m-0 inline-block w-[68%] align-middle text-[14px] font-bold text-white">
-                      {dimension.label}
-                    </Text>
-                    <Text
-                      className={`m-0 inline-block rounded-full px-3 py-1 text-center text-[13px] font-extrabold ${getScoreTone(
-                        dimension.score
-                      )}`}
-                    >
-                      {dimension.score}
-                    </Text>
-                  </Section>
-                ))}
-              </Section>
-
-              <Section className="mt-6 rounded-[14px] border border-solid border-[#322342] bg-digitalesRaised px-5 py-5">
-                <Text className="m-0 mb-3 text-[12px] font-bold uppercase tracking-[0.12em] text-digitalesSecondary">
-                  Core Web Vitals
-                </Text>
-                {vitals.map((vital) => (
-                  <Text key={vital.label} className="m-0 border-0 border-t border-solid border-[#322342] py-3 text-[14px] leading-[1.5] text-digitalesMuted">
-                    <span className="font-semibold">{vital.label}:</span> {vital.value}
-                  </Text>
-                ))}
-              </Section>
-
-              <Text className="mb-6 mt-6 text-[15px] leading-[1.8] text-digitalesMuted">
-                This report is a starting point. Our team can help you prioritize the improvements that will have the clearest impact on speed, SEO, and conversion.
-              </Text>
-
-              <Button
-                href={consultationUrl}
-                className="rounded-full bg-digitalesSecondary px-6 py-3 text-center text-[14px] font-extrabold text-[#3D1450] no-underline"
-              >
-                Book a Consultation
-              </Button>
-            </Section>
-
-            <Hr className="m-0 border-[#322342]" />
-
-            <Section className="bg-digitalesNight px-6 py-6">
-              <Text className="m-0 text-[13px] leading-[1.7] text-digitalesMuted">
-                Digitales builds smart technology, high-impact marketing, and performance systems.
-              </Text>
-              <Text className="m-0 mt-4 text-[13px] text-digitalesMuted">
-                <Link href={siteUrl} className="text-digitalesSecondary no-underline">
-                  Website
-                </Link>
-                {"  |  "}
-                <Link href={linkedinUrl} className="text-digitalesSecondary no-underline">
-                  LinkedIn
-                </Link>
-                {"  |  "}
-                <Link href={instagramUrl} className="text-digitalesSecondary no-underline">
-                  Instagram
-                </Link>
-              </Text>
-              <Text className="m-0 mt-4 text-[12px] leading-[1.6] text-[#7e738d]">
-                {companyAddress}
-              </Text>
-            </Section>
-          </Container>
-        </Body>
-      </Tailwind>
-    </Html>
+      <Text style={clientStyles.mutedText}>
+        This report is a starting point. Our team can help you prioritize the improvements that will have the clearest impact on speed, SEO, and conversion.
+      </Text>
+    </ClientEmailShell>
   );
+}
+
+function scoreTone(score: number) {
+  if (score >= 80) {
+    return "#F0B428";
+  }
+
+  if (score >= 60) {
+    return "#C9A8E8";
+  }
+
+  return "#A89FB5";
 }
