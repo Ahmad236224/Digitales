@@ -6,6 +6,13 @@ import FinalCta from "@/components/home/FinalCta";
 import { TIMELINE, LEADERSHIP, TEAM } from "@/lib/site";
 import TeamMemberCard from "@/components/about/TeamMemberCard";
 
+type LeadershipMember = {
+  name: string;
+  title: string;
+  region: string;
+  image?: string;
+  bio?: string;
+};
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,6 +27,12 @@ function initials(name: string) {
 }
 
 export default function AboutPage() {
+  const leadershipMembers = LEADERSHIP as readonly LeadershipMember[];
+  const leadershipColumns = [
+    { featured: leadershipMembers[0], supporting: leadershipMembers[2] },
+    { featured: leadershipMembers[1], supporting: leadershipMembers[3] },
+  ];
+
   return (
     <>
       {/* Hero — two column */}
@@ -110,7 +123,7 @@ export default function AboutPage() {
             <div>
               <h2 className="h2">The People Behind the Work.</h2>
               <p className="mt-4 max-w-xl lede">
-                A convergence of strategic minds, engineers, and creatives —
+                A convergence of strategic minds, engineers, and creatives 
                 working from the same brief, toward the same commercial objective.
               </p>
             </div>
@@ -118,28 +131,56 @@ export default function AboutPage() {
           </div>
 
           {/* Leadership avatars */}
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {LEADERSHIP.map((m) => (
-              <div key={m.name} className="group relative overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-5 text-center transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-transparent hover:backdrop-blur-sm hover:border-white/20 hover:shadow-card-hover">
-                {"image" in m && m.image ? (
-                  <div className="mx-auto h-28 w-28 overflow-hidden rounded-full bg-purple/15 ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={m.image}
-                      alt={m.name}
-                      className="h-full w-full object-cover"
-                    />
+          <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {leadershipColumns.map(({ featured, supporting }) => (
+              <div key={featured.name} className="flex min-w-0 flex-col gap-4">
+                <div className="group relative overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-6 text-center transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-transparent hover:backdrop-blur-sm hover:border-white/20 hover:shadow-card-hover">
+                  {featured.image ? (
+                    <div className="mx-auto h-28 w-28 overflow-hidden rounded-full bg-purple/15 ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={featured.image}
+                        alt={featured.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mx-auto grid h-28 w-28 place-items-center rounded-full bg-purple/15 font-display text-2xl font-bold text-purple-link ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
+                      {initials(featured.name)}
+                    </div>
+                  )}
+                  <p className="mt-5 font-display text-lg font-semibold text-white break-words">{featured.name}</p>
+                  <p className="mt-0.5 font-body text-sm text-muted break-words">{featured.title}</p>
+                  <p className="mt-1 font-body text-[0.65rem] uppercase tracking-wider text-gold">{featured.region}</p>
+                  {featured.bio && (
+                    <p className="mt-5 text-center font-body text-[0.82rem] font-bold italic leading-[1.75] tracking-[0.01em] text-slate-200">{featured.bio}</p>
+                  )}
+                </div>
+
+                {supporting && (
+                  <div className="group relative overflow-hidden rounded-card border border-gold/20 bg-[#15101E]/80 p-4 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-transparent hover:backdrop-blur-sm hover:border-gold/50 hover:shadow-card-hover">
+                    <div className="flex items-center gap-4">
+                      {supporting.image ? (
+                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-gold bg-purple/15 transition-transform duration-300 ease-in-out group-hover:scale-105">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={supporting.image}
+                            alt={supporting.name}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-purple/15 font-display text-base font-bold text-purple-link transition-transform duration-300 ease-in-out group-hover:scale-105">
+                          {initials(supporting.name)}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <p className="font-display text-base font-semibold text-white break-words">{supporting.name}</p>
+                        <p className="mt-1 font-body text-xs leading-relaxed text-muted break-words">{supporting.title}</p>
+                        <p className="mt-2 font-body text-[0.65rem] uppercase tracking-wider text-gold">{supporting.region}</p>
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  <div className="mx-auto grid h-28 w-28 place-items-center rounded-full bg-purple/15 font-display text-2xl font-bold text-purple-link ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
-                    {initials(m.name)}
-                  </div>
-                )}
-                <p className="mt-5 font-display text-base font-semibold text-white break-words">{m.name}</p>
-                <p className="mt-0.5 font-body text-xs text-muted break-words">{m.title}</p>
-                <p className="mt-1 font-body text-[0.65rem] uppercase tracking-wider text-gold">{m.region}</p>
-                {"bio" in m && m.bio && (
-                  <p className="mt-4 text-left font-body text-[0.78rem] font-bold italic leading-[1.75] tracking-[0.01em] text-slate-200">{m.bio}</p>
                 )}
               </div>
             ))}

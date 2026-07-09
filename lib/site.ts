@@ -271,8 +271,18 @@ export const LEADERSHIP = [
     image: "/about/Aziz Khawaja.jpeg",
     bio: "Aziz Khawaja is a Full-Stack Digital Marketing and PR professional with over 10 years of experience helping brands build meaningful digital presence through strategic communication and performance-driven campaigns. His expertise spans digital media buying and planning, PR, social media strategy, SEO, and web and conversion optimization.",
   },
-  { name: "Haseeb Ul Azeem", title: "Digital Media Manager", region: "USA Chapter" },
-  { name: "Abdullah Durrani", title: "Director, Business Dev.", region: "UK Chapter" },
+  {
+    name: "Haseeb Ul Azeem",
+    title: "Director Business Development and Operations",
+    region: "USA Chapter",
+    image: "/about/Haseeb Ul Azeem.jpeg",
+  },
+  {
+    name: "Abdullah Durrani",
+    title: "Director Business Development and Operations",
+    region: "UK Chapter",
+    image: "/about/Abdullah Durrani.jpeg",
+  },
 ] as const;
 
 // ---- Full team by department ----
