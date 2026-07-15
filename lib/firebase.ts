@@ -24,5 +24,7 @@ const firebaseConfig = envFirebaseConfig.apiKey
   ? envFirebaseConfig
   : fallbackFirebaseConfig;
 
+export const firebaseConfigSource = envFirebaseConfig.apiKey ? "env" : "fallback";
+export const firebaseProjectId = firebaseConfig.projectId;
 export const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 export const db = getFirestore(app);

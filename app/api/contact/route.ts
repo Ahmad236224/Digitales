@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db, firebaseConfigSource, firebaseProjectId } from "@/lib/firebase";
 import ContactFormEmail from "@/emails/ContactFormEmail";
 import InternalContactLeadEmail from "@/emails/InternalContactLeadEmail";
 import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
@@ -78,7 +78,11 @@ export async function POST(req: NextRequest) {
         createdAt: serverTimestamp(),
       });
     } catch (error) {
-      console.error("CONTACT_FIRESTORE_SAVE_ERROR:", error);
+      console.error("CONTACT_FIRESTORE_SAVE_ERROR:", {
+        firebaseConfigSource,
+        firebaseProjectId,
+        error,
+      });
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;

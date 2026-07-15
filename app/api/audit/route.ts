@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { normalizeUrl, buildPsiUrl, parsePsi, verifyUrlReachable } from "@/lib/pagespeed";
-import { db } from "@/lib/firebase";
+import { db, firebaseConfigSource, firebaseProjectId } from "@/lib/firebase";
 import AuditResultsEmail from "@/emails/AuditResultsEmail";
 import InternalAuditLeadEmail from "@/emails/InternalAuditLeadEmail";
 import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
@@ -190,7 +190,11 @@ export async function POST(req: NextRequest) {
       console.log("DEBUG: Reached step 4 - right after Firestore lead create completed");
       console.log("DEBUG CREATED_LEAD_ID:", createdLead.id);
     } catch (error) {
-      console.error("FIRESTORE_LEAD_CREATE_ERROR:", error);
+      console.error("FIRESTORE_LEAD_CREATE_ERROR:", {
+        firebaseConfigSource,
+        firebaseProjectId,
+        error,
+      });
     }
 
     const apiKey = process.env.PAGESPEED_API_KEY;
@@ -242,7 +246,11 @@ export async function POST(req: NextRequest) {
           });
           console.log("DEBUG: Reached step 7 - right after Firestore lead score update completed");
         } catch (error) {
-          console.error("FIRESTORE_SCORE_UPDATE_ERROR:", error);
+          console.error("FIRESTORE_SCORE_UPDATE_ERROR:", {
+            firebaseConfigSource,
+            firebaseProjectId,
+            error,
+          });
         }
       }
 
