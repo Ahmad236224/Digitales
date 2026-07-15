@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { FieldValue } from "firebase-admin/firestore";
-import { getAdminDb } from "@/lib/firebaseAdmin";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import DartxApplicationEmail from "@/emails/DartxApplicationEmail";
 import InternalDartxLeadEmail from "@/emails/InternalDartxLeadEmail";
 import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
@@ -122,9 +122,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const createdApplication = await getAdminDb().collection("dartx_applications").add({
+    const createdApplication = await addDoc(collection(db, "dartx_applications"), {
       ...validated.data,
-      createdAt: FieldValue.serverTimestamp(),
+      createdAt: serverTimestamp(),
     });
 
     await sendDartxEmails(validated.data);

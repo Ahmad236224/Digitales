@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { FieldValue } from "firebase-admin/firestore";
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { normalizeUrl, buildPsiUrl, parsePsi, verifyUrlReachable } from "@/lib/pagespeed";
-import { getAdminDb } from "@/lib/firebaseAdmin";
+import { db } from "@/lib/firebase";
 import AuditResultsEmail from "@/emails/AuditResultsEmail";
 import InternalAuditLeadEmail from "@/emails/InternalAuditLeadEmail";
 import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
@@ -180,10 +180,10 @@ export async function POST(req: NextRequest) {
       console.log("DEBUG: Reached step 3 - right before Firestore lead create");
       console.log("DEBUG LEAD_CREATE_DATA:", leadData);
 
-      const createdLead = await getAdminDb().collection("audit_leads").add({
+      const createdLead = await addDoc(collection(db, "audit_leads"), {
         ...leadData,
-        createdAt: FieldValue.serverTimestamp(),
-        updatedAt: FieldValue.serverTimestamp(),
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
       });
 
       leadId = createdLead.id;
@@ -236,9 +236,9 @@ export async function POST(req: NextRequest) {
 
         try {
           console.log("DEBUG: Reached step 6 - right before Firestore lead score update");
-          await getAdminDb().collection("audit_leads").doc(leadId).update({
+          await updateDoc(doc(db, "audit_leads", leadId), {
             score,
-            updatedAt: FieldValue.serverTimestamp(),
+            updatedAt: serverTimestamp(),
           });
           console.log("DEBUG: Reached step 7 - right after Firestore lead score update completed");
         } catch (error) {

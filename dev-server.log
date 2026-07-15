@@ -1,11 +1,10 @@
 
 > digitales@0.1.0 dev
-> next dev -p 3000
+> next dev
 
   ▲ Next.js 14.2.35
   - Local:        http://localhost:3000
-  - Environments: .env.local
+  - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 5.8s
- ○ Compiling /free-audit ...
+ ✓ Ready in 10.8s

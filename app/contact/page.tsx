@@ -14,10 +14,10 @@ const OFFICES = [
   {
     flag: "🇵🇰",
     name: "Pakistan HQ",
-    address: "Digitales House, 12-A Block H, Gulberg III, Lahore, Pakistan",
+    address: "82-B Garden Block, Garden Town, Lahore, Pakistan, 54000",
     phone: "+92 (42) 111 222 333",
     email: "pk@digitales.pk",
-    searchLabel: "Gulberg III, LHR",
+    searchLabel: "Garden Town, LHR",
     mapPaths: (
       <>
         {/* River/Canal */}

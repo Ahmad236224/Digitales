@@ -6,8 +6,9 @@ export default function FinalCta() {
     <section className="relative overflow-hidden bg-night">
       <div aria-hidden className="glow-purple pointer-events-none absolute inset-x-0 bottom-0 h-[60%]" />
       <div className="container-d relative section text-center">
-        <h2 className="mx-auto max-w-3xl font-display text-3xl font-extrabold text-white sm:text-[2.7rem]">
-          Ready to Build Something That Performs?
+        <h2 className="mx-auto max-w-3xl font-display text-3xl font-extrabold leading-[1.12] text-white sm:text-[2.7rem]">
+          <span className="block">Ready to Build Something</span>
+          <span className="mt-2 block">That Performs?</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl font-body text-lg text-muted">
           Whether you need to grow faster, convert better, or build something

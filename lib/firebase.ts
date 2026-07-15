@@ -1,16 +1,28 @@
-import { initializeApp } from "firebase/app";
+import { getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { firebaseConfig as fallbackFirebaseConfig } from "./firebaseconfig";
 
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+function cleanEnvValue(value: string | undefined) {
+  if (!value) {
+    return "";
+  }
+
+  return value.trim().replace(/,$/, "").replace(/^"|"$/g, "");
+}
+
+const envFirebaseConfig = {
+  apiKey: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_API_KEY),
+  authDomain: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN),
+  projectId: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID),
+  storageBucket: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET),
+  messagingSenderId: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID),
+  appId: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_APP_ID),
+  measurementId: cleanEnvValue(process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID),
 };
 
-// getApps() guard ensure karta hai ke initialization double na ho
-import { getApps } from "firebase/app";
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
+const firebaseConfig = envFirebaseConfig.apiKey
+  ? envFirebaseConfig
+  : fallbackFirebaseConfig;
+
+export const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 export const db = getFirestore(app);

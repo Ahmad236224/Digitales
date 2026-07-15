@@ -26,6 +26,8 @@ type ClientEmailShellProps = {
 };
 
 const siteUrl = "https://digitales.pk";
+const instagramUrl = "https://www.instagram.com/digitalespk?igsh=bWt5MXhjMnpqZWx2";
+const linkedInUrl = "https://www.linkedin.com/company/digitalespk/";
 
 export const clientColors = {
   gold: "#F0B428",
@@ -270,17 +272,46 @@ export default function ClientEmailShell({
                   >
                     Smart Technology. High-Impact Marketing. Built to Perform.
                   </Text>
-                  <Text style={{ margin: "12px 0 0", fontSize: "13px", lineHeight: "1.7" }}>
-                <Link
-                  href={siteUrl}
-                  style={{
-                    color: clientColors.gold,
-                    WebkitTextFillColor: clientColors.gold,
-                    textDecoration: "none",
-                  }}
-                >
-                  Website
-                </Link>
+                  <Text
+                    style={{
+                      margin: "12px 0 0",
+                      fontSize: "13px",
+                      fontWeight: "700",
+                      lineHeight: "1.7",
+                    }}
+                  >
+                    <Link
+                      href={siteUrl}
+                      style={{
+                        color: clientColors.gold,
+                        WebkitTextFillColor: clientColors.gold,
+                        textDecoration: "none",
+                      }}
+                    >
+                      Website
+                    </Link>
+                    <span style={{ color: clientColors.border, WebkitTextFillColor: clientColors.border }}> &nbsp;|&nbsp; </span>
+                    <Link
+                      href={instagramUrl}
+                      style={{
+                        color: clientColors.gold,
+                        WebkitTextFillColor: clientColors.gold,
+                        textDecoration: "none",
+                      }}
+                    >
+                      Instagram
+                    </Link>
+                    <span style={{ color: clientColors.border, WebkitTextFillColor: clientColors.border }}> &nbsp;|&nbsp; </span>
+                    <Link
+                      href={linkedInUrl}
+                      style={{
+                        color: clientColors.gold,
+                        WebkitTextFillColor: clientColors.gold,
+                        textDecoration: "none",
+                      }}
+                    >
+                      LinkedIn
+                    </Link>
                   </Text>
                   <Text
                     style={{

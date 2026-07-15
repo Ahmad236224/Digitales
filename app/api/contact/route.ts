@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { FieldValue } from "firebase-admin/firestore";
-import { getAdminDb } from "@/lib/firebaseAdmin";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import ContactFormEmail from "@/emails/ContactFormEmail";
 import InternalContactLeadEmail from "@/emails/InternalContactLeadEmail";
 import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
@@ -70,12 +70,12 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await getAdminDb().collection("contacts").add({
+      await addDoc(collection(db, "contacts"), {
         name: validated.data.name,
         email: validated.data.email,
         service: validated.data.service,
         message: validated.data.message,
-        createdAt: FieldValue.serverTimestamp(),
+        createdAt: serverTimestamp(),
       });
     } catch (error) {
       console.error("CONTACT_FIRESTORE_SAVE_ERROR:", error);

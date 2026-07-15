@@ -68,7 +68,7 @@ export default function ContactForm() {
         <CheckCircle size={44} weight="fill" className="text-gold" />
         <h3 className="mt-4 font-display text-xl font-semibold text-white">Message received.</h3>
         <p className="mt-2 max-w-sm font-body text-sm text-muted">
-          Thanks — our team will respond within one business day. For anything
+          Thanks our team will respond within one business day. For anything
           urgent, book a discovery call directly below.
         </p>
       </div>

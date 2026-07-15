@@ -45,8 +45,9 @@ export default function DartXPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-3 py-1 font-body text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" /> White-Label Agency Model
             </span>
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-6xl">
-              Launch Your Agency.<br /><span className="text-gold">We Power It.</span>
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.12] text-white sm:text-6xl">
+              <span className="block">Launch Your Agency.</span>
+              <span className="mt-2 block text-gold">We Power It.</span>
             </h1>
             <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-muted">
               You bring the clients, we deliver the work under your brand — with
