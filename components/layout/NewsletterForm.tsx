@@ -58,7 +58,7 @@ export default function NewsletterForm() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="mt-4 flex overflow-hidden rounded-full border border-white/15">
+      <form onSubmit={onSubmit} className="mt-4 flex overflow-hidden rounded-full border border-white/15 bg-night">
         <label htmlFor="newsletter" className="sr-only">Email address</label>
         <input
           id="newsletter"
@@ -68,7 +68,7 @@ export default function NewsletterForm() {
           onChange={(event) => setEmail(event.target.value)}
           required
           placeholder="Email address"
-          className="min-w-0 flex-1 bg-white/[0.04] px-4 py-2.5 font-body text-sm text-white placeholder:text-muted/60 focus:bg-white/[0.07] focus:outline-none"
+          className="newsletter-input min-w-0 flex-1 bg-night px-4 py-2.5 font-body text-sm text-white placeholder:text-muted/60 focus:bg-night-surface focus:outline-none"
         />
         <button
           type="submit"

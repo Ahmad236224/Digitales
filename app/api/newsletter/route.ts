@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, firebaseConfigSource, firebaseProjectId } from "@/lib/firebase";
+import NewsletterSignupEmail from "@/emails/NewsletterSignupEmail";
+import { emailLogoBase64, emailLogoCid } from "@/emails/emailBrand";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -44,11 +47,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    let newsletterSubscriberId = "";
+
     try {
-      await addDoc(collection(db, "newsletter_subscribers"), {
+      const createdSubscriber = await addDoc(collection(db, "newsletter_subscribers"), {
+        type: "newsletter",
         email: validated.data.email,
         sourceDomain: validated.data.sourceDomain,
         createdAt: serverTimestamp(),
+      });
+
+      newsletterSubscriberId = createdSubscriber.id;
+      console.log("NEWSLETTER_FIRESTORE_SAVED:", {
+        id: newsletterSubscriberId,
+        firebaseConfigSource,
+        firebaseProjectId,
       });
     } catch (error) {
       console.error("NEWSLETTER_FIRESTORE_SAVE_ERROR:", {
@@ -63,7 +76,51 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true }, { status: 201 });
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!resendApiKey) {
+      console.error("NEWSLETTER_EMAIL_ERROR:", "RESEND_API_KEY is not configured");
+      return NextResponse.json(
+        { ok: false, error: "Newsletter confirmation email is not configured" },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
+
+    try {
+      const confirmationEmailResult = await resend.emails.send({
+        from: "info@digitales.pk",
+        to: validated.data.email,
+        subject: "You are subscribed to Digitales insights",
+        react: NewsletterSignupEmail({ email: validated.data.email }),
+        attachments: [
+          {
+            filename: "digitales-logo.png",
+            content: emailLogoBase64,
+            contentType: "image/png",
+            contentId: emailLogoCid,
+          },
+        ],
+      });
+
+      if (confirmationEmailResult.error) {
+        throw confirmationEmailResult.error;
+      }
+
+      console.log("NEWSLETTER_CONFIRMATION_EMAIL_SENT:", confirmationEmailResult.data?.id);
+
+      return NextResponse.json(
+        { ok: true, id: newsletterSubscriberId },
+        { status: 201 }
+      );
+    } catch (error) {
+      console.error("NEWSLETTER_CONFIRMATION_EMAIL_ERROR:", error);
+      return NextResponse.json(
+        { ok: false, error: "Newsletter confirmation email could not be sent" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("NEWSLETTER_PIPELINE_ERROR:", error);
     return NextResponse.json(

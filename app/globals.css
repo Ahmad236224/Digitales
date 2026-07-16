@@ -161,6 +161,15 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+
+  .newsletter-input:-webkit-autofill,
+  .newsletter-input:-webkit-autofill:hover,
+  .newsletter-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+    caret-color: #ffffff;
+    box-shadow: 0 0 0 1000px var(--night) inset;
+    transition: background-color 9999s ease-out;
+  }
 }
 
 @layer utilities {
