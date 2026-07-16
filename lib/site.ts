@@ -8,7 +8,7 @@ export const SERVICES = [
     group: "marketing",
     icon: "ShareNetwork",
     short:
-      "Build high-engagement communities and convert social audiences into loyal brand advocates — across every platform that matters.",
+      "Build high engagement communities and convert social audiences into loyal brand advocates  across every platform that matters.",
   },
   {
     slug: "digital-media-buying",
@@ -16,7 +16,7 @@ export const SERVICES = [
     group: "marketing",
     icon: "Target",
     short:
-      "Precision-targeted paid campaigns across search, social, display, and programmatic — optimised continuously for the highest return.",
+      "Precision targeted paid campaigns across search, social, display, and programmatic optimised continuously for the highest return.",
   },
   {
     slug: "digital-pr-influencer",
@@ -24,7 +24,7 @@ export const SERVICES = [
     group: "marketing",
     icon: "Megaphone",
     short:
-      "Earn the coverage, credibility, and third-party validation that turns browsers into believers.",
+      "Earn the coverage, credibility, and third party validation that turns browsers into believers.",
   },
   {
     slug: "seo",
@@ -32,7 +32,7 @@ export const SERVICES = [
     group: "marketing",
     icon: "MagnifyingGlass",
     short:
-      "Sustainable, compounding organic visibility built on technical rigour, audience-first content, and authoritative links.",
+      "Sustainable, compounding organic visibility built on technical rigour, audience first content, and authoritative links.",
   },
   {
     slug: "web-app-development",
@@ -40,7 +40,7 @@ export const SERVICES = [
     group: "technology",
     icon: "Code",
     short:
-      "Fast, intuitive websites and applications engineered to convert — from the first visit.",
+      "Fast, intuitive websites and applications engineered to convert  from the first visit.",
   },
   {
     slug: "enterprise-software",
@@ -48,7 +48,7 @@ export const SERVICES = [
     group: "technology",
     icon: "Stack",
     short:
-      "Bespoke enterprise systems — CMS, DMS, ERP, CRM — built around your processes, not the other way around.",
+      "Bespoke enterprise systems  CMS, DMS, ERP, CRM  built around your processes, not the other way around.",
   },
 ] as const;
 
@@ -127,6 +127,7 @@ export const PORTFOLIO_PREVIEW = [
     client: "Alkhidmat Foundation",
     metric: "63% lower CPA",
     note: "$4.40 achieved vs $12.00 target across PK, Gulf & Europe.",
+    image: "/digitales web/images/featured work/1.jpg",
   },
   {
     slug: "uol-spring-admission",
@@ -134,6 +135,7 @@ export const PORTFOLIO_PREVIEW = [
     client: "University of Lahore",
     metric: "Spring intake campaign",
     note: "Full-funnel admission drive across paid social and search.",
+    image: "/digitales web/images/featured work/2.jpg",
   },
   {
     slug: "medical-aesthetics-seo",
@@ -141,6 +143,7 @@ export const PORTFOLIO_PREVIEW = [
     client: "Medical Aesthetics Clinic",
     metric: "Organic visibility",
     note: "Technical + content SEO programme delivering compounding traffic.",
+    image: "/digitales web/images/featured work/3.jpg",
   },
 ] as const;
 
@@ -170,6 +173,7 @@ export const CASE_STUDIES = [
     result: "63% lower CPA",
     resultLabel: "$4.40 achieved vs $12.00 target",
     hardNumber: true,
+    image: "/digitales web/images/Portfolio/1.jpg",
   },
   {
     slug: "uol-spring-admission",
@@ -180,6 +184,7 @@ export const CASE_STUDIES = [
     result: "Full-funnel intake",
     resultLabel: "Paid social + search admission drive",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/2.jpg",
   },
   {
     slug: "ucmd-mbbs-bds",
@@ -190,6 +195,7 @@ export const CASE_STUDIES = [
     result: "Lead-gen webinar",
     resultLabel: "Registration & conversion campaign",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/3.jpg",
   },
   {
     slug: "medical-aesthetics-seo",
@@ -200,6 +206,7 @@ export const CASE_STUDIES = [
     result: "Organic growth",
     resultLabel: "Technical + content SEO",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/4.jpg",
   },
   {
     slug: "yoga-brand-seo-dubai",
@@ -210,6 +217,7 @@ export const CASE_STUDIES = [
     result: "Search visibility",
     resultLabel: "Regional organic strategy",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/5.jpg",
   },
   {
     slug: "ngo-seo-visibility",
@@ -220,6 +228,7 @@ export const CASE_STUDIES = [
     result: "Authority growth",
     resultLabel: "Content + technical SEO",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/6.jpg",
   },
   {
     slug: "neo-jeans",
@@ -230,6 +239,7 @@ export const CASE_STUDIES = [
     result: "DTC build & growth",
     resultLabel: "Storefront + performance",
     hardNumber: false,
+    image: "/digitales web/images/Portfolio/7.jpg",
   },
 ] as const;
 

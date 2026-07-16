@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react";
 import { CASE_STUDIES, PORTFOLIO_FILTERS } from "@/lib/site";
@@ -41,8 +42,14 @@ export default function PortfolioGrid() {
               className="group flex flex-col overflow-hidden rounded-card border border-white/[0.07] bg-night-surface transition-all duration-300 hover:-translate-y-1 hover:border-purple/60"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(75% 75% at 30% 25%, rgba(139,61,176,0.6), rgba(10,6,16,1) 76%)" }} />
-                <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(55% 55% at 90% 90%, rgba(240,180,40,0.2), transparent 60%)" }} />
+                <Image
+                  src={c.image}
+                  alt={`${c.client} case study`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div aria-hidden className="absolute inset-0 bg-night/15" />
                 <span className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1 font-body text-[0.7rem] font-semibold uppercase tracking-wide text-purple-deep">
                   {c.category}
                 </span>

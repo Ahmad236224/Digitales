@@ -1,7 +1,7 @@
 const TRUST_LOGOS = [
   {
     name: "African Relief Fund",
-    logo: "/Images/WEB LOGO/AFRICAN RELIEF FUND.png",
+    logo: "/Images/WEB LOGO/African_Relief_Fund.png",
   },
   {
     name: "AHF",
@@ -50,27 +50,41 @@ const TRUST_LOGOS = [
 ] as const;
 
 export default function TrustBar() {
-  const row = [...TRUST_LOGOS, ...TRUST_LOGOS];
+  const renderLogoRow = (ariaHidden = false) => (
+    <div
+      className="flex shrink-0 items-center"
+      aria-hidden={ariaHidden}
+    >
+      {TRUST_LOGOS.map((item) => (
+        <div
+          key={item.name}
+          className="mr-12 flex h-16 w-40 shrink-0 items-center justify-center sm:mr-16 sm:w-52 lg:mr-20 lg:w-60"
+        >
+          <img
+            src={item.logo}
+            alt={`${item.name} logo`}
+            className="h-12 w-full bg-transparent object-contain transition duration-300 sm:h-14"
+            loading="lazy"
+            style={{
+              filter: "brightness(1.5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.1))",
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <section className="bg-[linear-gradient(180deg,#0A0610_0%,#12081A_52%,#281033_100%)] py-2">
-      <p className="container-d text-center font-body text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-gold">
+    <section className="bg-[linear-gradient(180deg,#0A0610_0%,#12081A_52%,#281033_100%)] py-8">
+      <p className="container-d text-center font-body text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-gold/90">
         Trusted by organisations across three continents
       </p>
-      <div className="group relative mt-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <div className="flex w-max animate-marquee items-center gap-14 group-hover:[animation-play-state:paused]">
-          {row.map((item, i) => (
-            <div
-              key={i}
-              className="relative flex h-28 w-72 shrink-0 items-center justify-center px-6 py-2 transition duration-300 before:absolute before:inset-x-3 before:inset-y-4 before:rounded-full before:bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.44)_42%,transparent_72%)] before:opacity-90 before:blur-sm hover:-translate-y-0.5"
-            >
-              <img
-                src={item.logo}
-                alt={`${item.name} logo`}
-                className="relative z-10 h-20 w-full object-contain opacity-100 brightness-125 contrast-125 saturate-125 drop-shadow-[0_10px_20px_rgba(0,0,0,0.45)]"
-                loading="lazy"
-              />
-            </div>
-          ))}
+      <div className="mt-4">
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_6%,black_94%,transparent_100%)]">
+          <div className="flex w-max animate-marquee items-center will-change-transform group-hover:[animation-play-state:paused]">
+            {renderLogoRow()}
+            {renderLogoRow(true)}
+          </div>
         </div>
       </div>
     </section>

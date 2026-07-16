@@ -14,6 +14,7 @@ type ContactPayload = {
   email?: unknown;
   service?: unknown;
   message?: unknown;
+  sourceDomain?: unknown;
 };
 
 type ContactData = {
@@ -21,6 +22,7 @@ type ContactData = {
   email: string;
   service: string;
   message: string;
+  sourceDomain: string;
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,6 +32,7 @@ function validateContactPayload(body: ContactPayload) {
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
   const service = typeof body.service === "string" ? body.service.trim() : "";
   const message = typeof body.message === "string" ? body.message.trim() : "";
+  const sourceDomain = typeof body.sourceDomain === "string" ? body.sourceDomain.trim().toLowerCase() : "";
 
   if (!name) {
     return { error: "Name is required" };
@@ -53,6 +56,7 @@ function validateContactPayload(body: ContactPayload) {
       email,
       service: service || "Not specified",
       message,
+      sourceDomain: sourceDomain || "unknown",
     },
   };
 }
@@ -75,6 +79,7 @@ export async function POST(req: NextRequest) {
         email: validated.data.email,
         service: validated.data.service,
         message: validated.data.message,
+        sourceDomain: validated.data.sourceDomain,
         createdAt: serverTimestamp(),
       });
     } catch (error) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, CheckCircle } from "@phosphor-icons/react";
 
 const SERVICES_OPTIONS = [
@@ -15,10 +15,48 @@ const SERVICES_OPTIONS = [
   "Not sure — advise me",
 ];
 
+function getSourceDomain() {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  const testDomain = new URLSearchParams(window.location.search).get("domain");
+
+  if (testDomain && ["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+    return testDomain;
+  }
+
+  return window.location.hostname;
+}
+
+function getLocationsForDomain(domain: string) {
+  if (domain.includes("digitales.pk")) {
+    return ["Lahore Office", "London Office", "New York Office"];
+  }
+
+  if (domain.includes("digitales.uk")) {
+    return ["London Office"];
+  }
+
+  if (domain.includes("digitales.us")) {
+    return ["New York Office"];
+  }
+
+  return ["Global Headquarters"];
+}
+
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [sourceDomain, setSourceDomain] = useState("");
+  const [locations, setLocations] = useState(["Global Headquarters"]);
+
+  useEffect(() => {
+    const domain = getSourceDomain();
+    setSourceDomain(domain);
+    setLocations(getLocationsForDomain(domain));
+  }, []);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +72,7 @@ export default function ContactForm() {
       email: String(formData.get("email") || ""),
       service: String(formData.get("service") || ""),
       message: String(formData.get("message") || ""),
+      sourceDomain: sourceDomain || getSourceDomain() || "unknown",
     };
 
     try {
@@ -79,6 +118,17 @@ export default function ContactForm() {
     <form onSubmit={onSubmit} className="rounded-card border border-white/[0.08] bg-night-surface p-7 sm:p-8">
       {/* honeypot */}
       <input type="text" name="company_url" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+
+      <div className="mb-6 rounded-lg border border-white/[0.08] bg-night/70 px-4 py-3">
+        <p className="font-body text-xs font-medium uppercase tracking-wider text-muted">Regional offices</p>
+        <ul className="mt-2 space-y-1">
+          {locations.map((location) => (
+            <li key={location} className="font-body text-sm text-white">
+              {location}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full Name" name="name" placeholder="Your name" required />

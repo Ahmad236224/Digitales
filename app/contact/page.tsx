@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EnvelopeSimple, Phone, MapPin, ArrowRight, Compass, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { headers } from "next/headers";
+import { EnvelopeSimple, Phone, MapPin, ArrowRight, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import ContactForm from "@/components/contact/ContactForm";
 import Accordion from "@/components/ui/Accordion";
 
@@ -86,6 +87,29 @@ const OFFICES = [
   }
 ];
 
+function getDisplayHost(searchParams?: { domain?: string | string[] }) {
+  const host = headers().get("host")?.split(":")[0].toLowerCase() || "";
+  const domainParam = Array.isArray(searchParams?.domain) ? searchParams?.domain[0] : searchParams?.domain;
+
+  if (domainParam && ["localhost", "127.0.0.1"].includes(host)) {
+    return domainParam.toLowerCase();
+  }
+
+  return host;
+}
+
+function getOfficesForHost(host: string) {
+  if (host.includes("digitales.uk")) {
+    return OFFICES.filter((office) => office.name === "UK Chapter");
+  }
+
+  if (host.includes("digitales.us")) {
+    return OFFICES.filter((office) => office.name === "USA Chapter");
+  }
+
+  return OFFICES;
+}
+
 const FAQ = [
   { q: "What types of organisations do you work with?", a: "We work across a broad range: national universities, international NGOs, consumer brands, and enterprise technology buyers. Our teams across Pakistan, the UK, and the USA mean we are well-positioned for organisations with both regional and international requirements." },
   { q: "What is your typical project timeline?", a: "It depends on scope. A focused SEO engagement or paid media campaign can be live within two to three weeks. A custom website or enterprise software project typically requires eight to sixteen weeks. We give you a clear timeline in our initial proposal." },
@@ -94,7 +118,15 @@ const FAQ = [
   { q: "What makes Digitales different from other agencies?", a: "Primarily the integration of marketing strategy and technology delivery under one roof — backed by 30 years of advertising heritage. Most agencies specialise in one; we do both, in coordination, which is where compounding results come from." },
 ];
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams?: { domain?: string | string[] };
+}) {
+  const displayHost = getDisplayHost(searchParams);
+  const visibleOffices = getOfficesForHost(displayHost);
+  const isRegionalOfficeView = displayHost.includes("digitales.uk") || displayHost.includes("digitales.us");
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-night">
@@ -154,12 +186,14 @@ export default function ContactPage() {
       {/* Our Global Offices with Mockup Interactive Maps */}
       <section className="bg-night relative">
         <div className="container-d section">
-          <h2 className="text-center h2">Our Global Offices</h2>
+          <h2 className="text-center h2">{isRegionalOfficeView ? "Our Office" : "Our Global Offices"}</h2>
           <p className="mx-auto mt-3 max-w-lg text-center lede">
-            Strategically located to support global brands around the clock.
+            {isRegionalOfficeView
+              ? "Strategically located to support brands in your region."
+              : "Strategically located to support global brands around the clock."}
           </p>
-          <div className="mt-12 grid gap-8 grid-cols-1 lg:grid-cols-3">
-            {OFFICES.map((office) => (
+          <div className={`mt-12 grid grid-cols-1 gap-8 ${visibleOffices.length === 1 ? "w-full" : "lg:grid-cols-3"}`}>
+            {visibleOffices.map((office) => (
               <div key={office.name} className="flex flex-col rounded-card border border-white/[0.07] bg-night-surface p-6 shadow-card transition-all duration-300 hover:border-purple/30 hover:shadow-card-hover group">
                 {/* Header: Flag + Name */}
                 <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
@@ -193,11 +227,6 @@ export default function ContactPage() {
                     {office.mapPaths}
                   </svg>
 
-                  {/* Compass Overlay Top Right */}
-                  <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs text-white/70 select-none shadow-sm hover:text-white transition cursor-pointer">
-                    <Compass size={14} className="animate-spin-[duration:10s]" />
-                  </div>
-
                   {/* Search Bar Mockup Top Left */}
                   <div className="absolute top-3 left-3 bg-night/85 backdrop-blur-sm border border-white/10 rounded px-2.5 py-1 text-[10px] text-white/70 flex items-center gap-1.5 shadow-sm select-none">
                     <MagnifyingGlass size={10} className="text-gold" />
@@ -210,16 +239,6 @@ export default function ContactPage() {
                     <div className="absolute w-8 h-8 rounded-full bg-gold/25 animate-ping" />
                     {/* The Golden Location Pin Icon */}
                     <MapPin size={28} weight="fill" className="text-gold relative z-10 drop-shadow-[0_0_8px_rgba(240,180,40,0.7)] transition-transform duration-300 group-hover/map:scale-110" />
-                  </div>
-
-                  {/* Zoom Controls Bottom Right */}
-                  <div className="absolute bottom-3 right-3 flex flex-col gap-1 shadow-sm select-none">
-                    <button type="button" className="w-6 h-6 rounded bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs font-bold text-white/70 hover:bg-white/10 hover:text-white transition">
-                      +
-                    </button>
-                    <button type="button" className="w-6 h-6 rounded bg-night/85 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs font-bold text-white/70 hover:bg-white/10 hover:text-white transition">
-                      −
-                    </button>
                   </div>
                 </div>
 

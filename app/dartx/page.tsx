@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, TrendUp, Buildings, Globe, Check, X } from "@phosphor-icons/react/dist/ssr";
 import CircuitBackground from "@/components/ui/CircuitBackground";
@@ -60,8 +61,15 @@ export default function DartXPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-card border border-white/[0.08]">
-            <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(70% 70% at 60% 30%, rgba(240,180,40,0.3), rgba(10,6,16,1) 72%)" }} />
-            <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(55% 55% at 15% 90%, rgba(139,61,176,0.4), transparent 60%)" }} />
+            <Image
+              src="/digitales web/images/dartx.jpg"
+              alt="DartX brand stationery"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+            <div aria-hidden className="absolute inset-0 bg-night/10" />
           </div>
         </div>
       </section>

@@ -6,6 +6,7 @@ export type InternalContactLeadEmailProps = {
   email: string;
   service: string;
   message: string;
+  sourceDomain?: string;
 };
 
 export default function InternalContactLeadEmail({
@@ -13,6 +14,7 @@ export default function InternalContactLeadEmail({
   email,
   service,
   message,
+  sourceDomain = "unknown",
 }: InternalContactLeadEmailProps) {
   return (
     <InternalEmailShell
@@ -24,6 +26,7 @@ export default function InternalContactLeadEmail({
       <Section style={shellStyles.block}>
         <Detail label="Name" value={name} />
         <Detail label="Email" value={email} href={`mailto:${email}`} />
+        <Detail label="Source Domain" value={sourceDomain} />
         <Detail label="Selected Service" value={service} last />
       </Section>
 
