@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   ShareNetwork, Target, Megaphone, MagnifyingGlass, Code, Stack, ArrowRight,
 } from "@phosphor-icons/react/dist/ssr";
-import PageHero from "@/components/ui/PageHero";
 import FinalCta from "@/components/home/FinalCta";
 import { SERVICES, PROCESS_STEPS } from "@/lib/site";
 
@@ -18,11 +17,28 @@ const ICONS = { ShareNetwork, Target, Megaphone, MagnifyingGlass, Code, Stack } 
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Precision-Engineered Success"
-        title="A Capability for Every Challenge."
-        subtitle="We combine high-octane performance marketing with architectural digital design to scale your presence — whether you need one service or all of them, every engagement is built around outcomes you can measure."
-      />
+      <section className="relative isolate overflow-hidden bg-night">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/digitales web/images/Service.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[#07040c]/50" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(61,20,80,0.35),rgba(7,4,12,0.78)_72%)]" />
+        <div className="container-d flex min-h-[68vh] flex-col items-center justify-center px-4 pb-20 pt-36 text-center">
+          <p className="rounded-full border border-gold/30 bg-gold/15 px-4 py-1.5 font-body text-[0.68rem] font-bold uppercase tracking-[0.18em] text-gold">
+            Precision-Engineered Success
+          </p>
+          <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+            A Capability for Every <span className="text-gold">Challenge.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl font-body text-sm font-medium leading-relaxed text-white sm:text-base">
+            We combine high-octane performance marketing with architectural digital design to scale your presence - whether you need one service or all of them, every engagement is built around outcomes you can measure.
+          </p>
+        </div>
+      </section>
 
       <section className="bg-night">
         <div className="container-d section">

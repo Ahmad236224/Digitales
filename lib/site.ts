@@ -375,7 +375,11 @@ export const TEAM = [
         image: "/Images/About/Technology & Data/Talha.jpg",
         bio: "Muhammad Talha Qureshi is a WordPress Developer and Graphic Designer at Digitales, specializing in responsive website development, branding, and user-focused digital experiences.",
       },
-      { name: "Hamza Irshad", title: "Junior Full Stack Developer" },
+      {
+        name: "Hamza Irshad",
+        title: "Junior Full Stack Developer",
+        image: "/about/Hamza.jpeg",
+      },
     ],
   },
   {
