@@ -143,8 +143,8 @@ export default function AboutPage() {
           {/* Leadership avatars */}
           <div className="relative mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
             {leadershipColumns.map(({ featured, supporting }) => (
-              <div key={featured.name} className="flex min-w-0 flex-col gap-6">
-                <div className="group relative min-h-[440px] overflow-hidden rounded-card border border-gold/25 bg-[linear-gradient(145deg,#1B1123_0%,#100B17_100%)] p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-purple before:via-gold before:to-purple hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_28px_70px_rgba(107,45,139,0.32)] sm:p-10">
+              <div key={featured.name} className="grid min-w-0 grid-rows-[minmax(440px,1fr)_180px] gap-6">
+                <div className="group relative h-full min-h-[440px] overflow-hidden rounded-card border border-gold/25 bg-[linear-gradient(145deg,#1B1123_0%,#100B17_100%)] p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-purple before:via-gold before:to-purple hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_28px_70px_rgba(107,45,139,0.32)] sm:p-10">
                   <p className="mb-7 font-body text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-gold">Agency Leadership</p>
                   {featured.image ? (
                     <div className="mx-auto h-36 w-36 overflow-hidden rounded-full bg-purple/15 ring-4 ring-gold ring-offset-8 ring-offset-[#15101E] transition-transform duration-300 ease-out group-hover:scale-105 sm:h-40 sm:w-40">
@@ -169,8 +169,8 @@ export default function AboutPage() {
                 </div>
 
                 {supporting && (
-                  <div className="group relative overflow-hidden rounded-card border border-purple/30 bg-[#15101E]/90 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_18px_45px_rgba(107,45,139,0.25)] sm:p-7">
-                    <div className="flex items-center gap-5">
+                  <div className="group relative h-full overflow-hidden rounded-card border border-purple/30 bg-[#15101E]/90 p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_18px_45px_rgba(107,45,139,0.25)]">
+                    <div className="flex h-full items-center gap-5">
                       {supporting.image ? (
                         <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-gold bg-purple/15 transition-transform duration-300 ease-out group-hover:scale-105">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
