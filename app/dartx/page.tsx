@@ -6,9 +6,9 @@ import CircuitBackground from "@/components/ui/CircuitBackground";
 import DartxForm from "@/components/dartx/DartxForm";
 
 export const metadata: Metadata = {
-  title: "DartX — White-Label Agency Partnership",
+  title: "DartX - White-Label Agency Partnership",
   description:
-    "DartX is a white-label digital agency model. You bring the clients, we deliver the work under your brand — no overhead, no hiring, just results.",
+    "DartX is a white-label digital agency model. You bring the clients, we deliver the work under your brand - no overhead, no hiring, just results.",
 };
 
 const OPPORTUNITY = [
@@ -20,7 +20,7 @@ const OPPORTUNITY = [
 const STEPS = [
   { n: "01", title: "Partner with DartX", body: "Apply, get onboarded, and receive your white-label toolkit." },
   { n: "02", title: "Bring Your Clients", body: "Sign the clients you already know, or find new ones under your agency brand." },
-  { n: "03", title: "We Deliver", body: "Our team executes all work — strategy, creative, media, development — under your brand. Full NDA and confidentiality." },
+  { n: "03", title: "We Deliver", body: "Our team executes all work - strategy, creative, media, development - under your brand. Full NDA and confidentiality." },
   { n: "04", title: "You Invoice & Grow", body: "Bill your clients at your own rates. Revenue is shared with DartX on the agreed model." },
 ];
 
@@ -51,7 +51,7 @@ export default function DartXPage() {
               <span className="mt-2 block text-gold">We Power It.</span>
             </h1>
             <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-muted">
-              You bring the clients, we deliver the work under your brand — with
+              You bring the clients, we deliver the work under your brand - with
               full confidentiality, professional output, and a revenue share that
               makes building an agency actually viable. No overhead. No hiring.
             </p>

@@ -87,7 +87,7 @@ export const TRUST_LOGOS = [
 export const DIFFERENTIATORS = [
   {
     title: "Narrative That Converts",
-    body: "Strategic storytelling combined with performance data — so every piece of content reaches the right audience at the right moment, and moves them to act.",
+    body: "Strategic storytelling combined with performance data - so every piece of content reaches the right audience at the right moment, and moves them to act.",
   },
   {
     title: "Creative That Commands Attention",
@@ -95,11 +95,11 @@ export const DIFFERENTIATORS = [
   },
   {
     title: "AI-Augmented Campaign Intelligence",
-    body: "Machine learning across targeting, creative optimisation, and conversion analysis — compressing the timeline from test to performance.",
+    body: "Machine learning across targeting, creative optimisation, and conversion analysis - compressing the timeline from test to performance.",
   },
   {
     title: "Technology Built for Business Outcomes",
-    body: "Every product we build treats revenue, retention, and scalability as primary requirements — not afterthoughts.",
+    body: "Every product we build treats revenue, retention, and scalability as primary requirements - not afterthoughts.",
   },
   {
     title: "UX as a Revenue Driver",
@@ -107,13 +107,13 @@ export const DIFFERENTIATORS = [
   },
   {
     title: "Integrated Digital Ecosystems",
-    body: "Marketing, technology, and customer journeys aligned — producing compounding growth rather than isolated campaign wins.",
+    body: "Marketing, technology, and customer journeys aligned - producing compounding growth rather than isolated campaign wins.",
   },
 ] as const;
 
 export const TEAM_SNAPSHOT = [
   { name: "Shaheer Ul Azeem", title: "CEO, CTO & Founder", lead: true },
-  { name: "Aziz Khawaja", title: "Director — Operations", lead: true },
+  { name: "Aziz Khawaja", title: "Director - Operations", lead: true },
   { name: "Ammarah", title: "Creative Lead", lead: false },
   { name: "Waqas Nayyar", title: "SEO Specialist", lead: false },
   { name: "Khuzema Khan", title: "Full Stack Developer", lead: false },
@@ -213,7 +213,7 @@ export const CASE_STUDIES = [
     category: "SEO",
     tags: ["SEO"],
     client: "Organic Yoga Brand",
-    title: "SEO — Dubai Market",
+    title: "SEO - Dubai Market",
     result: "Search visibility",
     resultLabel: "Regional organic strategy",
     hardNumber: false,
@@ -252,7 +252,7 @@ export const PORTFOLIO_FILTERS = [
 export const PROCESS_STEPS = [
   { n: "01", title: "Discovery", body: "We understand your business model, competitive context, audience behaviour, and the outcomes you need." },
   { n: "02", title: "Strategy", body: "A structured plan: channels, messaging, KPIs, timelines, and the commercial logic connecting activity to results." },
-  { n: "03", title: "Execution", body: "Our in-house team delivers across creative, media, technology, and content — with full transparency at every stage." },
+  { n: "03", title: "Execution", body: "Our in-house team delivers across creative, media, technology, and content - with full transparency at every stage." },
   { n: "04", title: "Optimisation", body: "We measure, learn, and improve continuously. Every campaign generates data that makes the next one more effective." },
 ] as const;
 
@@ -276,7 +276,7 @@ export const LEADERSHIP = [
   },
   {
     name: "Aziz Khawaja",
-    title: "Director — Operations",
+    title: "Director - Operations",
     region: "Global",
     image: "/about/Aziz Khawaja.jpeg",
     bio: "Aziz Khawaja is a Full-Stack Digital Marketing and PR professional with over 10 years of experience helping brands build meaningful digital presence through strategic communication and performance-driven campaigns. His expertise spans digital media buying and planning, PR, social media strategy, SEO, and web and conversion optimization.",
@@ -322,10 +322,10 @@ export const TEAM = [
     dept: "Creative",
     people: [
       {
-        name: "Ammarah Zahid",
-        title: "Creative Lead",
-        image: "/about/ammarah-zahid.jpg",
-        bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
+        name: "Kaleem Ullah",
+        title: "Video Content Specialist",
+        image: "/about/Kaleem ullah.jpeg",
+        bio: "Enthusiastic Video Editor and Motion Designer with a keen eye for emotional details, perspective, and AI implementation.",
       },
       {
         name: "Fahad Ahmad",
@@ -341,10 +341,10 @@ export const TEAM = [
 
       },
       {
-        name: "Kaleem Ullah",
-        title: "Video Content Specialist",
-        image: "/about/Kaleem ullah.jpeg",
-        bio: "Enthusiastic Video Editor and Motion Designer with a keen eye for emotional details, perspective, and AI implementation.",
+        name: "Ammarah Zahid",
+        title: "Creative Lead",
+        image: "/about/ammarah-zahid.jpg",
+        bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
       },
     ],
   },
@@ -379,6 +379,7 @@ export const TEAM = [
         name: "Hamza Irshad",
         title: "Junior Full Stack Developer",
         image: "/about/Hamza.jpeg",
+        bio: "As a Junior Full Stack Developer at Digitales, I build responsive and user-friendly web applications using Laravel, WordPress, and Shopify. I also handle debugging, performance optimization, and ongoing website improvements.",
       },
     ],
   },
@@ -417,26 +418,26 @@ export const SERVICE_DETAIL: Record<string, {
 }> = {
   "seo": {
     headline: "Be Found. Be Chosen. Own the Search Results.",
-    answer: "Digitales provides search engine optimisation services for businesses across Pakistan, the UK, and the USA. We build SEO programmes that earn organic visibility, attract high-intent traffic, and deliver compounding returns — through technical audits, content strategy, link building, and local SEO.",
+    answer: "Digitales provides search engine optimisation services for businesses across Pakistan, the UK, and the USA. We build SEO programmes that earn organic visibility, attract high-intent traffic, and deliver compounding returns - through technical audits, content strategy, link building, and local SEO.",
     pullQuote: "Good SEO does not chase the algorithm. It builds the kind of digital authority that algorithms are designed to reward.",
     whyTitle: "Why SEO",
     whyItems: [
       "Generates high-intent leads at significantly lower cost per acquisition than paid channels",
       "Builds long-term brand authority and domain trust that cannot be replicated quickly",
-      "Delivers compounding returns — rankings earned today continue driving traffic for years",
+      "Delivers compounding returns - rankings earned today continue driving traffic for years",
       "Positions your brand as the credible, expert answer to your customers' most important questions",
     ],
     serviceTitle: "Our SEO Services",
     services: ["Technical SEO Audits & Remediation", "On-Page Optimisation", "Content Strategy & Production", "Authority Link Building", "Local SEO", "Performance Tracking"],
-    ctaText: "Want to see where you rank today — and where you should be?",
+    ctaText: "Want to see where you rank today - and where you should be?",
     ctaLabel: "Run a Free Audit →",
   },
   "digital-media-buying": {
     headline: "Maximum Return. Minimum Wasted Spend.",
     answer: "Digitales plans, executes, and optimises high-performance paid media campaigns across search, social, display, and programmatic channels for growth-oriented organisations in Pakistan, the UK, and the USA. We manage Google Ads, Meta, TikTok, LinkedIn, and programmatic platforms with a rigorous, data-led approach designed to eliminate guesswork.",
-    pullQuote: "The right message, in front of the right person, at the right moment — that is the only standard we accept.",
+    pullQuote: "The right message, in front of the right person, at the right moment - that is the only standard we accept.",
     serviceTitle: "Our Media Buying Services",
-    services: ["Paid Social — Meta, Instagram, TikTok, LinkedIn, X", "Search Engine Marketing — Google Ads, Bing", "Programmatic & Display Advertising", "Video Advertising — YouTube, Connected TV", "Retargeting & Remarketing Campaigns", "Audience Segmentation & Lookalike Modelling"],
+    services: ["Paid Social - Meta, Instagram, TikTok, LinkedIn, X", "Search Engine Marketing - Google Ads, Bing", "Programmatic & Display Advertising", "Video Advertising - YouTube, Connected TV", "Retargeting & Remarketing Campaigns", "Audience Segmentation & Lookalike Modelling"],
     ctaText: "Let us audit your current ad spend and show you where returns are being left on the table.",
     ctaLabel: "Book a Media Audit →",
   },
@@ -458,21 +459,21 @@ export const SERVICE_DETAIL: Record<string, {
     answer: "Digitales delivers high-impact digital PR and creator-led marketing strategies for ambitious brands seeking undeniable credibility, cultural relevance, and dominant media coverage. We secure top-tier press placements, orchestrate hyper-targeted influencer movements, protect corporate reputations, and position our clients as the definitive authorities in their fields across Pakistan, the UK, and the USA markets.",
     serviceTitle: "Our Services",
     services: ["Press Release Strategy, Writing & Distribution", "Media Outreach & Journalist Relationship Management", "Thought Leadership Content Creation", "Influencer Campaign Strategy & Execution", "Crisis Communication Planning & Management", "Online Reputation Monitoring & Response"],
-    ctaText: "Your Brand Deserves to Be Talked About — For the Right Reasons. Let us audit your current digital footprint...",
+    ctaText: "Your Brand Deserves to Be Talked About - For the Right Reasons. Let us audit your current digital footprint...",
     ctaLabel: "Start Building Authority →",
   },
   "web-app-development": {
     headline: "Your Digital Presence Is Your First Commercial Impression. Make It Count.",
     answer: "Digitales builds custom websites, mobile applications, and high-performance web platforms for growth-focused businesses across Pakistan, the UK, and the USA. We leverage cutting-edge technologies like React, Next.js, Laravel, Flutter, and WordPress to deliver lightning-fast, conversion-optimised digital products that directly serve your commercial objectives.",
-    pullQuote: "A website is not a brochure. It is a business tool. Most businesses underestimate what their website is actually doing — or failing to do — every single day. Your website is the destination every marketing channel points to.",
+    pullQuote: "A website is not a brochure. It is a business tool. Most businesses underestimate what their website is actually doing - or failing to do - every single day. Your website is the destination every marketing channel points to.",
     serviceTitle: "Our Services",
-    services: ["Custom Website Development — Responsive, performance-engineered, bespoke", "eCommerce Development — Shopify, WooCommerce, Magento", "Mobile App Development — Native iOS, Android, React Native", "Web Application & SaaS Development", "UX/UI Design & Prototyping", "Maintenance, Hosting & Performance Optimisation"],
+    services: ["Custom Website Development - Responsive, performance-engineered, bespoke", "eCommerce Development - Shopify, WooCommerce, Magento", "Mobile App Development - Native iOS, Android, React Native", "Web Application & SaaS Development", "UX/UI Design & Prototyping", "Maintenance, Hosting & Performance Optimisation"],
     ctaText: "Your website should be your best-performing salesperson.",
     ctaLabel: "Let us build it →",
   },
   "enterprise-software": {
-    headline: "Software That Fits Your Business — Not the Other Way Around.",
-    answer: "Most enterprise software forces you to change your workflows, adjust your habits, and work around its limitations. We think that’s backwards. Your operations are unique, and your technology should be too. We design, build, and integrate custom enterprise software tailored specifically to your operational realities—allowing you to scale seamlessly, eliminate friction, and unlock your team’s true potential.",
+    headline: "Software That Fits Your Business - Not the Other Way Around.",
+    answer: "Most enterprise software forces you to change your workflows, adjust your habits, and work around its limitations. We think that’s backwards. Your operations are unique, and your technology should be too. We design, build, and integrate custom enterprise software tailored specifically to your operational realities - allowing you to scale seamlessly, eliminate friction, and unlock your team’s true potential.",
     whyTitle: "Process Phases",
     whyItems: [
       "Phase 1: Discovery & Mapping",

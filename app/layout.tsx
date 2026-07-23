@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-// Self-hosted via next/font — preloaded, font-display: swap, zero layout shift.
+// Self-hosted via next/font - preloaded, font-display: swap, zero layout shift.
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
@@ -29,7 +29,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitales.pk"),
   title: {
-    default: "Digitales — Digital Marketing Agency & Performance Marketing Agency",
+    default: "Digitales - Digital Marketing Agency & Performance Marketing Agency",
     template: "%s · Digitales",
   },
   description:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Digitales",
-    title: "Digitales — Digital Marketing Agency & Performance Marketing Agency",
+    title: "Digitales - Digital Marketing Agency & Performance Marketing Agency",
     description:
       "Full-service digital marketing agency and performance marketing agency delivering data-driven digital marketing services, SEO, media buying, and custom software solutions across PK, UK, and USA.",
   },

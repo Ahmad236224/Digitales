@@ -2,6 +2,7 @@ const TRUST_LOGOS = [
   {
     name: "African Relief Fund",
     logo: "/Images/WEB LOGO/African_Relief_Fund.png",
+    featured: true,
   },
   {
     name: "AHF",
@@ -10,18 +11,22 @@ const TRUST_LOGOS = [
   {
     name: "Alkhidmat Pakistan",
     logo: "/Images/WEB LOGO/ALKHIDMAT PAKISTAN.png",
+    featured: true,
   },
   {
     name: "Consultants Areena",
     logo: "/Images/WEB LOGO/CONSULTANTS AREENA.png",
+    featured: true,
   },
   {
     name: "GEEF",
     logo: "/Images/WEB LOGO/geef.png",
+    featured: true,
   },
   {
-    name: "HU",
-    logo: "/Images/WEB LOGO/HU Logo Png Formate Final.png",
+    name: "Humanity Aux",
+    logo: "/Images/WEB LOGO/Humanity-aux.png",
+    featured: true,
   },
   {
     name: "Islamic Centre of Britain",
@@ -58,12 +63,17 @@ export default function TrustBar() {
       {TRUST_LOGOS.map((item) => (
         <div
           key={item.name}
-          className="mr-12 flex h-16 w-40 shrink-0 items-center justify-center sm:mr-16 sm:w-52 lg:mr-20 lg:w-60"
+          className="mr-10 flex h-20 w-56 shrink-0 items-center justify-center sm:mr-12"
         >
           <img
             src={item.logo}
             alt={`${item.name} logo`}
-            className="h-12 w-full bg-transparent object-contain transition duration-300 sm:h-14"
+            className={
+              "bg-transparent object-contain transition duration-300 " +
+              ("featured" in item && item.featured
+                ? "h-16 w-52"
+                : "h-14 w-44")
+            }
             loading="lazy"
             style={{
               filter: "brightness(1.5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.1))",

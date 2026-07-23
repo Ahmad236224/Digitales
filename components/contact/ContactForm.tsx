@@ -12,7 +12,7 @@ const SERVICES_OPTIONS = [
   "Enterprise Software",
   "Relief OS",
   "DartX",
-  "Not sure — advise me",
+  "Not sure - advise me",
 ];
 
 function getSourceDomain() {

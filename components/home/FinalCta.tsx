@@ -12,7 +12,7 @@ export default function FinalCta() {
         </h2>
         <p className="mx-auto mt-5 max-w-2xl font-body text-lg text-muted">
           Whether you need to grow faster, convert better, or build something
-          entirely new — we should have a conversation. Our team across Pakistan,
+          entirely new - we should have a conversation. Our team across Pakistan,
           the UK, and the USA is ready to start.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-4">

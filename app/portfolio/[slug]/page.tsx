@@ -8,16 +8,16 @@ import { CASE_STUDIES } from "@/lib/site";
 
 // Full write-up for the case the copy doc documents in detail.
 const ALKHIDMAT = {
-  overview: ["Client: Alkhidmat Foundation", "Campaign: Ramadan Online Donation Drive", "Duration: Ramadan 2021 — 30 days", "Markets: Pakistan · Gulf · UK · Europe"],
-  challenge: "Alkhidmat Foundation required a high-performance online donation campaign across Pakistan, the Gulf, and Europe during Ramadan 2021 — one of the most competitive periods in the charitable sector. The target CPA was US$12, a 30% reduction on the previous year's already-strong benchmark.",
+  overview: ["Client: Alkhidmat Foundation", "Campaign: Ramadan Online Donation Drive", "Duration: Ramadan 2021 - 30 days", "Markets: Pakistan · Gulf · UK · Europe"],
+  challenge: "Alkhidmat Foundation required a high-performance online donation campaign across Pakistan, the Gulf, and Europe during Ramadan 2021 - one of the most competitive periods in the charitable sector. The target CPA was US$12, a 30% reduction on the previous year's already-strong benchmark.",
   approach: [
     "Applied first-party audience data from the prior year to warm targeting from day one.",
-    "Deployed IMO app placements to reach NRPs in the Gulf — a non-standard but high-performing channel.",
+    "Deployed IMO app placements to reach NRPs in the Gulf - a non-standard but high-performing channel.",
     "Built a full media mix across social, display, search, and programmatic to maximise conversion across three markets.",
     "Implemented market-specific creative variants and bidding strategies for Pakistan, UK, and Gulf segments.",
   ],
   results: [
-    { metric: "63%", label: "Lower CPA than target — $4.40 vs $12.00" },
+    { metric: "63%", label: "Lower CPA than target - $4.40 vs $12.00" },
     { metric: "2x", label: "Higher conversion rate vs the prior year" },
     { metric: "4.75%", label: "Overall conversion rate across markets" },
   ],
@@ -29,7 +29,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const study = CASE_STUDIES.find((c) => c.slug === params.slug);
-  return { title: study ? `${study.client} — Case Study` : "Case Study" };
+  return { title: study ? `${study.client} - Case Study` : "Case Study" };
 }
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
@@ -40,7 +40,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${study.client} — ${study.title}`,
+    headline: `${study.client} - ${study.title}`,
     author: { "@type": "Organization", name: "Digitales" },
   };
 
@@ -115,8 +115,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <div className="rounded-card border border-white/[0.08] bg-night-surface p-10">
               <h2 className="h2">{study.title}</h2>
               <p className="mt-4 max-w-2xl lede">
-                The full structured write-up for this engagement — challenge,
-                strategy, and verified results — is being prepared as an
+                The full structured write-up for this engagement - challenge,
+                strategy, and verified results - is being prepared as an
                 SEO-indexed case-study page.
               </p>
               <div className="mt-6 flex items-center gap-2 font-body text-sm text-muted">

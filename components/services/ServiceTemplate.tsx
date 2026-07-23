@@ -19,6 +19,12 @@ type SectionBlock = {
   paragraphs: string[];
 };
 
+type ToolLogo = {
+  name: string;
+  icon?: string;
+  accent?: string;
+};
+
 type ServiceContent = {
   title: string;
   headline: string;
@@ -30,7 +36,7 @@ type ServiceContent = {
   services: string[];
   blocks?: SectionBlock[];
   toolsTitle?: string;
-  tools?: string[];
+  tools?: ToolLogo[];
   ctaHeading: string;
   ctaParagraphs?: string[];
   ctaLabel: string;
@@ -42,7 +48,7 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
     title: "SEO",
     headline: "Be Found. Be Chosen. Own the Search Results.",
     answerParagraphs: [
-      "Digitales provides search engine optimisation services for businesses across Pakistan, the UK, and the USA. We build SEO programmes that earn organic visibility, attract high-intent traffic, and deliver compounding returns — through technical audits, content strategy, link building, and local SEO.",
+      "Digitales provides search engine optimisation services for businesses across Pakistan, the UK, and the USA. We build SEO programmes that earn organic visibility, attract high-intent traffic, and deliver compounding returns - through technical audits, content strategy, link building, and local SEO.",
     ],
     quote:
       "Good SEO does not chase the algorithm. It builds the kind of digital authority that algorithms are designed to reward.",
@@ -50,13 +56,13 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
     whyItems: [
       "Generates high-intent leads at significantly lower cost per acquisition than paid channels",
       "Builds long-term brand authority and domain trust that cannot be replicated quickly",
-      "Delivers compounding returns — rankings earned today continue driving traffic for years",
+      "Delivers compounding returns - rankings earned today continue driving traffic for years",
       "Positions your brand as the credible, expert answer to your customers' most important questions",
     ],
     servicesTitle: "Our SEO Services",
     services: [
       "Technical SEO Audits & Remediation",
-      "On-Page Optimisation — Meta, Headers, Structured Content",
+      "On-Page Optimisation - Meta, Headers, Structured Content",
       "Content Strategy & Production",
       "Authority Link Building Campaigns",
       "Local SEO & Google Business Profile Optimisation",
@@ -67,10 +73,10 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
         heading: "How We Build Rankings That Last",
         paragraphs: [
           "Most agencies chase positions. We build the underlying authority that earns them.",
-          "Our process begins with a full technical and competitive audit — understanding what is holding your site back, where your competitors are winning, and which opportunities are within reach in the next 90 days. From there, we build a programme structured around three compounding pillars:",
-          "Foundation — We eliminate every technical barrier standing between your site and full crawlability: site speed, indexation errors, structured data, Core Web Vitals, and mobile performance. Search engines cannot rank what they cannot understand.",
-          "Content — We map your target queries to searcher intent, then produce content designed to answer those questions with more depth, clarity, and authority than anything currently ranking. Every piece earns its place on the page.",
-          "Authority — We build links that move the needle — earned placements on relevant, high-authority publications, not directory submissions or link farms. Domain authority takes time to build and cannot be faked; we treat it accordingly.",
+          "Our process begins with a full technical and competitive audit - understanding what is holding your site back, where your competitors are winning, and which opportunities are within reach in the next 90 days. From there, we build a programme structured around three compounding pillars:",
+          "Foundation - We eliminate every technical barrier standing between your site and full crawlability: site speed, indexation errors, structured data, Core Web Vitals, and mobile performance. Search engines cannot rank what they cannot understand.",
+          "Content - We map your target queries to searcher intent, then produce content designed to answer those questions with more depth, clarity, and authority than anything currently ranking. Every piece earns its place on the page.",
+          "Authority - We build links that move the needle - earned placements on relevant, high-authority publications, not directory submissions or link farms. Domain authority takes time to build and cannot be faked; we treat it accordingly.",
         ],
       },
       {
@@ -81,20 +87,20 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
           "Leads and enquiries attributed to organic search",
           "Share of voice against your named competitors",
           "Revenue influenced by non-paid traffic",
-          "Every client receives a monthly strategy review — not just a dashboard. We explain what moved, why it moved, and what we are doing next. Transparency is not optional; it is how trust is built.",
+          "Every client receives a monthly strategy review - not just a dashboard. We explain what moved, why it moved, and what we are doing next. Transparency is not optional; it is how trust is built.",
         ],
       },
     ],
-    toolsTitle: "Tools",
+    toolsTitle: "Tools & Platforms We Use",
     tools: [
-      "SEMrush",
-      "Ahrefs",
-      "Moz",
-      "Screaming Frog",
-      "Google Search Console",
-      "Google Analytics 4",
+      { name: "SEMrush", icon: "https://cdn.simpleicons.org/semrush" },
+      { name: "Ahrefs", accent: "#FF8800" },
+      { name: "Moz", accent: "#1B70F0" },
+      { name: "Screaming Frog", accent: "#7DBA2F" },
+      { name: "Google Search Console", icon: "https://api.iconify.design/logos:google-search-console.svg" },
+      { name: "Google Analytics 4", icon: "https://api.iconify.design/logos:google-analytics.svg" },
     ],
-    ctaHeading: "Want to see where you rank today — and where you should be?",
+    ctaHeading: "Want to see where you rank today - and where you should be?",
     ctaLabel: "Run a Free Audit →",
     ctaHref: "/free-audit",
   },
@@ -102,17 +108,17 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
     title: "Digital Media Buying",
     headline: "Maximum Return. Minimum Wasted Spend.",
     answerParagraphs: [
-      "Digitales plans, executes, and optimises high-performance paid media campaigns across search, social, display, and programmatic channels for growth-oriented organisations in Pakistan, the UK, and the USA. We manage Google Ads, Meta, TikTok, LinkedIn, and programmatic platforms with a rigorous, data-led approach designed to eliminate guesswork. Our philosophy is built on the reality that modern advertising requires more than just launching campaigns—it demands absolute alignment between learning algorithms and deep consumer psychology across diverse international markets.",
+      "Digitales plans, executes, and optimises high-performance paid media campaigns across search, social, display, and programmatic channels for growth-oriented organisations in Pakistan, the UK, and the USA. We manage Google Ads, Meta, TikTok, LinkedIn, and programmatic platforms with a rigorous, data-led approach designed to eliminate guesswork. Our philosophy is built on the reality that modern advertising requires more than just launching campaigns - it demands absolute alignment between learning algorithms and deep consumer psychology across diverse international markets.",
       "By functioning as an extension of your growth team, we deep-dive into cross-border market dynamics to craft tailored bidding strategies that treat your budget as a high-yield investment rather than an operational expense.",
     ],
     quote:
-      "The right message, in front of the right person, at the right moment — that is the only standard we accept.",
+      "The right message, in front of the right person, at the right moment - that is the only standard we accept.",
     servicesTitle: "Our Media Buying Services",
     services: [
-      "Paid Social — Meta, Instagram, TikTok, LinkedIn, X",
-      "Search Engine Marketing — Google Ads, Bing",
+      "Paid Social - Meta, Instagram, TikTok, LinkedIn, X",
+      "Search Engine Marketing - Google Ads, Bing",
       "Programmatic & Display Advertising",
-      "Video Advertising — YouTube, Connected TV",
+      "Video Advertising - YouTube, Connected TV",
       "Retargeting & Remarketing Campaigns",
       "Audience Segmentation & Lookalike Modelling",
     ],
@@ -124,12 +130,12 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
         ],
       },
       {
-        heading: "Why paid media — done right — is your fastest channel",
+        heading: "Why paid media - done right - is your fastest channel",
         paragraphs: [
           "Generates qualified attention on demand, at a pace organic channels cannot match",
           "Reaches audiences at the exact moment they are ready to act",
           "Scales directly with budget when the strategy and execution are sound",
-          "Provides measurable, attributable return — every pound, dollar and rupee accounted for",
+          "Provides measurable, attributable return - every pound, dollar and rupee accounted for",
           "Delivers immediate data that sharpens every other part of your marketing",
         ],
       },
@@ -142,9 +148,18 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
           "The Death of Vanity Metrics",
           "Impressions and clicks don't pay the rent. We tie our success directly to your bottom line: lowering your Customer Acquisition Cost (CAC) and aggressively scaling your Return on Ad Spend (ROAS).",
           "Creative-Led Performance",
-          "Modern ad platforms are hungry for creative. Media buying is no longer just about technical targeting—it’s about dynamic hooks. We blend analytical precision with pattern-interrupting assets that force a scroll-stop.",
+          "Modern ad platforms are hungry for creative. Media buying is no longer just about technical targeting - it’s about dynamic hooks. We blend analytical precision with pattern-interrupting assets that force a scroll-stop.",
         ],
       },
+    ],
+    toolsTitle: "Tools & Platforms We Use",
+    tools: [
+      { name: "Google Ads", icon: "https://api.iconify.design/logos:google-ads.svg" },
+      { name: "Meta Ads", icon: "https://api.iconify.design/logos:meta-icon.svg" },
+      { name: "TikTok Ads", icon: "https://api.iconify.design/logos:tiktok-icon.svg" },
+      { name: "LinkedIn Ads", icon: "https://api.iconify.design/logos:linkedin-icon.svg" },
+      { name: "Microsoft Bing", accent: "#008373" },
+      { name: "YouTube", icon: "https://api.iconify.design/logos:youtube-icon.svg" },
     ],
     ctaHeading:
       "Let us audit your current ad spend and show you where returns are being left on the table.",
@@ -173,10 +188,18 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
       {
         heading: "Turn Communication Into Capital.",
         paragraphs: [
-          "Every day your brand operates without a rigorous, conversion-focused framework, you are conceding valuable market share to competitors who understand the current landscape. You do not need social platforms that simply exist to check a box—you need an active digital ecosystem that builds undeniable authority, captures hidden demand, and drives scalable growth.",
+          "Every day your brand operates without a rigorous, conversion-focused framework, you are conceding valuable market share to competitors who understand the current landscape. You do not need social platforms that simply exist to check a box - you need an active digital ecosystem that builds undeniable authority, captures hidden demand, and drives scalable growth.",
           "Let’s dissect your current positioning, isolate your true audience opportunities, and build a community that does not just scroll past, but actively commits.",
         ],
       },
+    ],
+    toolsTitle: "Tools & Platforms We Use",
+    tools: [
+      { name: "Instagram", icon: "https://api.iconify.design/logos:instagram-icon.svg" },
+      { name: "TikTok", icon: "https://api.iconify.design/logos:tiktok-icon.svg" },
+      { name: "LinkedIn", icon: "https://api.iconify.design/logos:linkedin-icon.svg" },
+      { name: "Facebook", icon: "https://api.iconify.design/logos:facebook.svg" },
+      { name: "X", icon: "https://api.iconify.design/logos:x.svg" },
     ],
     ctaHeading: "Ready to turn your social presence into a commercial asset?",
     ctaLabel: "Start a Conversation →",
@@ -203,15 +226,15 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
         heading: "What We Do",
         paragraphs: [
           "The Validation Variable: Blending Classic PR with Digital Precision.",
-          "The classic PR playbook isn’t dead—it’s just being reimagined. While many completely abandon the foundational, relationship-driven practices that built the industry, and traditional entities fail to grasp the mechanics of digital acceleration, Digitales operates firmly at the intersection of both worlds.",
+          "The classic PR playbook isn’t dead - it’s just being reimagined. While many completely abandon the foundational, relationship-driven practices that built the industry, and traditional entities fail to grasp the mechanics of digital acceleration, Digitales operates firmly at the intersection of both worlds.",
           "We understand that true market authority requires a dual approach. You cannot achieve dominant brand equity by choosing between traditional institutional credibility and digital velocity; you must master both.",
           "Amplified by Modern Digital Acceleration",
-          "Once the foundational print and broadcast placements are secured, our digital engine takes over to maximize their value. We don't let a brilliant newspaper profile or TV appearance fade away after 24 hours. We translate that established credibility into lasting digital assets—re-architecting the coverage for top-tier digital newsrooms, high-authority online editorial features, and targeted creator networks.",
+          "Once the foundational print and broadcast placements are secured, our digital engine takes over to maximize their value. We don't let a brilliant newspaper profile or TV appearance fade away after 24 hours. We translate that established credibility into lasting digital assets - re-architecting the coverage for top-tier digital newsrooms, high-authority online editorial features, and targeted creator networks.",
           "By pairing the undeniable prestige of traditional press with advanced digital tracking, strategic link-building, and localized creator alignment, we ensure your offline authority fuels your online growth. This unified strategy turns public relations into an ironclad, cross-platform asset that protects your reputation, dominates search results, and scales your business.",
         ],
       },
     ],
-    ctaHeading: "Your Brand Deserves to Be Talked About — For the Right Reasons.",
+    ctaHeading: "Your Brand Deserves to Be Talked About - For the Right Reasons.",
     ctaParagraphs: [
       "In an over-saturated market, silence is the greatest threat to your business growth. If your target audience, industry peers, and the global media are not actively discussing your innovations, you are conceding your authority to competitors who are willing to command the spotlight. You have built a remarkable organization; now it is time to build the undeniable credibility that matches it.",
       "Let us audit your current digital footprint, isolate the narrative angles your competitors are missing, and position your brand as the absolute authority in your industry.",
@@ -225,29 +248,29 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
       "Your Digital Presence Is Your First Commercial Impression. Make It Count.",
     answerParagraphs: [
       "Digitales builds custom websites, mobile applications, and high-performance web platforms for growth-focused businesses across Pakistan, the UK, and the USA. We leverage cutting-edge technologies like React, Next.js, Laravel, Flutter, and WordPress to deliver lightning-fast, conversion-optimised digital products that directly serve your commercial objectives.",
-      "We believe your website or mobile app shouldn’t just exist as an online brochure or a passive digital placeholder. In a global marketplace where attention is short and competition is fierce, your product is your brand's definitive handshake. If your platform suffers from sluggish load times, clunky navigation, or fragmented code, it isn't just underperforming—it is actively turning revenue away.",
+      "We believe your website or mobile app shouldn’t just exist as an online brochure or a passive digital placeholder. In a global marketplace where attention is short and competition is fierce, your product is your brand's definitive handshake. If your platform suffers from sluggish load times, clunky navigation, or fragmented code, it isn't just underperforming - it is actively turning revenue away.",
       "We bridge the gap between stunning visual aesthetics and rigorous software engineering to build scalable, secure platforms designed for high-impact commercial performance.",
     ],
     quote:
       "A website is not a brochure. It is a business tool.",
     blocks: [
       {
-        heading: "Most businesses underestimate what their website is actually doing — or failing to do — every single day.",
+        heading: "Most businesses underestimate what their website is actually doing - or failing to do - every single day.",
         paragraphs: [
-          "Your website is the destination every marketing channel points to. Every ad you run, every piece of content you publish, every referral you receive — all of it lands there.",
+          "Your website is the destination every marketing channel points to. Every ad you run, every piece of content you publish, every referral you receive - all of it lands there.",
           "If that destination is slow, unclear, or difficult to navigate, you are not just losing visitors. You are losing the return on every other investment you have made to bring them there.",
-          "A well-built digital product does the opposite. It loads fast, communicates clearly, guides visitors toward a decision, and converts at a rate that makes every other channel more profitable. It works while you sleep, handles objections before they are raised, and represents your brand with the same consistency a great salesperson would — without the variables.",
+          "A well-built digital product does the opposite. It loads fast, communicates clearly, guides visitors toward a decision, and converts at a rate that makes every other channel more profitable. It works while you sleep, handles objections before they are raised, and represents your brand with the same consistency a great salesperson would - without the variables.",
           "That is what we build. Not websites that look good in a portfolio. Websites and applications that perform in the real world.",
         ],
       },
     ],
     servicesTitle: "Our Services",
     services: [
-      "Custom Website Development — Responsive, performance-engineered, bespoke",
+      "Custom Website Development - Responsive, performance-engineered, bespoke",
       "We engineer responsive, performance-engineered, bespoke websites tailored to your exact operational requirements. Utilizing robust frameworks like Next.js and Laravel, or building clean, decoupled headless CMS architectures, we create custom web properties that offer complete design freedom, impenetrable security protocols, and unparalleled processing speeds.",
-      "eCommerce Development — Shopify, WooCommerce, Magento",
+      "eCommerce Development - Shopify, WooCommerce, Magento",
       "We turn digital storefronts into high-yield transactional engines using Shopify, WooCommerce, and Magento. Our eCommerce architectures focus heavily on minimizing checkout friction, integrating secure localized and international payment gateways, optimizing multi-tier product databases, and building dynamic up-sell and cross-sell systems that instantly lift your average order value (AOV).",
-      "Mobile App Development — Native iOS, Android, React Native",
+      "Mobile App Development - Native iOS, Android, React Native",
       "We build high-performance native iOS and Android experiences alongside versatile React Native and Flutter applications. Our mobile products ensure seamless offline capabilities, fluid gesture tracking, real-time push notification frameworks, and clean data synchronization so your brand lives permanently and beautifully in your customer’s pocket.",
       "Web Application & SaaS Development",
       "We transform complex operational workflows into intuitive web applications and subscription-based software assets. From custom internal dashboards and inventory management engines to multi-tenant SaaS architectures, we build secure, cloud-hosted applications that handle heavy computing loads seamlessly while keeping your proprietary data safe.",
@@ -256,15 +279,26 @@ const serviceContent: Record<ServiceSlug, ServiceContent> = {
       "Maintenance, Hosting & Performance Optimisation",
       "A digital product is a living, breathing asset that requires continuous optimization. We provide reliable cloud hosting management, automated security patching, real-time uptime monitoring, and proactive code auditing. We ensure your platform scales effortlessly alongside your traffic surges, protecting your brand from unexpected downtime.",
     ],
+    toolsTitle: "Tools & Platforms We Use",
+    tools: [
+      { name: "React", icon: "https://api.iconify.design/logos:react.svg" },
+      { name: "Next.js", icon: "https://api.iconify.design/logos:nextjs-icon.svg" },
+      { name: "Laravel", icon: "https://api.iconify.design/logos:laravel.svg" },
+      { name: "Flutter", icon: "https://api.iconify.design/logos:flutter.svg" },
+      { name: "WordPress", icon: "https://api.iconify.design/logos:wordpress-icon.svg" },
+      { name: "Shopify", icon: "https://api.iconify.design/logos:shopify.svg" },
+      { name: "WooCommerce", icon: "https://api.iconify.design/logos:woocommerce-icon.svg" },
+      { name: "Magento", icon: "https://api.iconify.design/logos:magento.svg" },
+    ],
     ctaHeading: "Your website should be your best-performing salesperson.",
     ctaLabel: "Let us build it →",
     ctaHref: "/contact",
   },
   "enterprise-software": {
     title: "Enterprise Software",
-    headline: "Software That Fits Your Business — Not the Other Way Around.",
+    headline: "Software That Fits Your Business - Not the Other Way Around.",
     answerParagraphs: [
-      "Most enterprise software forces you to change your workflows, adjust your habits, and work around its limitations. We think that’s backwards. Your operations are unique, and your technology should be too. We design, build, and integrate custom enterprise software tailored specifically to your operational realities—allowing you to scale seamlessly, eliminate friction, and unlock your team’s true potential.",
+      "Most enterprise software forces you to change your workflows, adjust your habits, and work around its limitations. We think that’s backwards. Your operations are unique, and your technology should be too. We design, build, and integrate custom enterprise software tailored specifically to your operational realities - allowing you to scale seamlessly, eliminate friction, and unlock your team’s true potential.",
       "We dive deep into your operational realities, mapping out your unique workflows, bottlenecks, and growth objectives. Whether you need to centralize chaotic data pipelines, liberate your team from repetitive manual tasks, or build an internal platform that connects global offices seamlessly, we engineer tailor-made digital ecosystems. The result is a robust, cloud-native infrastructure that operates as a natural extension of your business, giving you the agility to innovate, the security to protect your assets, and the scalability to thrive on your own terms.",
     ],
     blocks: [
@@ -498,17 +532,41 @@ export function ServiceTemplate({ slug }: { slug: ServiceSlug }) {
             <div className="max-w-3xl">
               <p className="eyebrow">{content.toolsTitle}</p>
               <h2 id="service-tools" className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Tooling that supports transparent execution.
+                Proven technology behind every outcome.
               </h2>
+              <p className="mt-4 max-w-2xl font-body text-base leading-[1.75] text-slate-400">
+                A focused toolkit selected for the strategy, execution, and measurement this service demands.
+              </p>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {content.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-white/12 bg-[#15101E] px-4 py-2 font-body text-sm leading-none text-slate-300"
+                <div
+                  key={tool.name}
+                  className="group flex min-h-32 flex-col items-center justify-center gap-4 rounded-card border border-white/[0.08] bg-[#15101E] px-4 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-gold/30 hover:bg-[#191221]"
                 >
-                  {tool}
-                </span>
+                  <span className="grid h-11 w-full place-items-center" aria-hidden="true">
+                    {tool.icon ? (
+                      <img
+                        src={tool.icon}
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy"
+                        className="h-11 w-11 object-contain transition duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <span
+                        className="whitespace-nowrap font-display text-lg font-extrabold tracking-[-0.04em]"
+                        style={{ color: tool.accent }}
+                      >
+                        {tool.name}
+                      </span>
+                    )}
+                  </span>
+                  <span className="font-body text-sm font-semibold leading-snug text-slate-300 transition group-hover:text-white">
+                    {tool.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>

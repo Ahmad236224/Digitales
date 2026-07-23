@@ -35,7 +35,7 @@ export default function PortfolioPreview() {
               {big.client}
             </p>
             <p className="mt-1 font-display text-2xl font-bold text-white group-hover:text-gold">
-              {big.metric} — {big.note}
+              {big.metric} - {big.note}
             </p>
           </Link>
 

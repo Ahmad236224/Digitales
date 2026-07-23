@@ -11,7 +11,7 @@ export default function WhyDigitales() {
         <p className="eyebrow">Why Us</p>
         <h2 className="mt-3 max-w-2xl h2">A Different Kind of Digital Partner.</h2>
         <p className="mt-5 max-w-2xl lede">
-          We do not separate marketing from technology — because your customers
+          We do not separate marketing from technology - because your customers
           do not either. The result is compounding growth, not isolated wins.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

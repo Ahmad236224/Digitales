@@ -8,9 +8,9 @@ import CircuitBackground from "@/components/ui/CircuitBackground";
 import Accordion from "@/components/ui/Accordion";
 
 export const metadata: Metadata = {
-  title: "Relief OS — Donation Management for NGOs",
+  title: "Relief OS - Donation Management for NGOs",
   description:
-    "Relief OS is the enterprise-grade donation management platform built exclusively for NGOs — donor lifecycle, campaigns, multi-currency, receipting, and impact reporting.",
+    "Relief OS is the enterprise-grade donation management platform built exclusively for NGOs - donor lifecycle, campaigns, multi-currency, receipting, and impact reporting.",
 };
 
 const softwareSchema = {
@@ -25,17 +25,17 @@ const softwareSchema = {
 
 const PROBLEMS = [
   { Icon: Database, title: "Generic CRMs", body: "Standard CRMs were not built for donor cycles, campaign appeals, or impact reporting." },
-  { Icon: FileText, title: "Spreadsheet Chaos", body: "Spreadsheets cannot scale with your mission — and they were never designed to." },
+  { Icon: FileText, title: "Spreadsheet Chaos", body: "Spreadsheets cannot scale with your mission - and they were never designed to." },
   { Icon: ChartBar, title: "Slow Reporting", body: "Manual reporting takes hours that should be spent on programmes, not administration." },
 ];
 
 const FEATURES = [
-  { Icon: Users, title: "Donor Lifecycle Management", body: "Track every donor from first gift to major-donor status — full history, segmentation, and communication records." },
+  { Icon: Users, title: "Donor Lifecycle Management", body: "Track every donor from first gift to major-donor status - full history, segmentation, and communication records." },
   { Icon: Megaphone, title: "Campaign & Appeal Tracking", body: "Run multiple campaigns simultaneously. Set targets, track progress, and report outcomes per appeal." },
   { Icon: CurrencyDollar, title: "Multi-Currency & Multi-Region", body: "Accept donations in GBP, USD, PKR, AED and more. Designed for NGOs operating across borders." },
   { Icon: Receipt, title: "Automated Receipting & Tax", body: "Automated receipts, Gift Aid processing for UK charities, and tax-compliant documentation." },
   { Icon: ChartPieSlice, title: "Impact Reporting Dashboards", body: "Real-time dashboards and exportable reports that tell the story of your impact in numbers." },
-  { Icon: PlugsConnected, title: "Integrations", body: "Stripe, PayPal, Salesforce and more — connects to the tools your team already uses." },
+  { Icon: PlugsConnected, title: "Integrations", body: "Stripe, PayPal, Salesforce and more - connects to the tools your team already uses." },
 ];
 
 const TIERS = [
@@ -45,8 +45,8 @@ const TIERS = [
 ];
 
 const FAQ = [
-  { q: "Is Relief OS cloud-based?", a: "Yes. Relief OS is a fully cloud-based SaaS platform — accessible from any device, with no local installation required." },
-  { q: "What regions is it available in?", a: "Relief OS is available globally. It currently supports GBP, USD, PKR, and AED — with additional currencies available on the Enterprise plan." },
+  { q: "Is Relief OS cloud-based?", a: "Yes. Relief OS is a fully cloud-based SaaS platform - accessible from any device, with no local installation required." },
+  { q: "What regions is it available in?", a: "Relief OS is available globally. It currently supports GBP, USD, PKR, and AED - with additional currencies available on the Enterprise plan." },
   { q: "Does it handle Gift Aid?", a: "Yes. Relief OS includes automated Gift Aid processing for UK-registered charities, with all required documentation generated automatically." },
   { q: "Can we migrate from our current system?", a: "Yes. Our team provides full data migration support as part of onboarding for Growth and Enterprise plan customers." },
   { q: "Is there a free trial?", a: "We offer a guided demonstration and a 30-day pilot on request. Contact our team to discuss what works best for your organisation." },
@@ -57,7 +57,7 @@ export default function ReliefOSPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      {/* Hero — teal-on-purple */}
+      {/* Hero - teal-on-purple */}
       <section className="relative overflow-hidden bg-night">
         <div aria-hidden className="glow-purple pointer-events-none absolute inset-x-0 top-0 h-full" />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[70vh]" style={{ background: "radial-gradient(50% 50% at 70% 10%, rgba(15,181,181,0.22), transparent 60%)" }} />
@@ -72,7 +72,7 @@ export default function ReliefOSPage() {
           </h1>
           <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-muted">
             The enterprise-grade donation management platform built exclusively
-            for NGOs — from campaign intake and donor lifecycle to multi-currency
+            for NGOs - from campaign intake and donor lifecycle to multi-currency
             processing and impact reporting. One platform, every stage.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
@@ -182,7 +182,7 @@ export default function ReliefOSPage() {
             <div className="relative">
               <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">See Relief OS in Action.</h2>
               <p className="mx-auto mt-4 max-w-xl font-body text-muted">
-                Book a personalised demonstration with our product team — we'll
+                Book a personalised demonstration with our product team - we'll
                 walk you through the platform with your use case in mind.
               </p>
               <Link href="/contact" className="btn-gold mt-8">Book a Demo <ArrowRight size={16} weight="bold" /></Link>
@@ -194,7 +194,7 @@ export default function ReliefOSPage() {
       {/* FAQ */}
       <section className="bg-night">
         <div className="container-d section">
-          <h2 className="text-center h2">Relief OS — FAQ</h2>
+          <h2 className="text-center h2">Relief OS - FAQ</h2>
           <div className="mt-12"><Accordion items={FAQ} /></div>
         </div>
       </section>

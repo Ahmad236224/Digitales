@@ -113,9 +113,9 @@ function getOfficesForHost(host: string) {
 const FAQ = [
   { q: "What types of organisations do you work with?", a: "We work across a broad range: national universities, international NGOs, consumer brands, and enterprise technology buyers. Our teams across Pakistan, the UK, and the USA mean we are well-positioned for organisations with both regional and international requirements." },
   { q: "What is your typical project timeline?", a: "It depends on scope. A focused SEO engagement or paid media campaign can be live within two to three weeks. A custom website or enterprise software project typically requires eight to sixteen weeks. We give you a clear timeline in our initial proposal." },
-  { q: "Do you work with clients outside Pakistan?", a: "Yes — we operate actively across the UK and USA through our respective chapters. Geography has not been a barrier for any of our current clients." },
+  { q: "Do you work with clients outside Pakistan?", a: "Yes - we operate actively across the UK and USA through our respective chapters. Geography has not been a barrier for any of our current clients." },
   { q: "How do you price your services?", a: "Pricing depends on scope, channel mix, and engagement duration. We offer both project-based and retained models. A detailed proposal follows our initial discovery call." },
-  { q: "What makes Digitales different from other agencies?", a: "Primarily the integration of marketing strategy and technology delivery under one roof — backed by 30 years of advertising heritage. Most agencies specialise in one; we do both, in coordination, which is where compounding results come from." },
+  { q: "What makes Digitales different from other agencies?", a: "Primarily the integration of marketing strategy and technology delivery under one roof - backed by 30 years of advertising heritage. Most agencies specialise in one; we do both, in coordination, which is where compounding results come from." },
 ];
 
 export default function ContactPage({
@@ -147,7 +147,7 @@ export default function ContactPage({
             Let&apos;s build Something That <span className="text-gold">Performs</span>
           </h1>
           <p className="mt-6 max-w-2xl font-body text-sm font-medium leading-relaxed text-white sm:text-base">
-            From Lahore to London and New York, our global team is ready to scale your operations. Tell us where your current digital effort is underperforming — we respond within one business day.
+            From Lahore to London and New York, our global team is ready to scale your operations. Tell us where your current digital effort is underperforming - we respond within one business day.
           </p>
         </div>
       </section>

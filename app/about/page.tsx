@@ -36,7 +36,7 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Hero — two column */}
+      {/* Hero - two column */}
       <section className="relative overflow-hidden bg-night">
         <div aria-hidden className="glow-purple pointer-events-none absolute inset-x-0 top-0 h-full" />
         <CircuitBackground className="opacity-[0.12]" />
@@ -52,7 +52,7 @@ export default function AboutPage() {
             <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-muted">
               Digitales is more than a marketing agency. We are a technical
               collective built on 30 years of advertising heritage through Future
-              Vision Advertising — brought into the digital era with precision,
+              Vision Advertising - brought into the digital era with precision,
               agility, and accountability.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -125,10 +125,12 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership + full team */}
-      <section className="bg-night">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#0A0610_0%,#100918_45%,#0A0610_100%)]">
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-40 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-purple/10 blur-[140px]" />
         <div className="container-d section">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
+              <p className="eyebrow">Team Snapshot</p>
               <h2 className="h2">The People Behind the Work.</h2>
               <p className="mt-4 max-w-xl lede">
                 A convergence of strategic minds, engineers, and creatives 
@@ -139,12 +141,13 @@ export default function AboutPage() {
           </div>
 
           {/* Leadership avatars */}
-          <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="relative mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
             {leadershipColumns.map(({ featured, supporting }) => (
-              <div key={featured.name} className="flex min-w-0 flex-col gap-4">
-                <div className="group relative overflow-hidden rounded-card border border-white/[0.06] bg-[#15101E] p-6 text-center transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-transparent hover:backdrop-blur-sm hover:border-white/20 hover:shadow-card-hover">
+              <div key={featured.name} className="flex min-w-0 flex-col gap-6">
+                <div className="group relative min-h-[440px] overflow-hidden rounded-card border border-gold/25 bg-[linear-gradient(145deg,#1B1123_0%,#100B17_100%)] p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-purple before:via-gold before:to-purple hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_28px_70px_rgba(107,45,139,0.32)] sm:p-10">
+                  <p className="mb-7 font-body text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-gold">Agency Leadership</p>
                   {featured.image ? (
-                    <div className="mx-auto h-28 w-28 overflow-hidden rounded-full bg-purple/15 ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
+                    <div className="mx-auto h-36 w-36 overflow-hidden rounded-full bg-purple/15 ring-4 ring-gold ring-offset-8 ring-offset-[#15101E] transition-transform duration-300 ease-out group-hover:scale-105 sm:h-40 sm:w-40">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={featured.image}
@@ -153,23 +156,23 @@ export default function AboutPage() {
                       />
                     </div>
                   ) : (
-                    <div className="mx-auto grid h-28 w-28 place-items-center rounded-full bg-purple/15 font-display text-2xl font-bold text-purple-link ring-4 ring-gold ring-offset-4 ring-offset-night transition-transform duration-300 ease-in-out group-hover:scale-105">
+                    <div className="mx-auto grid h-36 w-36 place-items-center rounded-full bg-purple/15 font-display text-3xl font-bold text-purple-link ring-4 ring-gold ring-offset-8 ring-offset-[#15101E] transition-transform duration-300 ease-out group-hover:scale-105 sm:h-40 sm:w-40">
                       {initials(featured.name)}
                     </div>
                   )}
-                  <p className="mt-5 font-display text-lg font-semibold text-white break-words">{featured.name}</p>
-                  <p className="mt-0.5 font-body text-sm text-muted break-words">{featured.title}</p>
-                  <p className="mt-1 font-body text-[0.65rem] uppercase tracking-wider text-gold">{featured.region}</p>
+                  <p className="mt-8 font-display text-2xl font-extrabold text-white break-words sm:text-3xl">{featured.name}</p>
+                  <p className="mt-2 font-body text-base font-semibold text-slate-200 break-words">{featured.title}</p>
+                  <p className="mt-3 font-body text-[0.68rem] uppercase tracking-[0.16em] text-gold">{featured.region}</p>
                   {featured.bio && (
                     <p className="mt-5 text-center font-body text-[0.82rem] font-bold italic leading-[1.75] tracking-[0.01em] text-slate-200">{featured.bio}</p>
                   )}
                 </div>
 
                 {supporting && (
-                  <div className="group relative overflow-hidden rounded-card border border-gold/20 bg-[#15101E]/80 p-4 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-transparent hover:backdrop-blur-sm hover:border-gold/50 hover:shadow-card-hover">
-                    <div className="flex items-center gap-4">
+                  <div className="group relative overflow-hidden rounded-card border border-purple/30 bg-[#15101E]/90 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_18px_45px_rgba(107,45,139,0.25)] sm:p-7">
+                    <div className="flex items-center gap-5">
                       {supporting.image ? (
-                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-gold bg-purple/15 transition-transform duration-300 ease-in-out group-hover:scale-105">
+                        <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-gold bg-purple/15 transition-transform duration-300 ease-out group-hover:scale-105">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={supporting.image}
@@ -178,13 +181,13 @@ export default function AboutPage() {
                           />
                         </div>
                       ) : (
-                        <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-purple/15 font-display text-base font-bold text-purple-link transition-transform duration-300 ease-in-out group-hover:scale-105">
+                        <div className="grid h-24 w-24 shrink-0 place-items-center rounded-full border-2 border-purple/60 bg-purple/15 font-display text-xl font-bold text-purple-link transition-transform duration-300 ease-out group-hover:scale-105">
                           {initials(supporting.name)}
                         </div>
                       )}
                       <div className="min-w-0">
-                        <p className="font-display text-base font-semibold text-white break-words">{supporting.name}</p>
-                        <p className="mt-1 font-body text-xs leading-relaxed text-muted break-words">{supporting.title}</p>
+                        <p className="font-display text-xl font-bold text-white break-words">{supporting.name}</p>
+                        <p className="mt-2 font-body text-sm font-medium leading-relaxed text-slate-300 break-words">{supporting.title}</p>
                         <p className="mt-2 font-body text-[0.65rem] uppercase tracking-wider text-gold">{supporting.region}</p>
                       </div>
                     </div>
@@ -195,21 +198,24 @@ export default function AboutPage() {
           </div>
 
           {/* Full team by department */}
-          <div className="mt-20 space-y-10">
+          <div className="relative mt-28 space-y-16">
             {TEAM.map((group) => (
-              <div key={group.dept}>
-                <div className="flex items-center gap-4">
-                  <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">{group.dept}</h3>
-                  <div className="h-px flex-1 bg-white/10" />
+              <section key={group.dept} className="rounded-[1.5rem] border border-white/[0.06] bg-white/[0.018] p-5 sm:p-8 lg:p-10">
+                <div className="flex items-center gap-5">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/30 bg-gold/10 font-display text-sm font-bold text-gold">
+                    {String(TEAM.indexOf(group) + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">{group.dept}</h3>
+                  <div className="hidden h-px flex-1 bg-gradient-to-r from-gold/30 to-transparent sm:block" />
                 </div>
-                <div className="relative z-10 mt-5 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="relative z-10 mt-8 flex flex-wrap items-start gap-6">
                   {group.people.map((p) => (
-                    <TeamMemberCard key={p.name} person={p} />
+                    <div key={p.name} className="min-w-0 flex-[1_1_300px] self-start">
+                      <TeamMemberCard person={p} />
+                    </div>
                   ))}
                 </div>
-
-
-              </div>
+              </section>
             ))}
           </div>
         </div>

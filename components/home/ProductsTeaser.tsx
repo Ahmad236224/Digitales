@@ -18,7 +18,7 @@ export default function ProductsTeaser() {
             <div className="relative">
               <span className="rounded-full bg-gold px-3 py-1 font-body text-xs font-semibold text-purple-deep">SaaS Product</span>
               <h3 className="mt-6 font-display text-2xl font-bold text-white">Enterprise donation management, built exclusively for NGOs.</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-muted">Track donors, run campaigns, manage appeals, and report impact — all from one purpose-built platform.</p>
+              <p className="mt-3 font-body text-sm leading-relaxed text-muted">Track donors, run campaigns, manage appeals, and report impact - all from one purpose-built platform.</p>
               <span className="mt-7 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-relief">Explore Relief OS <ArrowRight size={15} weight="bold" /></span>
             </div>
           </Link>
@@ -28,7 +28,7 @@ export default function ProductsTeaser() {
             <div className="relative">
               <span className="w-fit rounded-full bg-purple px-3 py-1 font-body text-xs font-semibold text-white">New Venture</span>
               <h3 className="mt-6 font-display text-2xl font-bold text-white">Launch your agency. We power it.</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-muted">DartX is a white-label agency model — you bring the clients, we deliver the work under your brand. No overhead. No hiring.</p>
+              <p className="mt-3 font-body text-sm leading-relaxed text-muted">DartX is a white-label agency model - you bring the clients, we deliver the work under your brand. No overhead. No hiring.</p>
               <span className="mt-7 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-gold">Learn About DartX <ArrowRight size={15} weight="bold" /></span>
             </div>
           </Link>

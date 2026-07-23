@@ -191,7 +191,7 @@ export default function AuditFunnel() {
 
       {resumed && step > 1 && (
         <p className="mt-4 rounded-lg border border-gold/30 bg-gold/5 px-4 py-2.5 text-center font-body text-sm text-gold">
-          Welcome back — we picked up where you left off.
+          Welcome back - we picked up where you left off.
         </p>
       )}
 

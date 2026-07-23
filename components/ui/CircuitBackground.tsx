@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * CircuitBackground — the Digitales signature.
+ * CircuitBackground - the Digitales signature.
  * Echoes the circuit traces inside the logo's "D". Brand-purple lines and
  * gold nodes drawn on the deep-purple field. Lines softly "flow" via an
  * animated stroke dash. Purely decorative → aria-hidden.
@@ -53,7 +53,7 @@ export default function CircuitBackground({
           <path d="M540 600 V480 H400" />
         </g>
 
-        {/* Gold nodes at junctions — the highlight accents */}
+        {/* Gold nodes at junctions - the highlight accents */}
         <g fill="#F0B428">
           {[
             [180, 120], [320, 200], [520, 200],
