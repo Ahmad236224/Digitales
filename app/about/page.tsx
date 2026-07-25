@@ -164,7 +164,7 @@ export default function AboutPage() {
                   <p className="mt-2 font-body text-base font-semibold text-slate-200 break-words">{featured.title}</p>
                   <p className="mt-3 font-body text-[0.68rem] uppercase tracking-[0.16em] text-gold">{featured.region}</p>
                   {featured.bio && (
-                    <p className="mt-5 text-center font-body text-[0.82rem] font-bold italic leading-[1.75] tracking-[0.01em] text-slate-200">{featured.bio}</p>
+                    <p className="mt-5 text-center font-body text-[0.82rem] font-normal italic leading-[1.75] tracking-[0.01em] text-slate-200">{featured.bio}</p>
                   )}
                 </div>
 
