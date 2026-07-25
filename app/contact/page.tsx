@@ -90,8 +90,10 @@ const OFFICES = [
 function getDisplayHost(searchParams?: { domain?: string | string[] }) {
   const host = headers().get("host")?.split(":")[0].toLowerCase() || "";
   const domainParam = Array.isArray(searchParams?.domain) ? searchParams?.domain[0] : searchParams?.domain;
+  const isDemoHost = ["localhost", "127.0.0.1"].includes(host) || host.endsWith(".vercel.app");
+  const isRegionalDomain = domainParam && ["digitales.uk", "digitales.us"].includes(domainParam.toLowerCase());
 
-  if (domainParam && ["localhost", "127.0.0.1"].includes(host)) {
+  if (isDemoHost && isRegionalDomain) {
     return domainParam.toLowerCase();
   }
 

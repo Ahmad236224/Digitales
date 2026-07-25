@@ -8,12 +8,15 @@ function getSourceDomain() {
   }
 
   const testDomain = new URLSearchParams(window.location.search).get("domain");
+  const hostname = window.location.hostname.toLowerCase();
+  const isDemoHost = ["localhost", "127.0.0.1"].includes(hostname) || hostname.endsWith(".vercel.app");
+  const isRegionalDomain = testDomain && ["digitales.uk", "digitales.us"].includes(testDomain.toLowerCase());
 
-  if (testDomain && ["localhost", "127.0.0.1"].includes(window.location.hostname)) {
-    return testDomain;
+  if (isDemoHost && isRegionalDomain) {
+    return testDomain.toLowerCase();
   }
 
-  return window.location.hostname;
+  return hostname;
 }
 
 export default function NewsletterForm() {
