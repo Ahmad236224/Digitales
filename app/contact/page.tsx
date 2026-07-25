@@ -17,7 +17,7 @@ const OFFICES = [
     name: "Pakistan HQ",
     address: "82-B Garden Block, Garden Town, Lahore, Pakistan, 54000",
     phone: "+92 (42) 111 222 333",
-    email: "pk@digitales.pk",
+    email: "admin@digitales.pk",
     searchLabel: "Garden Town, LHR",
     mapPaths: (
       <>
@@ -41,7 +41,7 @@ const OFFICES = [
     name: "UK Chapter",
     address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom",
     phone: "+44 (20) 7946 0192",
-    email: "uk@digitalesuk.com",
+    email: "info@digitalesuk.com",
     searchLabel: "Covent Garden, LDN",
     mapPaths: (
       <>
@@ -63,7 +63,7 @@ const OFFICES = [
     name: "USA Chapter",
     address: "135 Madison Ave, New York, NY 10016, United States",
     phone: "+1 (212) 555 0148",
-    email: "usa@digitalesusa.org",
+    email: "admin@digitalesusa.org",
     searchLabel: "Madison Ave, NYC",
     mapPaths: (
       <>
@@ -112,6 +112,30 @@ function getOfficesForHost(host: string) {
   return OFFICES;
 }
 
+function getContactDetailsForHost(host: string) {
+  if (host.includes("digitales.uk")) {
+    return {
+      email: "info@digitalesuk.com",
+      supportHeading: "Support",
+      supportHours: "Mon–Fri, UK hours",
+    };
+  }
+
+  if (host.includes("digitales.us")) {
+    return {
+      email: "admin@digitalesusa.org",
+      supportHeading: "Support",
+      supportHours: "Mon–Fri, US hours",
+    };
+  }
+
+  return {
+    email: "admin@digitales.pk",
+    supportHeading: "Global Support",
+    supportHours: "Mon–Fri across PK, UK & USA hours",
+  };
+}
+
 const FAQ = [
   { q: "What types of organisations do you work with?", a: "We work across a broad range: national universities, international NGOs, consumer brands, and enterprise technology buyers. Our teams across Pakistan, the UK, and the USA mean we are well-positioned for organisations with both regional and international requirements." },
   { q: "What is your typical project timeline?", a: "It depends on scope. A focused SEO engagement or paid media campaign can be live within two to three weeks. A custom website or enterprise software project typically requires eight to sixteen weeks. We give you a clear timeline in our initial proposal." },
@@ -127,6 +151,7 @@ export default function ContactPage({
 }) {
   const displayHost = getDisplayHost(searchParams);
   const visibleOffices = getOfficesForHost(displayHost);
+  const contactDetails = getContactDetailsForHost(displayHost);
   const isRegionalOfficeView = displayHost.includes("digitales.uk") || displayHost.includes("digitales.us");
 
   return (
@@ -168,14 +193,19 @@ export default function ContactPage({
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-purple/15 text-gold"><EnvelopeSimple size={20} weight="fill" /></span>
                 <div>
                   <p className="font-display text-sm font-semibold text-white">Email Us</p>
-                  <p className="font-body text-sm text-muted font-mono">hello@digitales.pk</p>
+                  <Link
+                    href={`mailto:${contactDetails.email}`}
+                    className="font-mono font-body text-sm text-muted transition hover:text-gold hover:underline"
+                  >
+                    {contactDetails.email}
+                  </Link>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-purple/15 text-gold"><Phone size={20} weight="fill" /></span>
                 <div>
-                  <p className="font-display text-sm font-semibold text-white">Global Support</p>
-                  <p className="font-body text-sm text-muted">Mon–Fri across PK, UK & USA hours</p>
+                  <p className="font-display text-sm font-semibold text-white">{contactDetails.supportHeading}</p>
+                  <p className="font-body text-sm text-muted">{contactDetails.supportHours}</p>
                 </div>
               </div>
             </div>
