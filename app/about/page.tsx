@@ -209,9 +209,19 @@ export default function AboutPage() {
                   <div className="hidden h-px flex-1 bg-gradient-to-r from-gold/30 to-transparent sm:block" />
                 </div>
                 <div className="relative z-10 mt-8 flex flex-wrap items-start gap-6">
-                  {group.people.map((p) => (
-                    <div key={p.name} className="min-w-0 flex-[1_1_300px] self-start">
-                      <TeamMemberCard person={p} />
+                  {group.people.map((person) => (
+                    <div
+                      key={person.name}
+                      className={`min-w-0 self-start ${
+                        (group.dept === "Creative" && person.name === "Ammarah Zahid") ||
+                        (group.dept === "Account Management" && person.name === "Ayesha Gull") ||
+                        (group.dept === "Performance & Growth" && person.name === "Waqas Nayyar") ||
+                        (group.dept === "Technology & Data" && person.name === "Khuzema Khan")
+                          ? "flex-[1_1_100%]"
+                          : "flex-[1_1_300px]"
+                      }`}
+                    >
+                      <TeamMemberCard person={person} />
                     </div>
                   ))}
                 </div>

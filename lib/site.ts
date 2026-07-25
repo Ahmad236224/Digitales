@@ -322,6 +322,12 @@ export const TEAM = [
     dept: "Creative",
     people: [
       {
+        name: "Ammarah Zahid",
+        title: "Creative Lead",
+        image: "/about/ammarah-zahid.jpg",
+        bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
+      },
+      {
         name: "Kaleem Ullah",
         title: "Video Content Specialist",
         image: "/about/Kaleem ullah.jpeg",
@@ -339,12 +345,6 @@ export const TEAM = [
         image: "/about/uzair.jpg",
         bio: "Bringing fresh creativity and a year of focused experience, Uzair drives visual execution across digital campaigns, ensuring every asset aligns with high-end brand standards.",
 
-      },
-      {
-        name: "Ammarah Zahid",
-        title: "Creative Lead",
-        image: "/about/ammarah-zahid.jpg",
-        bio: "As a Senior Graphic Designer with 6+ experience, I elevate brand narratives & deliver polished, high-resolution design solutions that resonate deeply with target audiences.",
       },
     ],
   },
